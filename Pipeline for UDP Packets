@@ -1,0 +1,204 @@
+from socket import socket, gethostbyname, AF_INET , SOCK_DGRAM
+from mpl_toolkits.mplot3d import axes3d
+import matplotlib.pyplot as plt
+from matplotlib import style
+import numpy as np
+import time
+
+# if a value is too far over the thresh hold it gets ignored and marked as an error
+# +20 -20 gives a leway of 40
+# if it evalueates as true then do not use value
+def dontUse(Previous, Current):
+    #print("Previous :"+str(Previous) +"  Current :"+str(Current))
+    if Current >= Previous + 50 and Current <= Previous - 50:
+        #print("True")
+        return True
+    else:
+        #print("False")
+        return False
+
+# Converts the byte value obtained from UDP stream into usable data
+
+def TransCoverter(Low_Index,High_Index):
+    finalvalue = 0
+    holder = 0
+    while Low_Index <= High_Index:
+        holder = data[Low_Index]
+        finalvalue += int(str(holder))
+        Low_Index += 1
+    return finalvalue
+
+
+def parse(data):
+    FrameNumber = int(data[1]) + int(data[2]) + int(data[3])
+    Itemsinblock = data[4]
+    ItemNamez = data[8:31]
+    TransX = int(TransCoverter(32, 39))
+    TransY = int(TransCoverter(40, 47))
+    TransZ = int(TransCoverter(48, 55))
+    RotX = TransCoverter(56, 63)
+    RotY = TransCoverter(64, 71)
+    RotZ = TransCoverter(72, 79)
+    return FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ
+
+
+def PrintAllData( FrameNumber, Itemsinblock, ItemNamez, AverageTransX, AverageTransY, AverageTransZ, Moved,StartingPoint,Calibrated):
+    if Calibrated == False:
+        print("Frame Number :", FrameNumber,"TransX :", AverageTransX/10 , " | ", "TransY :",AverageTransY/10   , " | ", "TransZ :",AverageTransZ/10  , " | ", "Moved:",Moved)
+    else:
+        print("Frame Number :", FrameNumber,"TransX :", AverageTransX/10  , " | ", "TransY :", AverageTransY/10  , " | ", "TransZ :",AverageTransZ/10  , " | ", "Moved:",Moved," | ", "Origin,","X:",StartingPoint[0]/10 ," Y:",StartingPoint[1]/10," Z:", StartingPoint[2]/10  )
+    return
+
+
+def HasDroneMoved(PreviousTx, PreviousTy, PreviousTz, ActualAverageX, ActualAverageY, ActualAverageZ, Moved):
+    if PreviousTx == 0:
+        PreviousTx, PreviousTy, PreviousTz = ActualAverageX,ActualAverageY,ActualAverageZ
+        Moved = True
+    else:
+        if ActualAverageX <= PreviousTx + 30 and ActualAverageX >= PreviousTx -30 or\
+                ActualAverageY <= PreviousTy + 30 and ActualAverageY >= PreviousTy -30 or\
+                ActualAverageZ <= PreviousTz + 30 and ActualAverageZ >= PreviousTz - 30 :
+            Moved = False
+        else:
+            Moved = True
+        PreviousTx, PreviousTy, PreviousTz = ActualAverageX, ActualAverageY, ActualAverageZ
+    return PreviousTx, PreviousTy, PreviousTz, Moved
+
+
+#Gets the origin of the drone
+def Calibrate(Calibrated,StartingPoint,SumsX,SumsY,SumsZ,ActualAverageX,ActualAverageY,ActualAverageZ):
+    if len(SumsZ) >= 30 and Calibrated == False:
+        X,Y,Z = 0,0,0
+        # Use values 40 - 50 as the first couple of values will always be on the lower end of the deviation
+        for i in range(20,30):
+            X += SumsX[i]
+            Y += SumsY[i]
+            Z += SumsZ[i]
+
+        StartingPoint.append(X / 10)
+        StartingPoint.append(Y / 10)
+        StartingPoint.append(Z / 10)
+        Calibrated= True
+    else:
+        SumsX.append(ActualAverageX)
+        SumsY.append(ActualAverageY)
+        SumsZ.append(ActualAverageZ)
+        Calibrated = False
+    return Calibrated,StartingPoint,SumsX,SumsY,SumsZ
+
+
+#Subtracts the first value in the array from the total and then deletes it from the array, then adds last value added (New) to total (Average)
+def SlidingWindow(AverageX,AverageY,AverageZ,ArrayX,ArrayY,ArrayZ,NewX,NewY,NewZ):
+
+    ArrayX.append(NewX)
+    ArrayY.append(NewY)
+    ArrayZ.append(NewZ)
+
+    #print("Before",AverageX, "New value:",NewX)
+    AverageX += ArrayX[-1]
+    #print("After addidng new value",AverageX, "Next sub value:",ArrayX[0])
+    AverageX -= ArrayX[0]
+    #print("After sub first value",AverageX)
+
+    AverageY += ArrayY[-1]
+    AverageY -= ArrayY[0]
+
+    AverageZ += ArrayZ[-1]
+    AverageZ -= ArrayZ[0]
+
+    del ArrayZ[0]
+    del ArrayY[0]
+    del ArrayX[0]
+
+    return AverageX,AverageY,AverageZ, ArrayX,ArrayY,ArrayZ
+
+  #average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+def GetActualAverage(ActualAverageX,ActualAverageY,ActualAverageZ,TotalX,TotalY,TotalZ,windowSize):
+    ActualAverageX = sum(TotalX) / len(TotalX) / windowSize
+    ActualAverageY = sum(TotalY) / len(TotalY) / windowSize
+    ActualAverageZ = sum(TotalZ) / len(TotalZ) / windowSize
+    return ActualAverageX,ActualAverageY,ActualAverageZ
+
+
+
+UDP_PORT = 5000
+hostName = gethostbyname('255.255.255.255')
+print("Port :"+str(UDP_PORT)+"\n")
+PacketSize = 256
+FrameNumber=0
+Itemsinblock=0
+ItemID=0
+ItemDataSize= 0
+
+
+sock = socket(AF_INET, SOCK_DGRAM) # UDP
+sock.bind((hostName, UDP_PORT))
+
+Moved = False
+PreviousTx, PreviousTy, PreviousTz = 0, 0, 0
+AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ = 0, 0, 0, 0, 0, 0
+ActualAverageX,ActualAverageY,ActualAverageZ = 0,0,0
+#sliding window size
+windowSize = 100
+
+# Contain all respective actual values
+ArrayTransX = []
+ArrayTransY = []
+ArrayTransZ = []
+
+#holds the averages to be used to calculate the starting point
+SumsX = []
+SumsY = []
+SumsZ = []
+
+#Holds the orgin values,[0]=x [1]=y [2]=z
+StartingPoint = []
+Calibrated = False
+
+while True:
+    # contain all the respective average totals
+    TotalX = []
+    TotalY = []
+    TotalZ = []
+
+    while len(TotalX) < windowSize:
+        (data, addr) = sock.recvfrom(PacketSize) # buffer size is x bytes
+        FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ = parse(data)
+
+        if len(ArrayTransX) < windowSize:
+            #print("Reset")
+            # Get average of first "windowSize" packets sent in for TransX,Y,Z and append to arrays
+            AverageTransX += TransX
+            AverageTransY += TransY
+            AverageTransZ += TransZ
+
+            # append new values to arrays
+            ArrayTransX.append(TransX)
+            ArrayTransY.append(TransY)
+            ArrayTransZ.append(TransZ)
+        else:
+            # print(len(TotalX))
+            # append the new average to the running total for X,y,z
+            TotalX.append(AverageTransX)
+            TotalY.append(AverageTransY)
+            TotalZ.append(AverageTransZ)
+            # call sliding window to calcuate mean
+            AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ = SlidingWindow(
+                                                                                                    AverageTransX, AverageTransY, AverageTransZ,
+                                                                                                    ArrayTransX, ArrayTransY, ArrayTransZ,
+                                                                                                    TransX, TransY, TransZ)
+
+
+
+    # average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+    ActualAverageX,ActualAverageY,ActualAverageZ = GetActualAverage(ActualAverageX,ActualAverageY,ActualAverageZ,TotalX,TotalY,TotalZ,windowSize)
+
+    # cacluate the differece between values to work out if drone has moved
+    PreviousTx, PreviousTy, PreviousTz, Moved = HasDroneMoved(PreviousTx,PreviousTy,PreviousTz,ActualAverageX,ActualAverageY,ActualAverageZ,Moved)
+
+    #get Starting Point
+    Calibrated, StartingPoint, SumsX, SumsY, SumsZ = Calibrate(Calibrated,StartingPoint,SumsX,SumsY,SumsZ,ActualAverageX,ActualAverageY,ActualAverageZ)
+
+    # Print all data, *remember that Y = Z , Z= Y
+    PrintAllData(FrameNumber, Itemsinblock, ItemNamez, int(ActualAverageX), int(ActualAverageY), int(ActualAverageZ),Moved,StartingPoint,Calibrated)
+
