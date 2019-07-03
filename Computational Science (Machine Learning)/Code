@@ -67,7 +67,7 @@ def ExactSolution(k,a, time, h, e, x, u, samples,insertfilename):
                     writefile("\n" + " X(k):" + str(round(x[k], 4)) + " U(k):" + str(round(U, 4)) + " Time:" + str(round(time[k], 2)), insertfilename)
                     samples = 0
     return u
-
+ 
 
 def step2(k,a, time, h, e, x, u, samples,insertfilename):
     # 𝑑𝑥/𝑑𝑡 = 𝑥̇ = 𝑎𝑥 + 2𝑈
