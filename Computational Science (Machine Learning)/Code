@@ -1,0 +1,312 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+import math
+from random import randrange, uniform
+
+# Open a new file/ clear the previous file with same name
+def startfile(filename):
+    LogFile = open(filename, "w")
+    LogFile.write("")
+    return
+
+
+# append each new line of data to the file
+def writefile(Data,filename):
+    LogFile = open(filename, "a")  # r = read, w = write , a=append (write new data to end of file), r+ = both read and write
+    LogFile.write(Data)
+    LogFile.close()
+    return
+
+
+# read the data from a file
+def readfile(name):
+    file = open(name, "r")
+    return file
+
+
+def step1(Step):
+    k = 0
+    time = []
+    time.append(0) # Time
+    h = Step  # Select h
+    e = 1  # e>0
+    x = []
+    a= -2
+    x.append(0)     # x[k] = 0
+    samples = 0
+    return k,a, time, h, e, x, samples
+
+
+def ExactSolution(k,a, time, h, e, x, u, samples,insertfilename):
+    while time[k] <= 15:
+        ################ Step 2a
+        if time[k] <= 5:
+            U = 2
+        elif 5 < time[k] <= 10:
+            U = 1
+        elif 10 < time[k] <= 15:
+            U = 3
+        ################# Step 2b    x[k+1] = x[k] + h * (a*x[k]+(2*U))
+        #x.append(x[k] + h * (a * x[k] + (2 * U)))
+
+        ExactSo = U - math.exp((-2 * time[k]))
+        x.append(ExactSo)
+        u.append(U)
+        ################ Step 2c (array Variable time holds the specific time at k, go to next time and counter k +1)
+        time.append(time[k] + h)
+        k += 1
+        ############# Step 2d
+        samples += 1
+        ###############Step 2e
+        if h >= 0 and h <= 0.1:
+            # sampleInterval = h*(number of steps)
+            sampleInterval = round((0.1 / h), 2)
+            if sampleInterval == 10:
+                if samples == 10:  # tenth step if h=0.01
+                    writefile("\n" + " X(k):" + str(round(x[k], 4)) + " U(k):" + str(round(U, 4)) + " Time:" + str(round(time[k], 2)), insertfilename)
+                    samples = 0
+    return u
+
+
+def step2(k,a, time, h, e, x, u, samples,insertfilename):
+    # 𝑑𝑥/𝑑𝑡 = 𝑥̇ = 𝑎𝑥 + 2𝑈
+    # =-2x + 2U
+    while time[k] <= 15:
+        ################ Step 2a
+        if time[k] <= 5:
+            U = 2
+        elif 5 < time[k] <= 10:
+            U = 1
+        elif 10 < time[k] <= 15:
+            U = 3
+        ################# Step 2b    x[k+1] = x[k] + h * (a*x[k]+(2*U))
+        x.append(x[k] + h * (a*x[k]+(2*U)))
+        u.append(U)
+        ################ Step 2c (array Variable time holds the specific time at k, go to next time and counter k +1)
+        time.append(time[k] + h)
+        k += 1
+        ############# Step 2d
+        samples += 1
+        ###############Step 2e
+        if h >= 0 and h <= 0.1:
+            #sampleInterval = h*(number of steps)
+            sampleInterval = round((0.1/h),2)
+            if sampleInterval == 10:
+                if samples == 10: #tenth step if h=0.01
+                    writefile("\n" + " X(k):" + str(round(x[k], 4)) + " U(k):" + str(round(U, 4)) + " Time:" + str(round(time[k],2)),insertfilename)
+                    samples = 0
+    return u
+
+
+    # Plot the axis of the recoded data
+def PlotAxis():
+    # plt.subplot(1, 3, 1)
+    plt.plot(ArrayTime5, ArrayX5, label="H = 0.01 Exact Solution")
+    plt.plot(ArrayTime0,ArrayX0,label= "H = 0.01")
+    plt.plot(ArrayTime1,ArrayX1, label= "H = 0.25")
+    plt.plot(ArrayTime2, ArrayX2, label= "H = 0.5")
+    plt.plot(ArrayTime3, ArrayX3, label= "H = 0.75")
+    plt.plot(ArrayTime4, ArrayX4, label= "H = 1")
+    plt.xlabel('X - Time')
+    plt.ylabel('Y - X(t)')
+    plt.title("Different Step Sizes")
+    plt.legend(loc='best')
+    plt.show()
+    return
+
+
+def plotNoise(NoiseArray,ArrayX0 ,ArrayTime0):
+    plt.plot(np.array(ArrayTime0), np.array(ArrayX0), label="H = 0.01")
+    plt.plot(np.array(ArrayTime0), np.array(NoiseArray), label="H = 0.01 + Noise")
+    plt.xlabel('X - Time')
+    plt.ylabel('Y - X(t)')
+    plt.title("Noise Values vs Actual")
+    plt.legend(loc='best')
+    plt.show()
+    return
+
+
+#sets the name of file,and starts step 2
+def hvalues(Step,exactSolution):
+    k,a, time, h, e, x, samples = step1(Step)
+    u = []
+    u.append(0)
+    filename = str(h) + ".txt"
+    filenames.append(filename)
+    startfile(filename)
+    if exactSolution == 0:
+        step2(k, a, time, h, e, x, u, samples,filename)
+    else:
+        ExactSolution(k, a, time, h, e, x, u, samples,filename)
+    return x,time,u
+
+
+def Box_Muller(filename,ArrayX,TimeX,ArrayU0):
+    #Step 0 Open file created earlier
+    filename = filename + "+Noise.txt"
+    data = ""
+    XNoiseArray = []
+    startfile(filename)
+    # Step 1 set it=0, given µ, σ
+    it, µ, σ = 0,0.0,0.001
+    # Step 2 read record from file (time, x, u)
+    counter=0
+    if(len(ArrayX))== (len(TimeX))== (len(ArrayU0)):          #if all the same length
+        while counter < len(ArrayX):
+            Time = TimeX[counter]
+            x = ArrayX[counter]
+            u = ArrayU0[counter]
+            #print("Time:",Time ," X:", x," U:" , u)
+            # Step 3 if (it=0)
+            if it==0:
+                # Step 3a z1=rand (0, 2*pi)
+                z1 = random.uniform(0, 2 * np.pi)
+                # Step 3b b= σ * sqrt (-2*ln(rand(0,1))  "ln is natural log"
+                #b = σ * np.sqrt(-2 * ln(random.uniform(0,1)))
+                b = σ * np.sqrt(-2 * math.log(random.uniform(0,1)))
+                # Step 3c z2= 𝑏𝑠𝑖𝑛(z1)+𝜇
+                z2 = b * math.sin(z1) + µ
+                # Step 3d  z3= 𝑏𝑐𝑜𝑠(z1)+𝜇
+                z3 = b * math.cos(z1) + µ
+                # Step 3e Xnoise=x+z2   Write to file (time, x, xnoise, u)
+                Xnoise = x + z2
+                # Step 3f it=1
+                it=1
+                counter+=1
+            else:
+                # Step 2g   it=0
+                it=0
+                # Step 2h   Xnoise=x+z3
+                Xnoise = x + z3
+                # Step 2i   Write to file (time, x, xnoise, u)
+                counter +=1
+
+            data +="\n"+"Time =" + str(Time) + " X ="+ str(x) + " Xnoise =" + str(Xnoise) + " U="+ str(u)
+            XNoiseArray.append(Xnoise)
+    writefile(data, filename)
+            # Step 4  if not eof go to Step 2
+
+    return XNoiseArray
+#################### PART 3
+def plotExpected(noiseArray,expectedValues,part2Time,iterations,accstring):
+    plt.plot(np.array(part2Time), np.array(expectedValues), label=" Perceptron Expected values")
+    plt.plot(np.array(part2Time), np.array(noiseArray), label="H = 0.01 + Noise")
+    plt.xlabel('X - Time')
+    plt.ylabel('Y - X(t)')
+    plt.title("Perceptron Values vs Actual, Iteration:" + str(iterations) +accstring )
+    plt.legend(loc='best')
+    plt.show()
+    return
+
+
+def Sigmoid(X,threshhold):
+    result = 1 / (1 + math.exp(-X))
+    #result = U - math.exp((-2 * time[k]))
+    return result
+
+
+def initWeights():
+    '''Initialize weights randomly'''
+    inweight = []
+    inthreshhold = uniform(-0.5, 0.5)
+    for i in range(3):
+        inweight.append(uniform(-0.5, 0.5))
+    return inweight, inthreshhold
+
+
+def activation(net_sum,inthreshhold):
+    #print("Net Sum:", net_sum, " Threshhold:",inthreshhold)
+    if net_sum < inthreshhold:
+        GSerror = 1
+    else:
+        GSerror = 0
+    print("Perceptron Output:",GSerror)
+    return GSerror
+
+
+
+def accuracy(target, error):
+    expected = target + error
+    result = expected/target *100
+    return result
+
+
+#Iterates over each input and then calls activation to calculate an output
+def SimPerceptron(Xvalues,WValues,inthreshhold,net_sum,BiasTerm):
+    net_sum = 0
+    net_sum+= BiasTerm
+    for i in range(len(WValues)):
+        '''Weighted sum of inputs = W1(X1) + W2(X2)+ W3'''
+        net_sum += WValues[i] * Xvalues[i]
+    #Output = activation(net_sum,inthreshhold)
+    Output = Sigmoid(net_sum,inthreshhold)
+    return net_sum, Output
+
+
+
+##### Part 1
+filenames = []
+ArrayX0 ,ArrayTime0, ArrayU0 = hvalues(0.01,0)
+ArrayX1 ,ArrayTime1, ArrayU1 = hvalues(0.25,0)
+ArrayX2 ,ArrayTime2, ArrayU2 = hvalues(0.5,0)
+ArrayX3 ,ArrayTime3, ArrayU3 = hvalues(0.75,0)
+ArrayX4 ,ArrayTime4, ArrayU4 = hvalues(1,0)
+ArrayX5 ,ArrayTime5, ArrayU4 = hvalues(0.01,1)
+PlotAxis()
+
+#### Part 2
+Part2Array,Part2U, Part2Time = [],[],[]
+for i in range(0,len(ArrayX0),10):
+    Part2Array.append(ArrayX0[i])
+    Part2U.append(ArrayU0[i])
+    Part2Time.append(ArrayTime0[i])
+
+NoiseArray = np.array(Box_Muller(filenames[0],Part2Array,Part2Time,Part2U))
+plotNoise(NoiseArray,Part2Array ,Part2Time)
+
+############# PART 3
+weight, threshhold = initWeights()
+Error = 1
+Net_sum = 0
+biasTerm = 1
+Iterations = 0
+AccuArray = []
+NoiseArray[:0] = 0
+NoiseArray[:0] = 0
+learning_rate = -0.15
+
+#while Error*Error != 0 and Iterations < 101:
+while Iterations < 101:
+    ExpectedValues = []
+    ExpectedValues.append(0)
+    ExpectedValues.append(0)
+    ExpectedValues.append(0)
+    counter = 0
+    for i in range(len(NoiseArray)):
+        for i in range(len(NoiseArray)-1):
+            print(i)
+            Net_sum, PerOutput = SimPerceptron(NoiseArray, weight, threshhold, Net_sum, biasTerm)
+            Target = NoiseArray[i]
+            WDelta = Target - PerOutput
+            Error = WDelta
+            if i<2:
+                weight[i] += learning_rate * WDelta * NoiseArray[i]
+            else:
+                Wn = learning_rate * WDelta * NoiseArray[i]
+                weight.append(Wn)
+
+                Expected = Target + Error
+                ExpectedValues.append(Expected)
+                Accuracy = accuracy(Target, Error)
+                AccuArray.append(Accuracy)
+                print("Accuracy :%", int(Accuracy)," Error:", round(Error,6), "Target", round(Target,4),"Expected" ,round(Expected,4))
+
+                counter += 1
+                print("Counter =:", counter, " Iterations:", Iterations, "Accuracy :%", round(Accuracy,1))
+                Iterations += 1
+                Accstring = " Accuracy %"+ str(int(sum(AccuArray) / len(AccuArray)))
+
+    if Iterations== 1 or Iterations== 10 or Iterations== 50 or Iterations== 100:
+        plotExpected(NoiseArray,ExpectedValues,Part2Time,Iterations,Accstring)
+
