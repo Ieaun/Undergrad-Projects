@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1071</width>
+    <height>494</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QGroupBox" name="gbStatus">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>0</y>
+     <width>181</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string> Status</string>
+   </property>
+   <widget class="QLabel" name="_lbltemp_c">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temperature C : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblThrust">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>54</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Thrust : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="_lbltemp_f">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Temperature F : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="_temp_f">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>70</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="_temp_c">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>50</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblStatus">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>181</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Scan For A CrazyFlie</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblThrustValue">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>90</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="GBThrustadjust">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>220</y>
+     <width>181</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This panel is used to test the &lt;/p&gt;&lt;p&gt;thrust levels of the drone.&lt;/p&gt;&lt;p&gt;Simply enter thurst percentage &lt;/p&gt;&lt;p&gt;and press enter to send command &lt;/p&gt;&lt;p&gt;to drone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="title">
+    <string> Adjust Thrust (%)</string>
+   </property>
+   <widget class="QPlainTextEdit" name="TxtEditThrust">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>30</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>70</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BtnEnter">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>70</y>
+      <width>91</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>747</width>
+      <height>27</height>
+     </size>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Send Thrust Command via Parameter updating&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Enter</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enable Motors</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gbDirectionalInformation">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>130</y>
+     <width>181</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string> Directional Information</string>
+   </property>
+   <widget class="QLabel" name="lblYaw">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>54</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yaw : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPitch">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>54</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pitch : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRoll">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>71</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Roll : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblYawValue">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPitchValue">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>40</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRollValue">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="GBZMQ">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>0</y>
+     <width>161</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string> ZMQ Commands</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+   <widget class="QPlainTextEdit" name="TEDThrust">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>150</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>70</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="BtnEnterZMQ">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>190</y>
+      <width>85</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>747</width>
+      <height>27</height>
+     </size>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Send a command using ZMQ (Must be enabled in config file)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Enter</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="TEDYaw">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>70</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="TEDRoll">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>70</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>70</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="TEDPitch">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>30</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>70</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>70</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblPitchzmq">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>54</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pitch : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRollzmq">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>71</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Roll : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblYawzmq">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>54</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Yaw : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblThrustzmq">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>160</y>
+      <width>61</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Thrust (%) : </string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="GBMemo">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>271</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Memo</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>220</y>
+      <width>241</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="_clearButton">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="_dumpSystemLoadButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Task dump</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="_propellerTestButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Experimental feature:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; Tests propellers and motors&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Place the Crazyflie on a flat hard surface and run the propeller test.&lt;/p&gt;&lt;p&gt;The crazyflie will run the motors in sequence and beeps the motors that are above the vibration threshold.&lt;/p&gt;&lt;p&gt;The results are also printed on the console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="text">
+        <string>Propeller test</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTextEdit" name="console">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QProgressBar" name="progressBar">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>360</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>0</y>
+     <width>381</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Complete steps in the order presented&lt;/p&gt;&lt;p&gt;E.g 1) ----&amp;gt; 2)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="title">
+    <string>Trajectory</string>
+   </property>
+   <widget class="QGroupBox" name="UDPSettngs">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>251</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>2) UDP Settings</string>
+    </property>
+    <widget class="QPushButton" name="BtnConnect">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>221</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Clicking this button will send commands to &lt;/p&gt;&lt;p&gt;the crazyflie drone and begin the autonomous&lt;/p&gt;&lt;p&gt;flight cycle.&lt;span style=&quot; font-weight:600;&quot;&gt; No operations can occur until &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;flight has completed.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>Connect UDP Stream</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="IPAddressSelect">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>221</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select which IP to Use:&lt;/p&gt;&lt;p&gt;Vicon = 255.255.255.255&lt;/p&gt;&lt;p&gt;Private Test server = &lt;span style=&quot; font-family:'DejaVu Sans Mono'; color:#6a8759;&quot;&gt;192.168.0.122&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="maxVisibleItems">
+      <number>5</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Vicon System - &quot;255.255.255.255&quot;</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Local VM  - &quot;127.0.0.1&quot; </string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPlainTextEdit" name="TxeditPort">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblPort">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>51</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Port :</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="ConsoleVData">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>221</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>351</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>1) Set Points</string>
+    </property>
+    <widget class="QPlainTextEdit" name="TEDY">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>110</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblYawzmq_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Y : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblPitchzmq_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Z : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblRollzmq_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>70</y>
+       <width>71</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>X : </string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDX">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>70</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDZ">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDY_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>110</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDZ_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>30</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblYawzmq_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>110</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Y : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblPitchzmq_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Z : </string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDX_2">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>70</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblRollzmq_3">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>70</y>
+       <width>71</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>X : </string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDY_3">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>110</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDZ_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>30</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblYawzmq_4">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>110</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Y : </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblPitchzmq_4">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>30</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Z : </string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="TEDX_3">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>70</y>
+       <width>70</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>70</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="plainText">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="lblRollzmq_4">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>70</y>
+       <width>71</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>X : </string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QCheckBox" name="CBOXPID">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>121</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Use Custom PID</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar2">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>390</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblThrust_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Progress (%) : </string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="lblThrust_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>360</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Thrust (%) : </string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
