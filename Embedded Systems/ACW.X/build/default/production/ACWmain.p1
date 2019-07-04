@@ -1,0 +1,1428 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"12 ./LCD.h
+[; ;./LCD.h: 12: void lcd_init();
+[v _lcd_init `(v ~T0 @X0 0 e? ]
+"14 ./ds1302.h
+[; ;./ds1302.h: 14: void ds1302_init();
+[v _ds1302_init `(v ~T0 @X0 0 e? ]
+"13
+[; ;./ds1302.h: 13: void port_init();
+[v _port_init `(v ~T0 @X0 0 e? ]
+"14 ./Temperature.h
+[; ;./Temperature.h: 14: void initThermo();
+[v _initThermo `(v ~T0 @X0 0 e? ]
+"12 ./Buttons.h
+[; ;./Buttons.h: 12: void initkey();
+[v _initkey `(v ~T0 @X0 0 e? ]
+"34 ACWmain.c
+[; ;ACWmain.c: 34: int Hour=25,Min=0;
+[v _ArrayReset `(v ~T0 @X0 0 ef1`i ]
+"36
+[; ;ACWmain.c: 36: char weekDay[3];
+[v _han_Display_Results `(v ~T0 @X0 0 e? ]
+"32
+[; ;ACWmain.c: 32: _Bool ResetTime_date = 0;
+[v _SetTimeMethod `(v ~T0 @X0 0 e? ]
+"12 ./ds1302.h
+[; ;./ds1302.h: 12: void ClockMain(char *Hour1_Temp,char *Hour2_Temp,char *Min1_Temp,char *Min2_Temp,char *Sec1_Temp,char *Sec2_Temp);
+[v _ClockMain `(v ~T0 @X0 0 ef6`*uc`*uc`*uc`*uc`*uc`*uc ]
+"11
+[; ;./ds1302.h: 11: void DateMain(char *Year1_Temp,char *Year2_Temp,char *Month1_Temp,char *Month2_Temp,char *Day1_Temp,char *Day2_Temp);
+[v _DateMain `(v ~T0 @X0 0 ef6`*uc`*uc`*uc`*uc`*uc`*uc ]
+"31 ACWmain.c
+[; ;ACWmain.c: 31: int Year_ds,Month_ds,Day_ds = 0;
+[v _CalculateTime `(v ~T0 @X0 0 e? ]
+"29
+[; ;ACWmain.c: 29: char Heating_Letter=' ';
+[v _CalculateDate `(v ~T0 @X0 0 e? ]
+"28
+[; ;ACWmain.c: 28: 
+[v _Nextday `(v ~T0 @X0 0 e? ]
+"10 ./Buttons.h
+[; ;./Buttons.h: 10: void keymatrix(int *ButtonPressed_,int *ActiveSet);
+[v _keymatrix `(v ~T0 @X0 0 ef2`*i`*i ]
+"38 ACWmain.c
+[; ;ACWmain.c: 38: 
+[v _EnterData `(v ~T0 @X0 0 e? ]
+"30
+[; ;ACWmain.c: 30: 
+[v _GetWeekDay `(v ~T0 @X0 0 e? ]
+"12 ./Temperature.h
+[; ;./Temperature.h: 12: void mainThermo(int *Tens_Temp,int *Ones_Temp,int *Decimals_Temp );
+[v _mainThermo `(v ~T0 @X0 0 ef3`*i`*i`*i ]
+"18 ./LCD.h
+[; ;./LCD.h: 18: void han_Display(int DisplayPos,const unsigned char *Data);
+[v _han_Display `(v ~T0 @X0 0 ef2`i`*Cuc ]
+"21
+[; ;./LCD.h: 21: void send_d(unsigned char x);
+[v _send_d `(v ~T0 @X0 0 ef1`uc ]
+"25
+[; ;./LCD.h: 25: void delay();
+[v _delay `(v ~T0 @X0 0 e? ]
+"10 ./Buzzer.h
+[; ;./Buzzer.h: 10: void BuzzerActivate();
+[v _BuzzerActivate `(v ~T0 @X0 0 e? ]
+"14 ./LCD.h
+[; ;./LCD.h: 14: void han_DSet();
+[v _han_DSet `(v ~T0 @X0 0 e? ]
+"15
+[; ;./LCD.h: 15: void han_Number(int DisplayPos,int NumberSelected);
+[v _han_Number `(v ~T0 @X0 0 ef2`i`i ]
+"35 ACWmain.c
+[; ;ACWmain.c: 35: 
+[v _GetValue `(v ~T0 @X0 0 ef1`uc ]
+"15 ./ds1302.h
+[; ;./ds1302.h: 15: void set_time(int Hour,int Min,int Day_st,int Month_st,int Year_st);
+[v _set_time `(v ~T0 @X0 0 ef5`i`i`i`i`i ]
+"33 ACWmain.c
+[; ;ACWmain.c: 33: 
+[v _BiggerThanX `(v ~T0 @X0 0 ef1`i ]
+"27 ./LCD.h
+[; ;./LCD.h: 27: void CallInvalid();
+[v _CallInvalid `(v ~T0 @X0 0 e? ]
+"22
+[; ;./LCD.h: 22: void send_i(unsigned char x);
+[v _send_i `(v ~T0 @X0 0 ef1`uc ]
+"24
+[; ;./LCD.h: 24: void qushu(int counts,const unsigned char *ps);
+[v _qushu `(v ~T0 @X0 0 ef2`i`*Cuc ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"218
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 218: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"280
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 280: __asm("PORTC equ 07h");
+[; <" PORTC equ 07h ;# ">
+"342
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 342: __asm("PORTD equ 08h");
+[; <" PORTD equ 08h ;# ">
+"404
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 404: __asm("PORTE equ 09h");
+[; <" PORTE equ 09h ;# ">
+"436
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 436: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"456
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 456: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"534
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 534: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 596: __asm("PIR2 equ 0Dh");
+[; <" PIR2 equ 0Dh ;# ">
+"636
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 636: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 643: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"650
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 650: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"657
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 657: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"732
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 732: __asm("TMR2 equ 011h");
+[; <" TMR2 equ 011h ;# ">
+"739
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 739: __asm("T2CON equ 012h");
+[; <" T2CON equ 012h ;# ">
+"810
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 810: __asm("SSPBUF equ 013h");
+[; <" SSPBUF equ 013h ;# ">
+"817
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 817: __asm("SSPCON equ 014h");
+[; <" SSPCON equ 014h ;# ">
+"887
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 887: __asm("CCPR1 equ 015h");
+[; <" CCPR1 equ 015h ;# ">
+"894
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 894: __asm("CCPR1L equ 015h");
+[; <" CCPR1L equ 015h ;# ">
+"901
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 901: __asm("CCPR1H equ 016h");
+[; <" CCPR1H equ 016h ;# ">
+"908
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 908: __asm("CCP1CON equ 017h");
+[; <" CCP1CON equ 017h ;# ">
+"966
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 966: __asm("RCSTA equ 018h");
+[; <" RCSTA equ 018h ;# ">
+"1061
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1061: __asm("TXREG equ 019h");
+[; <" TXREG equ 019h ;# ">
+"1068
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1068: __asm("RCREG equ 01Ah");
+[; <" RCREG equ 01Ah ;# ">
+"1075
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1075: __asm("CCPR2 equ 01Bh");
+[; <" CCPR2 equ 01Bh ;# ">
+"1082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1082: __asm("CCPR2L equ 01Bh");
+[; <" CCPR2L equ 01Bh ;# ">
+"1089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1089: __asm("CCPR2H equ 01Ch");
+[; <" CCPR2H equ 01Ch ;# ">
+"1096
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1096: __asm("CCP2CON equ 01Dh");
+[; <" CCP2CON equ 01Dh ;# ">
+"1154
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1154: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"1161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1161: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"1257
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1257: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"1327
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1327: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"1377
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1377: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"1439
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1439: __asm("TRISC equ 087h");
+[; <" TRISC equ 087h ;# ">
+"1501
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1501: __asm("TRISD equ 088h");
+[; <" TRISD equ 088h ;# ">
+"1563
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1563: __asm("TRISE equ 089h");
+[; <" TRISE equ 089h ;# ">
+"1620
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1620: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"1682
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1682: __asm("PIE2 equ 08Dh");
+[; <" PIE2 equ 08Dh ;# ">
+"1722
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1722: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"1756
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1756: __asm("SSPCON2 equ 091h");
+[; <" SSPCON2 equ 091h ;# ">
+"1818
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1818: __asm("PR2 equ 092h");
+[; <" PR2 equ 092h ;# ">
+"1825
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1825: __asm("SSPADD equ 093h");
+[; <" SSPADD equ 093h ;# ">
+"1832
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1832: __asm("SSPSTAT equ 094h");
+[; <" SSPSTAT equ 094h ;# ">
+"2001
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2001: __asm("TXSTA equ 098h");
+[; <" TXSTA equ 098h ;# ">
+"2082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2082: __asm("SPBRG equ 099h");
+[; <" SPBRG equ 099h ;# ">
+"2089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2089: __asm("CMCON equ 09Ch");
+[; <" CMCON equ 09Ch ;# ">
+"2159
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2159: __asm("CVRCON equ 09Dh");
+[; <" CVRCON equ 09Dh ;# ">
+"2224
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2224: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"2231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2231: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"2290
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2290: __asm("EEDATA equ 010Ch");
+[; <" EEDATA equ 010Ch ;# ">
+"2297
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2297: __asm("EEADR equ 010Dh");
+[; <" EEADR equ 010Dh ;# ">
+"2304
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2304: __asm("EEDATH equ 010Eh");
+[; <" EEDATH equ 010Eh ;# ">
+"2311
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2311: __asm("EEADRH equ 010Fh");
+[; <" EEADRH equ 010Fh ;# ">
+"2318
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2318: __asm("EECON1 equ 018Ch");
+[; <" EECON1 equ 018Ch ;# ">
+"2363
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
+[; <" EECON2 equ 018Dh ;# ">
+"17 ACWmain.c
+[; ;ACWmain.c: 17: 
+[p x FOSC = HS ]
+"18
+[; ;ACWmain.c: 18: 
+[p x WDTE = OFF ]
+"19
+[; ;ACWmain.c: 19: unsigned char display_number[10] ={'0','1','2','3','4','5','6','7','8','9'};
+[p x PWRTE = ON ]
+"20
+[; ;ACWmain.c: 20: 
+[p x BOREN = OFF ]
+"21
+[; ;ACWmain.c: 21: char AllValues[3][7];
+[p x LVP = OFF ]
+"24
+[; ;ACWmain.c: 24: 
+[v _display_SetTime `uc ~T0 @X0 -> 7 `i e ]
+[i _display_SetTime
+:U ..
+-> -> 84 `ui `uc
+-> -> 73 `ui `uc
+-> -> 77 `ui `uc
+-> -> 69 `ui `uc
+-> -> 58 `ui `uc
+..
+]
+"25
+[; ;ACWmain.c: 25: int CurrentPosValue=0;
+[v _display_SetDate `uc ~T0 @X0 -> 7 `i e ]
+[i _display_SetDate
+:U ..
+-> -> 68 `ui `uc
+-> -> 65 `ui `uc
+-> -> 84 `ui `uc
+-> -> 69 `ui `uc
+-> -> 58 `ui `uc
+..
+]
+"26
+[; ;ACWmain.c: 26: _Bool FinishedSet;
+[v _display_SetTriggerTemp `uc ~T0 @X0 -> 7 `i e ]
+[i _display_SetTriggerTemp
+:U ..
+-> -> 84 `ui `uc
+-> -> 82 `ui `uc
+-> -> 73 `ui `uc
+-> -> 71 `ui `uc
+-> -> 58 `ui `uc
+..
+]
+"42
+[; ;ACWmain.c: 42:       lcd_init();ds1302_init();port_init();initThermo();initkey();
+[v _display_number `uc ~T0 @X0 -> 10 `i e ]
+[i _display_number
+:U ..
+-> -> 48 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 53 `ui `uc
+-> -> 54 `ui `uc
+-> -> 55 `ui `uc
+-> -> 56 `ui `uc
+-> -> 57 `ui `uc
+..
+]
+[v F1186 `uc ~T0 @X0 -> 7 `i t ]
+"44
+[; ;ACWmain.c: 44:       han_Display_Results();
+[v _AllValues `F1186 ~T0 @X0 -> 3 `i e ]
+"45
+[; ;ACWmain.c: 45:       while(1)
+[v _ActiveSet `i ~T0 @X0 1 e ]
+[i _ActiveSet
+-> 0 `i
+]
+"46
+[; ;ACWmain.c: 46:       {
+[v _ButtonPressed `i ~T0 @X0 1 e ]
+"48
+[; ;ACWmain.c: 48: 
+[v _CurrentPosValue `i ~T0 @X0 1 e ]
+[i _CurrentPosValue
+-> 0 `i
+]
+"49
+[; ;ACWmain.c: 49:          if (AllValues[0][0]!=0x3f && AllValues[1][0]!='Y')
+[v _FinishedSet `a ~T0 @X0 1 e ]
+"50
+[; ;ACWmain.c: 50:          {
+[v _Silencer `a ~T0 @X0 1 e ]
+[i _Silencer
+-> -> 0 `i `a
+]
+[v _letter `uc ~T0 @X0 1 e ]
+[i _letter
+-> -> 76 `ui `uc
+]
+"52
+[; ;ACWmain.c: 52:              {
+[v _Heating_Letter `uc ~T0 @X0 1 e ]
+[i _Heating_Letter
+-> -> 32 `ui `uc
+]
+"54
+[; ;ACWmain.c: 54:                  ResetTime_date=1;
+[v _Year_ds `i ~T0 @X0 1 e ]
+[v _Month_ds `i ~T0 @X0 1 e ]
+[v _Day_ds `i ~T0 @X0 1 e ]
+[i _Day_ds
+-> 0 `i
+]
+"55
+[; ;ACWmain.c: 55:              }
+[v _ResetTime_date `a ~T0 @X0 1 e ]
+[i _ResetTime_date
+-> -> 0 `i `a
+]
+"57
+[; ;ACWmain.c: 57:           DateMain(&AllValues[1][0],&AllValues[1][1],&AllValues[1][2],&AllValues[1][3],&AllValues[1][4],&AllValues[1][5]);
+[v _Hour `i ~T0 @X0 1 e ]
+[i _Hour
+-> 25 `i
+]
+[v _Min `i ~T0 @X0 1 e ]
+[i _Min
+-> 0 `i
+]
+"59
+[; ;ACWmain.c: 59:           CalculateDate();
+[v _weekDay `uc ~T0 @X0 -> 3 `i e ]
+"60
+[; ;ACWmain.c: 60:           Nextday();
+[v _Year_ds_Previous `i ~T0 @X0 1 e ]
+[i _Year_ds_Previous
+-> 0 `i
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"63
+[; ;ACWmain.c: 63: 
+[v _main `(v ~T0 @X0 1 ef ]
+"64
+[; ;ACWmain.c: 64:          keymatrix(&ButtonPressed,&ActiveSet);
+{
+[e :U _main ]
+[f ]
+"65
+[; ;ACWmain.c: 65: 
+[e ( _lcd_init ..  ]
+[e ( _ds1302_init ..  ]
+[e ( _port_init ..  ]
+[e ( _initThermo ..  ]
+[e ( _initkey ..  ]
+"66
+[; ;ACWmain.c: 66:          EnterData();
+[e ( _ArrayReset (1 -> 0 `i ]
+[e ( _ArrayReset (1 -> 1 `i ]
+[e ( _ArrayReset (1 -> 2 `i ]
+"67
+[; ;ACWmain.c: 67: 
+[e ( _han_Display_Results ..  ]
+"68
+[; ;ACWmain.c: 68:          han_Display_Results();
+[e :U 102 ]
+"69
+[; ;ACWmain.c: 69:       }
+{
+"70
+[; ;ACWmain.c: 70: }
+[e = _ActiveSet -> 0 `i ]
+"72
+[; ;ACWmain.c: 72: void han_Display_Results()
+[e $ ! && != -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> 63 `i != -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 89 `ui 104  ]
+"73
+[; ;ACWmain.c: 73: {
+{
+"74
+[; ;ACWmain.c: 74:   unsigned char display_Temp[7] ={'T','E','M','P',':',' '};
+[e $ ! == -> _ResetTime_date `i -> 0 `i 105  ]
+"75
+[; ;ACWmain.c: 75:   GetWeekDay();
+{
+"76
+[; ;ACWmain.c: 76: 
+[e ( _SetTimeMethod ..  ]
+"77
+[; ;ACWmain.c: 77:   mainThermo(&AllValues[3][0],&AllValues[3][1],&AllValues[3][2]);
+[e = _ResetTime_date -> -> 1 `i `a ]
+"78
+[; ;ACWmain.c: 78: 
+}
+[e :U 105 ]
+"79
+[; ;ACWmain.c: 79:   han_Display(0x80,display_Temp);send_d(' ');send_d(AllValues[3][0]);send_d(AllValues[3][1]);send_d('.');send_d(AllValues[3][2]);if (AllValues[2][0]!=0x3f){send_d('*');}send_d(' ');send_d(Heating_Letter);send_d(' ');if (Silencer==1){letter = 'S';send_d(letter);delay();delay();delay();}if (Silencer==0){letter = 'L';send_d(letter);delay();delay();delay();}
+[e ( _ClockMain (4 , , , , , &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+"80
+[; ;ACWmain.c: 80:   han_Display(0x90,display_SetTriggerTemp);send_d(' ');send_d(AllValues[2][0]);send_d(AllValues[2][1]);send_d(' ');send_d(' ');send_d('(');send_d(weekDay[0]);send_d(weekDay[1]);send_d(weekDay[2]);send_d(')');
+[e ( _DateMain (4 , , , , , &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux &U *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+"81
+[; ;ACWmain.c: 81:   han_Display(0x88,display_SetDate);send_d(' ');send_d(AllValues[1][0]);send_d(AllValues[1][1]);send_d('/');send_d(AllValues[1][2]);send_d(AllValues[1][3]);send_d('/');send_d(AllValues[1][4]);send_d(AllValues[1][5]);
+[e ( _CalculateTime ..  ]
+"82
+[; ;ACWmain.c: 82:   han_Display(0x98,display_SetTime);send_d(' ');send_d(AllValues[0][0]);send_d(AllValues[0][1]);send_d(':');send_d(AllValues[0][2]);send_d(AllValues[0][3]);send_d(':');send_d(AllValues[0][4]);send_d(AllValues[0][5]);
+[e ( _CalculateDate ..  ]
+"83
+[; ;ACWmain.c: 83: 
+[e ( _Nextday ..  ]
+"84
+[; ;ACWmain.c: 84:  if (Hour!=25)
+}
+[e :U 104 ]
+"87
+[; ;ACWmain.c: 87:     {
+[e ( _keymatrix (2 , &U _ButtonPressed &U _ActiveSet ]
+"89
+[; ;ACWmain.c: 89:         {
+[e ( _EnterData ..  ]
+"91
+[; ;ACWmain.c: 91:             int W=(AllValues[2][1]-'0')-3;
+[e ( _han_Display_Results ..  ]
+"92
+[; ;ACWmain.c: 92:             if (((AllValues[3][0]<=AllValues[2][0])&&((AllValues[3][1]-'0')<=W))||(AllValues[3][0]<AllValues[2][0]))
+}
+[e :U 101 ]
+[e $U 102  ]
+[e :U 103 ]
+"93
+[; ;ACWmain.c: 93:                             {
+[e :UE 100 ]
+}
+"95
+[; ;ACWmain.c: 95:                                 {
+[v _han_Display_Results `(v ~T0 @X0 1 ef ]
+"96
+[; ;ACWmain.c: 96:                                 BuzzerActivate();
+{
+[e :U _han_Display_Results ]
+[f ]
+[v F1218 `uc ~T0 @X0 -> 7 `i s ]
+[i F1218
+:U ..
+"97
+[; ;ACWmain.c: 97:                                 delay();
+-> -> 84 `ui `uc
+-> -> 69 `ui `uc
+-> -> 77 `ui `uc
+-> -> 80 `ui `uc
+-> -> 58 `ui `uc
+-> -> 32 `ui `uc
+..
+]
+[v _display_Temp `uc ~T0 @X0 -> 7 `i a ]
+[e = _display_Temp F1218 ]
+"98
+[; ;ACWmain.c: 98:                                 BuzzerActivate();
+[e ( _GetWeekDay ..  ]
+"100
+[; ;ACWmain.c: 100:                                 BuzzerActivate();
+[e ( _mainThermo (3 , , -> &U *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `*i -> &U *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `*i -> &U *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `*i ]
+"102
+[; ;ACWmain.c: 102:                             }
+[e ( _han_Display (2 , -> 128 `i -> &U _display_Temp `*Cuc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 46 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e $ ! != -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> 63 `i 107  ]
+{
+[e ( _send_d (1 -> -> 42 `ui `uc ]
+}
+[e :U 107 ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> _Heating_Letter `uc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e $ ! == -> _Silencer `i -> 1 `i 108  ]
+{
+[e = _letter -> -> 83 `ui `uc ]
+[e ( _send_d (1 -> _letter `uc ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+}
+[e :U 108 ]
+[e $ ! == -> _Silencer `i -> 0 `i 109  ]
+{
+[e = _letter -> -> 76 `ui `uc ]
+[e ( _send_d (1 -> _letter `uc ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+}
+[e :U 109 ]
+"103
+[; ;ACWmain.c: 103:         }
+[e ( _han_Display (2 , -> 144 `i -> &U _display_SetTriggerTemp `*Cuc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> -> 40 `ui `uc ]
+[e ( _send_d (1 -> *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux `uc ]
+[e ( _send_d (1 -> -> 41 `ui `uc ]
+"104
+[; ;ACWmain.c: 104:      else
+[e ( _han_Display (2 , -> 136 `i -> &U _display_SetDate `*Cuc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 47 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 47 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+"105
+[; ;ACWmain.c: 105:          Heating_Letter=' ';
+[e ( _han_Display (2 , -> 152 `i -> &U _display_SetTime `*Cuc ]
+[e ( _send_d (1 -> -> 32 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 58 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> -> 58 `ui `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+[e ( _send_d (1 -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `uc ]
+"107
+[; ;ACWmain.c: 107: }
+[e $ ! != _Hour -> 25 `i 110  ]
+"108
+[; ;ACWmain.c: 108: }
+{
+"109
+[; ;ACWmain.c: 109: 
+[e $ ! || && && || && == _Hour -> 6 `i >= _Min -> 30 `i > _Hour -> 6 `i || < _Hour -> 22 `i && == _Hour -> 22 `i <= _Min -> 30 `i < -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 54 `ui && && || && == _Hour -> 7 `i >= _Min -> 0 `i > _Hour -> 7 `i || < _Hour -> 23 `i && == _Hour -> 23 `i <= _Min -> 0 `i > -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 53 `ui 111  ]
+"110
+[; ;ACWmain.c: 110: void Nextday()
+{
+"111
+[; ;ACWmain.c: 111: {
+[e $ ! && || < -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i && <= -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i <= -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i != -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> 63 `i 112  ]
+"112
+[; ;ACWmain.c: 112:     if((Year_ds!=Year_ds_Previous)&&(Year_ds_Previous!=0))
+{
+"113
+[; ;ACWmain.c: 113:     {
+[e = _Heating_Letter -> -> 42 `ui `uc ]
+"114
+[; ;ACWmain.c: 114: 
+[v _W `i ~T0 @X0 1 a ]
+[e = _W -> - - -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui -> -> 3 `i `ui `i ]
+"115
+[; ;ACWmain.c: 115: 
+[e $ ! || && <= -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i <= - -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui -> _W `ui < -> *U + &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i 113  ]
+"116
+[; ;ACWmain.c: 116: 
+{
+"117
+[; ;ACWmain.c: 117:           switch(AllValues[1][6])
+[e $ ! != -> _Silencer `i -> 1 `i 114  ]
+"118
+[; ;ACWmain.c: 118:     {
+{
+"119
+[; ;ACWmain.c: 119:             case 'W': break;
+[e ( _BuzzerActivate ..  ]
+"120
+[; ;ACWmain.c: 120:             case '1': AllValues[1][6]='2'; break;
+[e ( _delay ..  ]
+"121
+[; ;ACWmain.c: 121:             case '2': AllValues[1][6]='3'; break;
+[e ( _BuzzerActivate ..  ]
+"122
+[; ;ACWmain.c: 122:             case '3': AllValues[1][6]='4';break;
+[e ( _delay ..  ]
+"123
+[; ;ACWmain.c: 123:             case '4': AllValues[1][6]='5'; break;
+[e ( _BuzzerActivate ..  ]
+"124
+[; ;ACWmain.c: 124:             case '5': AllValues[1][6]='6'; break;
+}
+[e :U 114 ]
+"125
+[; ;ACWmain.c: 125:             case '6': AllValues[1][6]='7'; break;
+}
+[e :U 113 ]
+"126
+[; ;ACWmain.c: 126:             case '7': AllValues[1][6]='1'; break;
+}
+[e $U 115  ]
+"127
+[; ;ACWmain.c: 127: 
+[e :U 112 ]
+"128
+[; ;ACWmain.c: 128:         default : weekDay[0]='?',weekDay[1]='?',weekDay[2]='?'; break;
+[e = _Heating_Letter -> -> 32 `ui `uc ]
+[e :U 115 ]
+"129
+[; ;ACWmain.c: 129:     }
+}
+[e :U 111 ]
+"130
+[; ;ACWmain.c: 130: 
+}
+[e :U 110 ]
+"131
+[; ;ACWmain.c: 131: 
+[e :UE 106 ]
+}
+"133
+[; ;ACWmain.c: 133: }
+[v _Nextday `(v ~T0 @X0 1 ef ]
+"134
+[; ;ACWmain.c: 134: 
+{
+[e :U _Nextday ]
+[f ]
+"135
+[; ;ACWmain.c: 135: void CalculateTime()
+[e $ ! && != _Year_ds _Year_ds_Previous != _Year_ds_Previous -> 0 `i 117  ]
+"136
+[; ;ACWmain.c: 136: {
+{
+"140
+[; ;ACWmain.c: 140:     int Hour_Ten = (T1- '0')*10;
+[e $U 119  ]
+"141
+[; ;ACWmain.c: 141:     int Hour_digit = T2- '0';
+{
+"142
+[; ;ACWmain.c: 142:     int Min_Ten =(T3- '0')*10;
+[e :U 120 ]
+[e $U 118  ]
+"143
+[; ;ACWmain.c: 143:     int Min_digit = T4 - '0';
+[e :U 121 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 50 `ui `uc ]
+[e $U 118  ]
+"144
+[; ;ACWmain.c: 144: 
+[e :U 122 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 51 `ui `uc ]
+[e $U 118  ]
+"145
+[; ;ACWmain.c: 145:      Hour = Hour_Ten + Hour_digit;
+[e :U 123 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 52 `ui `uc ]
+[e $U 118  ]
+"146
+[; ;ACWmain.c: 146:      Min = Min_Ten + Min_digit;
+[e :U 124 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 53 `ui `uc ]
+[e $U 118  ]
+"147
+[; ;ACWmain.c: 147: 
+[e :U 125 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 54 `ui `uc ]
+[e $U 118  ]
+"148
+[; ;ACWmain.c: 148: }
+[e :U 126 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 55 `ui `uc ]
+[e $U 118  ]
+"149
+[; ;ACWmain.c: 149: 
+[e :U 127 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
+[e $U 118  ]
+"151
+[; ;ACWmain.c: 151: void EnterData()
+[e :U 128 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc ]
+[e $U 118  ]
+"152
+[; ;ACWmain.c: 152: {
+}
+[e $U 118  ]
+[e :U 119 ]
+[e [\ -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i , $ -> -> 87 `ui `i 120
+ , $ -> -> 49 `ui `i 121
+ , $ -> -> 50 `ui `i 122
+ , $ -> -> 51 `ui `i 123
+ , $ -> -> 52 `ui `i 124
+ , $ -> -> 53 `ui `i 125
+ , $ -> -> 54 `ui `i 126
+ , $ -> -> 55 `ui `i 127
+ 128 ]
+[e :U 118 ]
+"155
+[; ;ACWmain.c: 155:       if (letter=='L'){Silencer=1;}
+}
+[e :U 117 ]
+"156
+[; ;ACWmain.c: 156:       if (letter=='S'){Silencer=0;}
+[e :UE 116 ]
+}
+"158
+[; ;ACWmain.c: 158:       ButtonPressed=99;
+[v _CalculateTime `(v ~T0 @X0 1 ef ]
+"159
+[; ;ACWmain.c: 159:     }
+{
+[e :U _CalculateTime ]
+[f ]
+"160
+[; ;ACWmain.c: 160: 
+[e = _Hour = _Min -> 0 `i ]
+"162
+[; ;ACWmain.c: 162:     {
+[v _T1 `uc ~T0 @X0 1 a ]
+[e = _T1 *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+[v _T2 `uc ~T0 @X0 1 a ]
+[e = _T2 *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+[v _T3 `uc ~T0 @X0 1 a ]
+[e = _T3 *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+[v _T4 `uc ~T0 @X0 1 a ]
+[e = _T4 *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux ]
+"163
+[; ;ACWmain.c: 163:       if (ActiveSet!=0)
+[v _Hour_Ten `i ~T0 @X0 1 a ]
+[e = _Hour_Ten -> * - -> _T1 `ui -> 48 `ui -> -> 10 `i `ui `i ]
+"164
+[; ;ACWmain.c: 164:       {FinishedSet = 1;
+[v _Hour_digit `i ~T0 @X0 1 a ]
+[e = _Hour_digit -> - -> _T2 `ui -> 48 `ui `i ]
+"165
+[; ;ACWmain.c: 165:       switch (ActiveSet)
+[v _Min_Ten `i ~T0 @X0 1 a ]
+[e = _Min_Ten -> * - -> _T3 `ui -> 48 `ui -> -> 10 `i `ui `i ]
+"166
+[; ;ACWmain.c: 166:       {
+[v _Min_digit `i ~T0 @X0 1 a ]
+[e = _Min_digit -> - -> _T4 `ui -> 48 `ui `i ]
+"168
+[; ;ACWmain.c: 168:               case 2: lcd_init();han_DSet();han_Display(0x90,display_SetDate);break;
+[e = _Hour + _Hour_Ten _Hour_digit ]
+"169
+[; ;ACWmain.c: 169:               case 3: lcd_init();han_DSet();han_Display(0x90,display_SetTriggerTemp);break;
+[e = _Min + _Min_Ten _Min_digit ]
+"171
+[; ;ACWmain.c: 171:       while(FinishedSet == 1)
+[e :UE 129 ]
+}
+"174
+[; ;ACWmain.c: 174:        if(ButtonPressed<98)
+[v _EnterData `(v ~T0 @X0 1 ef ]
+"175
+[; ;ACWmain.c: 175:             {
+{
+[e :U _EnterData ]
+[f ]
+"176
+[; ;ACWmain.c: 176:             lcd_init();han_Number(0x93,display_number[ButtonPressed]);
+[e $ ! == _ButtonPressed -> 55 `i 131  ]
+"177
+[; ;ACWmain.c: 177:             GetValue(display_number[ButtonPressed]);
+{
+"178
+[; ;ACWmain.c: 178:             delay();delay();delay();delay();delay(); lcd_init();
+[e $ ! == -> _letter `ui -> 76 `ui 132  ]
+{
+[e = _Silencer -> -> 1 `i `a ]
+}
+[e :U 132 ]
+"179
+[; ;ACWmain.c: 179:             }
+[e $ ! == -> _letter `ui -> 83 `ui 133  ]
+{
+[e = _Silencer -> -> 0 `i `a ]
+}
+[e :U 133 ]
+"180
+[; ;ACWmain.c: 180:        }
+[e = _ActiveSet -> 0 `i ]
+"181
+[; ;ACWmain.c: 181:       }
+[e = _ButtonPressed -> 99 `i ]
+"182
+[; ;ACWmain.c: 182:       ActiveSet=0;
+}
+[e :U 131 ]
+"184
+[; ;ACWmain.c: 184: }
+[e $ ! != _ButtonPressed -> 99 `i 134  ]
+"185
+[; ;ACWmain.c: 185: 
+{
+"186
+[; ;ACWmain.c: 186: void GetWeekDay()
+[e $ ! != _ActiveSet -> 0 `i 135  ]
+"187
+[; ;ACWmain.c: 187: {
+{
+[e = _FinishedSet -> -> 1 `i `a ]
+"188
+[; ;ACWmain.c: 188:     switch(AllValues[1][6])
+[e $U 137  ]
+"189
+[; ;ACWmain.c: 189:     {
+{
+"190
+[; ;ACWmain.c: 190:             case 'W': weekDay[0]='W',weekDay[1]='K',weekDay[2]='D'; break;
+[e :U 138 ]
+[e ( _lcd_init ..  ]
+[e ( _han_DSet ..  ]
+[e ( _han_Display (2 , -> 144 `i -> &U _display_SetTime `*Cuc ]
+[e $U 136  ]
+"191
+[; ;ACWmain.c: 191:             case '1': weekDay[0]='M',weekDay[1]='O',weekDay[2]='N'; break;
+[e :U 139 ]
+[e ( _lcd_init ..  ]
+[e ( _han_DSet ..  ]
+[e ( _han_Display (2 , -> 144 `i -> &U _display_SetDate `*Cuc ]
+[e $U 136  ]
+"192
+[; ;ACWmain.c: 192:             case '2': weekDay[0]='T',weekDay[1]='U',weekDay[2]='E'; break;
+[e :U 140 ]
+[e ( _lcd_init ..  ]
+[e ( _han_DSet ..  ]
+[e ( _han_Display (2 , -> 144 `i -> &U _display_SetTriggerTemp `*Cuc ]
+[e $U 136  ]
+"193
+[; ;ACWmain.c: 193:             case '3': weekDay[0]='W',weekDay[1]='E',weekDay[2]='D'; break;
+}
+[e $U 136  ]
+[e :U 137 ]
+[e [\ _ActiveSet , $ -> 1 `i 138
+ , $ -> 2 `i 139
+ , $ -> 3 `i 140
+ 136 ]
+[e :U 136 ]
+"194
+[; ;ACWmain.c: 194:             case '4': weekDay[0]='T',weekDay[1]='H',weekDay[2]='U'; break;
+[e $U 141  ]
+[e :U 142 ]
+"195
+[; ;ACWmain.c: 195:             case '5': weekDay[0]='F',weekDay[1]='R',weekDay[2]='I'; break;
+{
+"196
+[; ;ACWmain.c: 196:             case '6': weekDay[0]='S',weekDay[1]='A',weekDay[2]='T'; break;
+[e ( _keymatrix (2 , &U _ButtonPressed &U _ActiveSet ]
+"197
+[; ;ACWmain.c: 197:             case '7': weekDay[0]='S',weekDay[1]='U',weekDay[2]='N'; break;
+[e $ ! < _ButtonPressed -> 98 `i 144  ]
+"198
+[; ;ACWmain.c: 198:             case '8': AllValues[1][6]='1';weekDay[0]='M',weekDay[1]='O',weekDay[2]='N'; break;
+{
+"199
+[; ;ACWmain.c: 199:         default : weekDay[0]='?',weekDay[1]='?',weekDay[2]='?'; break;
+[e ( _lcd_init ..  ]
+[e ( _han_Number (2 , -> 147 `i -> *U + &U _display_number * -> -> _ButtonPressed `ui `ux -> -> # *U &U _display_number `ui `ux `i ]
+"200
+[; ;ACWmain.c: 200:     }
+[e ( _GetValue (1 -> *U + &U _display_number * -> -> _ButtonPressed `ui `ux -> -> # *U &U _display_number `ui `ux `uc ]
+"201
+[; ;ACWmain.c: 201: }
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _delay ..  ]
+[e ( _lcd_init ..  ]
+"202
+[; ;ACWmain.c: 202: 
+}
+[e :U 144 ]
+"203
+[; ;ACWmain.c: 203: void CalculateDate()
+}
+[e :U 141 ]
+"194
+[; ;ACWmain.c: 194:             case '4': weekDay[0]='T',weekDay[1]='H',weekDay[2]='U'; break;
+[e $ == -> _FinishedSet `i -> 1 `i 142  ]
+[e :U 143 ]
+"204
+[; ;ACWmain.c: 204: {
+}
+[e :U 135 ]
+"205
+[; ;ACWmain.c: 205: 
+[e = _ActiveSet -> 0 `i ]
+"206
+[; ;ACWmain.c: 206: if (AllValues[1][0]!='D')
+}
+[e :U 134 ]
+"207
+[; ;ACWmain.c: 207:  {Year_ds_Previous=Year_ds;
+[e :UE 130 ]
+}
+"209
+[; ;ACWmain.c: 209:  int Day_digit = AllValues[1][1]- '0';
+[v _GetWeekDay `(v ~T0 @X0 1 ef ]
+"210
+[; ;ACWmain.c: 210:  int Month_Ten =(AllValues[1][2]- '0')*10;
+{
+[e :U _GetWeekDay ]
+[f ]
+"211
+[; ;ACWmain.c: 211:  int Month_digit = AllValues[1][3] - '0';
+[e $U 147  ]
+"212
+[; ;ACWmain.c: 212:  int Year_Ten =(AllValues[1][4]- '0')*10;
+{
+"213
+[; ;ACWmain.c: 213:  int Year_digit = AllValues[1][5] - '0';
+[e :U 148 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 87 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 75 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 68 `ui `uc ]
+[e $U 146  ]
+"214
+[; ;ACWmain.c: 214: 
+[e :U 149 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 77 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 79 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 78 `ui `uc ]
+[e $U 146  ]
+"215
+[; ;ACWmain.c: 215:   Day_ds = Day_Ten + Day_digit;
+[e :U 150 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 84 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 85 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 69 `ui `uc ]
+[e $U 146  ]
+"216
+[; ;ACWmain.c: 216:   Month_ds = Month_Ten + Month_digit;
+[e :U 151 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 87 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 69 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 68 `ui `uc ]
+[e $U 146  ]
+"217
+[; ;ACWmain.c: 217:   Year_ds = Year_Ten + Year_digit;
+[e :U 152 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 84 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 72 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 85 `ui `uc ]
+[e $U 146  ]
+"218
+[; ;ACWmain.c: 218:  }
+[e :U 153 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 70 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 82 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 73 `ui `uc ]
+[e $U 146  ]
+"219
+[; ;ACWmain.c: 219: }
+[e :U 154 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 83 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 65 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 84 `ui `uc ]
+[e $U 146  ]
+"220
+[; ;ACWmain.c: 220: 
+[e :U 155 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 83 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 85 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 78 `ui `uc ]
+[e $U 146  ]
+"221
+[; ;ACWmain.c: 221: void SetTimeMethod()
+[e :U 156 ]
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 49 `ui `uc ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 77 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 79 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 78 `ui `uc ]
+[e $U 146  ]
+"222
+[; ;ACWmain.c: 222: {
+[e :U 157 ]
+[e ; ; = *U + &U _weekDay * -> -> -> 0 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc = *U + &U _weekDay * -> -> -> 1 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc = *U + &U _weekDay * -> -> -> 2 `i `ui `ux -> -> # *U &U _weekDay `ui `ux -> -> 63 `ui `uc ]
+[e $U 146  ]
+"223
+[; ;ACWmain.c: 223:     CalculateTime();
+}
+[e $U 146  ]
+[e :U 147 ]
+[e [\ -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i , $ -> -> 87 `ui `i 148
+ , $ -> -> 49 `ui `i 149
+ , $ -> -> 50 `ui `i 150
+ , $ -> -> 51 `ui `i 151
+ , $ -> -> 52 `ui `i 152
+ , $ -> -> 53 `ui `i 153
+ , $ -> -> 54 `ui `i 154
+ , $ -> -> 55 `ui `i 155
+ , $ -> -> 56 `ui `i 156
+ 157 ]
+[e :U 146 ]
+"224
+[; ;ACWmain.c: 224:     CalculateDate();
+[e :UE 145 ]
+}
+"226
+[; ;ACWmain.c: 226:     return;
+[v _CalculateDate `(v ~T0 @X0 1 ef ]
+"227
+[; ;ACWmain.c: 227: }
+{
+[e :U _CalculateDate ]
+[f ]
+"229
+[; ;ACWmain.c: 229: void GetValue(char ButtonNO)
+[e $ ! != -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 68 `ui 159  ]
+"230
+[; ;ACWmain.c: 230: {
+{
+[e = _Year_ds_Previous _Year_ds ]
+"231
+[; ;ACWmain.c: 231:     switch(ActiveSet)
+[v _Day_Ten `i ~T0 @X0 1 a ]
+[e = _Day_Ten -> * - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui -> -> 10 `i `ui `i ]
+"232
+[; ;ACWmain.c: 232:     {
+[v _Day_digit `i ~T0 @X0 1 a ]
+[e = _Day_digit -> - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui `i ]
+"233
+[; ;ACWmain.c: 233:                case 0:
+[v _Month_Ten `i ~T0 @X0 1 a ]
+[e = _Month_Ten -> * - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui -> -> 10 `i `ui `i ]
+"234
+[; ;ACWmain.c: 234:                         break;
+[v _Month_digit `i ~T0 @X0 1 a ]
+[e = _Month_digit -> - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui `i ]
+"235
+[; ;ACWmain.c: 235:                case 1:
+[v _Year_Ten `i ~T0 @X0 1 a ]
+[e = _Year_Ten -> * - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui -> -> 10 `i `ui `i ]
+"236
+[; ;ACWmain.c: 236:                    AllValues[0][CurrentPosValue] = ButtonNO;
+[v _Year_digit `i ~T0 @X0 1 a ]
+[e = _Year_digit -> - -> *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 48 `ui `i ]
+"238
+[; ;ACWmain.c: 238:                    CurrentPosValue++;
+[e = _Day_ds + _Day_Ten _Day_digit ]
+"239
+[; ;ACWmain.c: 239:                    BiggerThanX(3);
+[e = _Month_ds + _Month_Ten _Month_digit ]
+"240
+[; ;ACWmain.c: 240:                         break;
+[e = _Year_ds + _Year_Ten _Year_digit ]
+"241
+[; ;ACWmain.c: 241:                case 2:
+}
+[e :U 159 ]
+"242
+[; ;ACWmain.c: 242:                    AllValues[1][CurrentPosValue] = ButtonNO;
+[e :UE 158 ]
+}
+"244
+[; ;ACWmain.c: 244:                    CurrentPosValue++;
+[v _SetTimeMethod `(v ~T0 @X0 1 ef ]
+"245
+[; ;ACWmain.c: 245:                    BiggerThanX(6);
+{
+[e :U _SetTimeMethod ]
+[f ]
+"246
+[; ;ACWmain.c: 246:                         break;
+[e ( _CalculateTime ..  ]
+"247
+[; ;ACWmain.c: 247:                case 3:
+[e ( _CalculateDate ..  ]
+"248
+[; ;ACWmain.c: 248:                    AllValues[2][CurrentPosValue] = ButtonNO;
+[e ( _set_time (4 , , , , _Hour _Min _Year_ds _Month_ds _Day_ds ]
+"249
+[; ;ACWmain.c: 249:                    ButtonPressed=99;
+[e $UE 160  ]
+"250
+[; ;ACWmain.c: 250:                    CurrentPosValue++;
+[e :UE 160 ]
+}
+"252
+[; ;ACWmain.c: 252:                         break;
+[v _GetValue `(v ~T0 @X0 1 ef1`uc ]
+"253
+[; ;ACWmain.c: 253:     }
+{
+[e :U _GetValue ]
+"252
+[; ;ACWmain.c: 252:                         break;
+[v _ButtonNO `uc ~T0 @X0 1 r1 ]
+"253
+[; ;ACWmain.c: 253:     }
+[f ]
+"254
+[; ;ACWmain.c: 254: }
+[e $U 163  ]
+"255
+[; ;ACWmain.c: 255: 
+{
+"256
+[; ;ACWmain.c: 256: 
+[e :U 164 ]
+"257
+[; ;ACWmain.c: 257: void BiggerThanX(int NumberChars)
+[e $U 162  ]
+"258
+[; ;ACWmain.c: 258: {
+[e :U 165 ]
+"259
+[; ;ACWmain.c: 259:     if (ActiveSet==1 && CurrentPosValue>NumberChars)
+[e = *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> _CurrentPosValue `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux _ButtonNO ]
+"260
+[; ;ACWmain.c: 260:     {
+[e = _ButtonPressed -> 99 `i ]
+"261
+[; ;ACWmain.c: 261:         SetTimeMethod();
+[e ++ _CurrentPosValue -> 1 `i ]
+"262
+[; ;ACWmain.c: 262:     }
+[e ( _BiggerThanX (1 -> 3 `i ]
+"263
+[; ;ACWmain.c: 263: 
+[e $U 162  ]
+"264
+[; ;ACWmain.c: 264:     if (CurrentPosValue>NumberChars)
+[e :U 166 ]
+"265
+[; ;ACWmain.c: 265:     {
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> _CurrentPosValue `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux _ButtonNO ]
+"266
+[; ;ACWmain.c: 266:          switch (ActiveSet)
+[e = _ButtonPressed -> 99 `i ]
+"267
+[; ;ACWmain.c: 267:       {
+[e ++ _CurrentPosValue -> 1 `i ]
+"268
+[; ;ACWmain.c: 268:               case 1: if (AllValues[0][0]!=0x3f){if (AllValues[0][0]>'2' || (AllValues[0][0]>='2' && AllValues[0][1]>'3') || AllValues[0][2]>='6' ){lcd_init();CallInvalid();ArrayReset(0);break;}}
+[e ( _BiggerThanX (1 -> 6 `i ]
+"269
+[; ;ACWmain.c: 269: 
+[e $U 162  ]
+"270
+[; ;ACWmain.c: 270:       }
+[e :U 167 ]
+"271
+[; ;ACWmain.c: 271:        CurrentPosValue=0;
+[e = *U + &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> _CurrentPosValue `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux _ButtonNO ]
+"272
+[; ;ACWmain.c: 272:        FinishedSet=0;
+[e = _ButtonPressed -> 99 `i ]
+"273
+[; ;ACWmain.c: 273:        ButtonPressed=99;
+[e ++ _CurrentPosValue -> 1 `i ]
+"274
+[; ;ACWmain.c: 274: 
+[e ( _BiggerThanX (1 -> 1 `i ]
+"275
+[; ;ACWmain.c: 275:        if ( ActiveSet==1 || ActiveSet==2)
+[e $U 162  ]
+"276
+[; ;ACWmain.c: 276:        {
+}
+[e $U 162  ]
+[e :U 163 ]
+[e [\ _ActiveSet , $ -> 0 `i 164
+ , $ -> 1 `i 165
+ , $ -> 2 `i 166
+ , $ -> 3 `i 167
+ 162 ]
+[e :U 162 ]
+"277
+[; ;ACWmain.c: 277:        ResetTime_date=0;
+[e :UE 161 ]
+}
+"280
+[; ;ACWmain.c: 280:         ActiveSet=0;
+[v _BiggerThanX `(v ~T0 @X0 1 ef1`i ]
+"281
+[; ;ACWmain.c: 281:     }
+{
+[e :U _BiggerThanX ]
+"280
+[; ;ACWmain.c: 280:         ActiveSet=0;
+[v _NumberChars `i ~T0 @X0 1 r1 ]
+"281
+[; ;ACWmain.c: 281:     }
+[f ]
+"282
+[; ;ACWmain.c: 282: 
+[e $ ! && == _ActiveSet -> 1 `i > _CurrentPosValue _NumberChars 169  ]
+"283
+[; ;ACWmain.c: 283: }
+{
+"284
+[; ;ACWmain.c: 284: 
+[e ( _SetTimeMethod ..  ]
+"285
+[; ;ACWmain.c: 285: void ArrayReset(int ChosenArray)
+}
+[e :U 169 ]
+"287
+[; ;ACWmain.c: 287:    for (int j=0;j<6;j++)
+[e $ ! > _CurrentPosValue _NumberChars 170  ]
+"288
+[; ;ACWmain.c: 288:     {AllValues[ChosenArray][j]=0x3f;}
+{
+"289
+[; ;ACWmain.c: 289: 
+[e $U 172  ]
+"290
+[; ;ACWmain.c: 290:    if (ChosenArray==1)
+{
+"291
+[; ;ACWmain.c: 291:    {
+[e :U 173 ]
+[e $ ! != -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `i -> 63 `i 174  ]
+{
+[e $ ! || || > -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 50 `ui && >= -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 50 `ui > -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 51 `ui >= -> *U + &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux `ui -> 54 `ui 175  ]
+{
+[e ( _lcd_init ..  ]
+[e ( _CallInvalid ..  ]
+[e ( _ArrayReset (1 -> 0 `i ]
+[e $U 171  ]
+}
+[e :U 175 ]
+}
+[e :U 174 ]
+"293
+[; ;ACWmain.c: 293:     AllValues[1][1]='Y';
+}
+[e $U 171  ]
+[e :U 172 ]
+[e [\ _ActiveSet , $ -> 1 `i 173
+ 171 ]
+[e :U 171 ]
+"294
+[; ;ACWmain.c: 294:     AllValues[1][2]='M';
+[e = _CurrentPosValue -> 0 `i ]
+"295
+[; ;ACWmain.c: 295:     AllValues[1][3]='M';
+[e = _FinishedSet -> -> 0 `i `a ]
+"296
+[; ;ACWmain.c: 296:     AllValues[1][4]='D';
+[e = _ButtonPressed -> 99 `i ]
+"298
+[; ;ACWmain.c: 298:     AllValues[1][6]='W';
+[e $ ! || == _ActiveSet -> 1 `i == _ActiveSet -> 2 `i 176  ]
+"299
+[; ;ACWmain.c: 299:    }
+{
+"300
+[; ;ACWmain.c: 300: }
+[e = _ResetTime_date -> -> 0 `i `a ]
+"301
+[; ;ACWmain.c: 301: 
+}
+[e :U 176 ]
+"303
+[; ;ACWmain.c: 303: void han_DSet()
+[e = _ActiveSet -> 0 `i ]
+"304
+[; ;ACWmain.c: 304: {
+}
+[e :U 170 ]
+"306
+[; ;ACWmain.c: 306:   send_i(0x80);
+[e :UE 168 ]
+}
+"308
+[; ;ACWmain.c: 308: }
+[v _ArrayReset `(v ~T0 @X0 1 ef1`i ]
+"309
+[; ;ACWmain.c: 309: 
+{
+[e :U _ArrayReset ]
+"308
+[; ;ACWmain.c: 308: }
+[v _ChosenArray `i ~T0 @X0 1 r1 ]
+"309
+[; ;ACWmain.c: 309: 
+[f ]
+"310
+[; ;ACWmain.c: 310: void CallInvalid()
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $ < _j -> 6 `i 178  ]
+[e $U 179  ]
+[e :U 178 ]
+"311
+[; ;ACWmain.c: 311: {
+{
+[e = *U + &U *U + &U _AllValues * -> -> _ChosenArray `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> _j `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> _ChosenArray `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 63 `i `uc ]
+}
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 6 `i 178  ]
+[e :U 179 ]
+}
+"313
+[; ;ACWmain.c: 313:   lcd_init();
+[e $ ! == _ChosenArray -> 1 `i 181  ]
+"314
+[; ;ACWmain.c: 314:   han_Display(0x88,display_Invalid);send_d('D');
+{
+"315
+[; ;ACWmain.c: 315: }
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 89 `ui `uc ]
+"316
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 89 `ui `uc ]
+"317
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 77 `ui `uc ]
+"318
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 77 `ui `uc ]
+"319
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 4 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 68 `ui `uc ]
+"320
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 68 `ui `uc ]
+"321
+[e = *U + &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux * -> -> -> 6 `i `ui `ux -> -> # *U &U *U + &U _AllValues * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _AllValues `ui -> -> 7 `i `ui `ux `ui `ux -> -> 87 `ui `uc ]
+"322
+}
+[e :U 181 ]
+"323
+[e :UE 177 ]
+}
+"326
+[v _han_DSet `(v ~T0 @X0 1 ef ]
+"327
+{
+[e :U _han_DSet ]
+[f ]
+[v F1322 `uc ~T0 @X0 -> 5 `i s ]
+[i F1322
+:U ..
+"328
+-> -> 83 `ui `uc
+-> -> 69 `ui `uc
+-> -> 84 `ui `uc
+-> -> 32 `ui `uc
+..
+]
+[v _display_Set `uc ~T0 @X0 -> 5 `i a ]
+[e = _display_Set F1322 ]
+"329
+[e ( _send_i (1 -> -> 128 `i `uc ]
+"330
+[e ( _qushu (2 , -> 4 `i -> &U _display_Set `*Cuc ]
+"331
+[e :UE 182 ]
+}
+"333
+[v _CallInvalid `(v ~T0 @X0 1 ef ]
+"334
+{
+[e :U _CallInvalid ]
+[f ]
+[v F1325 `uc ~T0 @X0 -> 7 `i s ]
+[i F1325
+:U ..
+"335
+-> -> 73 `ui `uc
+-> -> 78 `ui `uc
+-> -> 86 `ui `uc
+-> -> 65 `ui `uc
+-> -> 76 `ui `uc
+-> -> 73 `ui `uc
+-> -> 68 `ui `uc
+..
+]
+[v _display_Invalid `uc ~T0 @X0 -> 7 `i a ]
+[e = _display_Invalid F1325 ]
+"336
+[e ( _lcd_init ..  ]
+"337
+[e ( _han_Display (2 , -> 136 `i -> &U _display_Invalid `*Cuc ]
+[e ( _send_d (1 -> -> 68 `ui `uc ]
+"338
+[e :UE 183 ]
+}

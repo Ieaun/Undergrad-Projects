@@ -1,0 +1,938 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"16 ./ds1302.h
+[; ;./ds1302.h: 16: void get_time();
+[v _get_time `(v ~T0 @X0 0 e? ]
+"17
+[; ;./ds1302.h: 17: void ds_display();
+[v _ds_display `(v ~T0 @X0 0 e? ]
+"2674 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2674: extern volatile __bit RB0 __attribute__((address(0x30)));
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
+"2689
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2689: extern volatile __bit RB5 __attribute__((address(0x35)));
+[v _RB5 `Vb ~T0 @X0 0 e@53 ]
+"35 ds1302.c
+[; ;ds1302.c: 35: void time_write_1(unsigned char time_tx);
+[v _time_write_1 `(v ~T0 @X0 0 ef1`uc ]
+"36
+[; ;ds1302.c: 36: unsigned char time_read_1();
+[v _time_read_1 `(uc ~T0 @X0 0 e? ]
+"2686 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2686: extern volatile __bit RB4 __attribute__((address(0x34)));
+[v _RB4 `Vb ~T0 @X0 0 e@52 ]
+"2947
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2947: extern volatile __bit TRISB4 __attribute__((address(0x434)));
+[v _TRISB4 `Vb ~T0 @X0 0 e@1076 ]
+"1325
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1325: extern volatile unsigned char TRISA __attribute__((address(0x085)));
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1499
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1499: extern volatile unsigned char TRISD __attribute__((address(0x088)));
+[v _TRISD `Vuc ~T0 @X0 0 e@136 ]
+"2229
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2229: extern volatile unsigned char ADCON1 __attribute__((address(0x09F)));
+[v _ADCON1 `Vuc ~T0 @X0 0 e@159 ]
+"1375
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1375: extern volatile unsigned char TRISB __attribute__((address(0x086)));
+[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"166
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"340
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"34 ds1302.c
+[; ;ds1302.c: 34: void Insert(int ArrayPos,char Number_To_insert);
+[v _Insert `(v ~T0 @X0 0 ef2`i`uc ]
+"37
+[; ;ds1302.c: 37: void ds_delay();
+[v _ds_delay `(v ~T0 @X0 0 e? ]
+"54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"218
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 218: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"280
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 280: __asm("PORTC equ 07h");
+[; <" PORTC equ 07h ;# ">
+"342
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 342: __asm("PORTD equ 08h");
+[; <" PORTD equ 08h ;# ">
+"404
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 404: __asm("PORTE equ 09h");
+[; <" PORTE equ 09h ;# ">
+"436
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 436: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"456
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 456: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"534
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 534: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 596: __asm("PIR2 equ 0Dh");
+[; <" PIR2 equ 0Dh ;# ">
+"636
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 636: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 643: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"650
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 650: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"657
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 657: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"732
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 732: __asm("TMR2 equ 011h");
+[; <" TMR2 equ 011h ;# ">
+"739
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 739: __asm("T2CON equ 012h");
+[; <" T2CON equ 012h ;# ">
+"810
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 810: __asm("SSPBUF equ 013h");
+[; <" SSPBUF equ 013h ;# ">
+"817
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 817: __asm("SSPCON equ 014h");
+[; <" SSPCON equ 014h ;# ">
+"887
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 887: __asm("CCPR1 equ 015h");
+[; <" CCPR1 equ 015h ;# ">
+"894
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 894: __asm("CCPR1L equ 015h");
+[; <" CCPR1L equ 015h ;# ">
+"901
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 901: __asm("CCPR1H equ 016h");
+[; <" CCPR1H equ 016h ;# ">
+"908
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 908: __asm("CCP1CON equ 017h");
+[; <" CCP1CON equ 017h ;# ">
+"966
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 966: __asm("RCSTA equ 018h");
+[; <" RCSTA equ 018h ;# ">
+"1061
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1061: __asm("TXREG equ 019h");
+[; <" TXREG equ 019h ;# ">
+"1068
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1068: __asm("RCREG equ 01Ah");
+[; <" RCREG equ 01Ah ;# ">
+"1075
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1075: __asm("CCPR2 equ 01Bh");
+[; <" CCPR2 equ 01Bh ;# ">
+"1082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1082: __asm("CCPR2L equ 01Bh");
+[; <" CCPR2L equ 01Bh ;# ">
+"1089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1089: __asm("CCPR2H equ 01Ch");
+[; <" CCPR2H equ 01Ch ;# ">
+"1096
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1096: __asm("CCP2CON equ 01Dh");
+[; <" CCP2CON equ 01Dh ;# ">
+"1154
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1154: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"1161
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1161: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"1257
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1257: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"1327
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1327: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"1377
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1377: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"1439
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1439: __asm("TRISC equ 087h");
+[; <" TRISC equ 087h ;# ">
+"1501
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1501: __asm("TRISD equ 088h");
+[; <" TRISD equ 088h ;# ">
+"1563
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1563: __asm("TRISE equ 089h");
+[; <" TRISE equ 089h ;# ">
+"1620
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1620: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"1682
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1682: __asm("PIE2 equ 08Dh");
+[; <" PIE2 equ 08Dh ;# ">
+"1722
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1722: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"1756
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1756: __asm("SSPCON2 equ 091h");
+[; <" SSPCON2 equ 091h ;# ">
+"1818
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1818: __asm("PR2 equ 092h");
+[; <" PR2 equ 092h ;# ">
+"1825
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1825: __asm("SSPADD equ 093h");
+[; <" SSPADD equ 093h ;# ">
+"1832
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 1832: __asm("SSPSTAT equ 094h");
+[; <" SSPSTAT equ 094h ;# ">
+"2001
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2001: __asm("TXSTA equ 098h");
+[; <" TXSTA equ 098h ;# ">
+"2082
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2082: __asm("SPBRG equ 099h");
+[; <" SPBRG equ 099h ;# ">
+"2089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2089: __asm("CMCON equ 09Ch");
+[; <" CMCON equ 09Ch ;# ">
+"2159
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2159: __asm("CVRCON equ 09Dh");
+[; <" CVRCON equ 09Dh ;# ">
+"2224
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2224: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"2231
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2231: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"2290
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2290: __asm("EEDATA equ 010Ch");
+[; <" EEDATA equ 010Ch ;# ">
+"2297
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2297: __asm("EEADR equ 010Dh");
+[; <" EEADR equ 010Dh ;# ">
+"2304
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2304: __asm("EEDATH equ 010Eh");
+[; <" EEDATH equ 010Eh ;# ">
+"2311
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2311: __asm("EEADRH equ 010Fh");
+[; <" EEADRH equ 010Fh ;# ">
+"2318
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2318: __asm("EECON1 equ 018Ch");
+[; <" EECON1 equ 018Ch ;# ">
+"2363
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
+[; <" EECON2 equ 018Dh ;# ">
+"11 ds1302.c
+[p x FOSC = HS ]
+"12
+[p x WDTE = OFF ]
+"13
+[p x PWRTE = ON ]
+"14
+[p x BOREN = OFF ]
+"15
+[p x LVP = OFF ]
+"24
+[v _time_rx `uc ~T0 @X0 1 e ]
+"39
+[; ;ds1302.c: 39: char tableds[]={0x00,0x02,0x03,0x10,0x12,0x02,0x18,0x00};
+[v _tableds `uc ~T0 @X0 -> 8 `i e ]
+[i _tableds
+:U ..
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 16 `i `uc
+-> -> 18 `i `uc
+-> -> 2 `i `uc
+-> -> 24 `i `uc
+-> -> 0 `i `uc
+..
+]
+"41
+[; ;ds1302.c: 41: char tableds1[7];
+[v _tableds1 `uc ~T0 @X0 -> 7 `i e ]
+"43
+[; ;ds1302.c: 43: const char tableds2[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+[v _tableds2 `Cuc ~T0 @X0 -> 10 `i e ]
+[i _tableds2
+:U ..
+-> -> 192 `i `uc
+-> -> 249 `i `uc
+-> -> 164 `i `uc
+-> -> 176 `i `uc
+-> -> 153 `i `uc
+-> -> 146 `i `uc
+-> -> 130 `i `uc
+-> -> 248 `i `uc
+-> -> 128 `i `uc
+-> -> 144 `i `uc
+..
+]
+"44
+[; ;ds1302.c: 44: char EasyWayTable[61]={0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x10,
+[v _EasyWayTable `uc ~T0 @X0 -> 61 `i e ]
+[i _EasyWayTable
+:U ..
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 17 `i `uc
+-> -> 18 `i `uc
+-> -> 19 `i `uc
+-> -> 20 `i `uc
+-> -> 21 `i `uc
+-> -> 22 `i `uc
+-> -> 23 `i `uc
+-> -> 24 `i `uc
+-> -> 25 `i `uc
+-> -> 32 `i `uc
+-> -> 33 `i `uc
+-> -> 34 `i `uc
+-> -> 35 `i `uc
+-> -> 36 `i `uc
+-> -> 37 `i `uc
+-> -> 38 `i `uc
+-> -> 39 `i `uc
+-> -> 40 `i `uc
+-> -> 41 `i `uc
+-> -> 48 `i `uc
+-> -> 49 `i `uc
+-> -> 50 `i `uc
+-> -> 51 `i `uc
+-> -> 52 `i `uc
+-> -> 53 `i `uc
+-> -> 54 `i `uc
+-> -> 55 `i `uc
+-> -> 56 `i `uc
+-> -> 57 `i `uc
+-> -> 64 `i `uc
+-> -> 65 `i `uc
+-> -> 66 `i `uc
+-> -> 67 `i `uc
+-> -> 68 `i `uc
+-> -> 69 `i `uc
+-> -> 70 `i `uc
+-> -> 71 `i `uc
+-> -> 72 `i `uc
+-> -> 73 `i `uc
+-> -> 80 `i `uc
+-> -> 81 `i `uc
+-> -> 82 `i `uc
+-> -> 83 `i `uc
+-> -> 84 `i `uc
+-> -> 85 `i `uc
+-> -> 86 `i `uc
+-> -> 87 `i `uc
+-> -> 88 `i `uc
+-> -> 89 `i `uc
+-> -> 96 `i `uc
+..
+]
+"50
+[; ;ds1302.c: 50: unsigned char display_number_Clock[10] ={'0','1','2','3','4','5','6','7','8','9'};
+[v _display_number_Clock `uc ~T0 @X0 -> 10 `i e ]
+[i _display_number_Clock
+:U ..
+-> -> 48 `ui `uc
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 53 `ui `uc
+-> -> 54 `ui `uc
+-> -> 55 `ui `uc
+-> -> 56 `ui `uc
+-> -> 57 `ui `uc
+..
+]
+"51
+[; ;ds1302.c: 51: char Time[6];
+[v _Time `uc ~T0 @X0 -> 6 `i e ]
+"52
+[; ;ds1302.c: 52: char Date[6];
+[v _Date `uc ~T0 @X0 -> 6 `i e ]
+"53
+[; ;ds1302.c: 53: int Time_Date;
+[v _Time_Date `i ~T0 @X0 1 e ]
+"58
+[; ;ds1302.c: 58: void ClockMain(char *Hour1_Temp,char *Hour2_Temp,char *Min1_Temp,char *Min2_Temp,char *Sec1_Temp,char *Sec2_Temp)
+[v _ClockMain `(v ~T0 @X0 1 ef6`*uc`*uc`*uc`*uc`*uc`*uc ]
+"59
+[; ;ds1302.c: 59:   {
+{
+[e :U _ClockMain ]
+"58
+[; ;ds1302.c: 58: void ClockMain(char *Hour1_Temp,char *Hour2_Temp,char *Min1_Temp,char *Min2_Temp,char *Sec1_Temp,char *Sec2_Temp)
+[v _Hour1_Temp `*uc ~T0 @X0 1 r1 ]
+[v _Hour2_Temp `*uc ~T0 @X0 1 r2 ]
+[v _Min1_Temp `*uc ~T0 @X0 1 r3 ]
+[v _Min2_Temp `*uc ~T0 @X0 1 r4 ]
+[v _Sec1_Temp `*uc ~T0 @X0 1 r5 ]
+[v _Sec2_Temp `*uc ~T0 @X0 1 r6 ]
+"59
+[; ;ds1302.c: 59:   {
+[f ]
+"62
+[; ;ds1302.c: 62:           Time_Date=0;
+[e = _Time_Date -> 0 `i ]
+"63
+[; ;ds1302.c: 63:           get_time();
+[e ( _get_time ..  ]
+"64
+[; ;ds1302.c: 64:           ds_display();
+[e ( _ds_display ..  ]
+"65
+[; ;ds1302.c: 65:           *Hour1_Temp=Time[0];
+[e = *U _Hour1_Temp *U + &U _Time * -> -> -> 0 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"66
+[; ;ds1302.c: 66:           *Hour2_Temp=Time[1];
+[e = *U _Hour2_Temp *U + &U _Time * -> -> -> 1 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"67
+[; ;ds1302.c: 67:           *Min1_Temp=Time[2];
+[e = *U _Min1_Temp *U + &U _Time * -> -> -> 2 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"68
+[; ;ds1302.c: 68:           *Min2_Temp=Time[3];
+[e = *U _Min2_Temp *U + &U _Time * -> -> -> 3 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"69
+[; ;ds1302.c: 69:           *Sec1_Temp=Time[4];
+[e = *U _Sec1_Temp *U + &U _Time * -> -> -> 4 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"70
+[; ;ds1302.c: 70:           *Sec2_Temp=Time[5];
+[e = *U _Sec2_Temp *U + &U _Time * -> -> -> 5 `i `ui `ux -> -> # *U &U _Time `ui `ux ]
+"72
+[; ;ds1302.c: 72:   }
+[e :UE 95 ]
+}
+"74
+[; ;ds1302.c: 74: void DateMain(char *Year1_Temp,char *Year2_Temp,char *Month1_Temp,char *Month2_Temp,char *Day1_Temp,char *Day2_Temp)
+[v _DateMain `(v ~T0 @X0 1 ef6`*uc`*uc`*uc`*uc`*uc`*uc ]
+"75
+[; ;ds1302.c: 75: {
+{
+[e :U _DateMain ]
+"74
+[; ;ds1302.c: 74: void DateMain(char *Year1_Temp,char *Year2_Temp,char *Month1_Temp,char *Month2_Temp,char *Day1_Temp,char *Day2_Temp)
+[v _Year1_Temp `*uc ~T0 @X0 1 r1 ]
+[v _Year2_Temp `*uc ~T0 @X0 1 r2 ]
+[v _Month1_Temp `*uc ~T0 @X0 1 r3 ]
+[v _Month2_Temp `*uc ~T0 @X0 1 r4 ]
+[v _Day1_Temp `*uc ~T0 @X0 1 r5 ]
+[v _Day2_Temp `*uc ~T0 @X0 1 r6 ]
+"75
+[; ;ds1302.c: 75: {
+[f ]
+"76
+[; ;ds1302.c: 76:  Time_Date=1;
+[e = _Time_Date -> 1 `i ]
+"77
+[; ;ds1302.c: 77:  get_time();
+[e ( _get_time ..  ]
+"78
+[; ;ds1302.c: 78:  ds_display();
+[e ( _ds_display ..  ]
+"79
+[; ;ds1302.c: 79:     *Year1_Temp= Date[0];
+[e = *U _Year1_Temp *U + &U _Date * -> -> -> 0 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"80
+[; ;ds1302.c: 80:     *Year2_Temp= Date[1];
+[e = *U _Year2_Temp *U + &U _Date * -> -> -> 1 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"81
+[; ;ds1302.c: 81:     *Month1_Temp=Date[2];
+[e = *U _Month1_Temp *U + &U _Date * -> -> -> 2 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"82
+[; ;ds1302.c: 82:     *Month2_Temp=Date[3];
+[e = *U _Month2_Temp *U + &U _Date * -> -> -> 3 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"83
+[; ;ds1302.c: 83:     *Day1_Temp =Date[4];
+[e = *U _Day1_Temp *U + &U _Date * -> -> -> 4 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"84
+[; ;ds1302.c: 84:     *Day2_Temp =Date[5];
+[e = *U _Day2_Temp *U + &U _Date * -> -> -> 5 `i `ui `ux -> -> # *U &U _Date `ui `ux ]
+"86
+[; ;ds1302.c: 86: }
+[e :UE 96 ]
+}
+"90
+[; ;ds1302.c: 90: void ds1302_init()
+[v _ds1302_init `(v ~T0 @X0 1 ef ]
+"91
+[; ;ds1302.c: 91:   {
+{
+[e :U _ds1302_init ]
+[f ]
+"92
+[; ;ds1302.c: 92:    RB0=0;
+[e = _RB0 -> -> 0 `i `b ]
+"93
+[; ;ds1302.c: 93:    RB5 =0;
+[e = _RB5 -> -> 0 `i `b ]
+"94
+[; ;ds1302.c: 94:    RB5=1;
+[e = _RB5 -> -> 1 `i `b ]
+"95
+[; ;ds1302.c: 95:    time_write_1(0x8e);
+[e ( _time_write_1 (1 -> -> 142 `i `uc ]
+"96
+[; ;ds1302.c: 96:    time_write_1(0);
+[e ( _time_write_1 (1 -> -> 0 `i `uc ]
+"97
+[; ;ds1302.c: 97:    RB5=0;
+[e = _RB5 -> -> 0 `i `b ]
+"98
+[; ;ds1302.c: 98:   }
+[e :UE 97 ]
+}
+"102
+[; ;ds1302.c: 102: void set_time(int Hour,int Min,int Day_st,int Month_st,int Year_st)
+[v _set_time `(v ~T0 @X0 1 ef5`i`i`i`i`i ]
+"103
+[; ;ds1302.c: 103:   {
+{
+[e :U _set_time ]
+"102
+[; ;ds1302.c: 102: void set_time(int Hour,int Min,int Day_st,int Month_st,int Year_st)
+[v _Hour `i ~T0 @X0 1 r1 ]
+[v _Min `i ~T0 @X0 1 r2 ]
+[v _Day_st `i ~T0 @X0 1 r3 ]
+[v _Month_st `i ~T0 @X0 1 r4 ]
+[v _Year_st `i ~T0 @X0 1 r5 ]
+"103
+[; ;ds1302.c: 103:   {
+[f ]
+"104
+[; ;ds1302.c: 104:    int i;
+[v _i `i ~T0 @X0 1 a ]
+"105
+[; ;ds1302.c: 105:    RB5=1;
+[e = _RB5 -> -> 1 `i `b ]
+"106
+[; ;ds1302.c: 106:    time_write_1(0xbe);
+[e ( _time_write_1 (1 -> -> 190 `i `uc ]
+"109
+[; ;ds1302.c: 109:    tableds[1]=EasyWayTable[Min];
+[e = *U + &U _tableds * -> -> -> 1 `i `ui `ux -> -> # *U &U _tableds `ui `ux *U + &U _EasyWayTable * -> -> _Min `ui `ux -> -> # *U &U _EasyWayTable `ui `ux ]
+"110
+[; ;ds1302.c: 110:    tableds[2]=EasyWayTable[Hour];
+[e = *U + &U _tableds * -> -> -> 2 `i `ui `ux -> -> # *U &U _tableds `ui `ux *U + &U _EasyWayTable * -> -> _Hour `ui `ux -> -> # *U &U _EasyWayTable `ui `ux ]
+"111
+[; ;ds1302.c: 111:    tableds[3]=EasyWayTable[Day_st];
+[e = *U + &U _tableds * -> -> -> 3 `i `ui `ux -> -> # *U &U _tableds `ui `ux *U + &U _EasyWayTable * -> -> _Day_st `ui `ux -> -> # *U &U _EasyWayTable `ui `ux ]
+"112
+[; ;ds1302.c: 112:    tableds[4]=EasyWayTable[Month_st];
+[e = *U + &U _tableds * -> -> -> 4 `i `ui `ux -> -> # *U &U _tableds `ui `ux *U + &U _EasyWayTable * -> -> _Month_st `ui `ux -> -> # *U &U _EasyWayTable `ui `ux ]
+"113
+[; ;ds1302.c: 113:    tableds[6]=EasyWayTable[Year_st];
+[e = *U + &U _tableds * -> -> -> 6 `i `ui `ux -> -> # *U &U _tableds `ui `ux *U + &U _EasyWayTable * -> -> _Year_st `ui `ux -> -> # *U &U _EasyWayTable `ui `ux ]
+"115
+[; ;ds1302.c: 115:    for(i=0;i<8;i++)
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 8 `i 99  ]
+[e $U 100  ]
+[e :U 99 ]
+"116
+[; ;ds1302.c: 116:      {
+{
+"117
+[; ;ds1302.c: 117:        time_write_1(tableds[i]);
+[e ( _time_write_1 (1 -> *U + &U _tableds * -> -> _i `ui `ux -> -> # *U &U _tableds `ui `ux `uc ]
+"118
+[; ;ds1302.c: 118:      }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 8 `i 99  ]
+[e :U 100 ]
+}
+"119
+[; ;ds1302.c: 119:    RB5=0;
+[e = _RB5 -> -> 0 `i `b ]
+"120
+[; ;ds1302.c: 120:    }
+[e :UE 98 ]
+}
+"124
+[; ;ds1302.c: 124: void get_time()
+[v _get_time `(v ~T0 @X0 1 ef ]
+"125
+[; ;ds1302.c: 125:  {
+{
+[e :U _get_time ]
+[f ]
+"126
+[; ;ds1302.c: 126:    int i;
+[v _i `i ~T0 @X0 1 a ]
+"127
+[; ;ds1302.c: 127:    RB5=1;
+[e = _RB5 -> -> 1 `i `b ]
+"128
+[; ;ds1302.c: 128:    time_write_1(0xbf);
+[e ( _time_write_1 (1 -> -> 191 `i `uc ]
+"129
+[; ;ds1302.c: 129:    for(i=0;i<7;i++)
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 7 `i 103  ]
+[e $U 104  ]
+[e :U 103 ]
+"130
+[; ;ds1302.c: 130:      {
+{
+"131
+[; ;ds1302.c: 131:         tableds1[i]=time_read_1();
+[e = *U + &U _tableds1 * -> -> _i `ui `ux -> -> # *U &U _tableds1 `ui `ux -> ( _time_read_1 ..  `uc ]
+"132
+[; ;ds1302.c: 132:      }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 7 `i 103  ]
+[e :U 104 ]
+}
+"133
+[; ;ds1302.c: 133:     RB5=0;
+[e = _RB5 -> -> 0 `i `b ]
+"134
+[; ;ds1302.c: 134:  }
+[e :UE 102 ]
+}
+"138
+[; ;ds1302.c: 138: void time_write_1(unsigned char time_tx)
+[v _time_write_1 `(v ~T0 @X0 1 ef1`uc ]
+"139
+[; ;ds1302.c: 139:  {
+{
+[e :U _time_write_1 ]
+"138
+[; ;ds1302.c: 138: void time_write_1(unsigned char time_tx)
+[v _time_tx `uc ~T0 @X0 1 r1 ]
+"139
+[; ;ds1302.c: 139:  {
+[f ]
+"140
+[; ;ds1302.c: 140:     int j;
+[v _j `i ~T0 @X0 1 a ]
+"141
+[; ;ds1302.c: 141:     for(j=0;j<8;j++)
+{
+[e = _j -> 0 `i ]
+[e $ < _j -> 8 `i 107  ]
+[e $U 108  ]
+[e :U 107 ]
+"142
+[; ;ds1302.c: 142:       {
+{
+"143
+[; ;ds1302.c: 143:         RB4=0;
+[e = _RB4 -> -> 0 `i `b ]
+"144
+[; ;ds1302.c: 144:         RB0=0;
+[e = _RB0 -> -> 0 `i `b ]
+"145
+[; ;ds1302.c: 145:         if(time_tx&0x01)
+[e $ ! != & -> _time_tx `i -> 1 `i -> 0 `i 110  ]
+"146
+[; ;ds1302.c: 146:           {
+{
+"147
+[; ;ds1302.c: 147:             RB4=1;
+[e = _RB4 -> -> 1 `i `b ]
+"148
+[; ;ds1302.c: 148:           }
+}
+[e :U 110 ]
+"149
+[; ;ds1302.c: 149:         time_tx=time_tx>>1;
+[e = _time_tx -> >> -> _time_tx `i -> 1 `i `uc ]
+"150
+[; ;ds1302.c: 150:         RB0=1;
+[e = _RB0 -> -> 1 `i `b ]
+"151
+[; ;ds1302.c: 151:        }
+}
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 8 `i 107  ]
+[e :U 108 ]
+}
+"152
+[; ;ds1302.c: 152:       RB0=0;
+[e = _RB0 -> -> 0 `i `b ]
+"153
+[; ;ds1302.c: 153:   }
+[e :UE 106 ]
+}
+"157
+[; ;ds1302.c: 157: unsigned char time_read_1()
+[v _time_read_1 `(uc ~T0 @X0 1 ef ]
+"158
+[; ;ds1302.c: 158:  {
+{
+[e :U _time_read_1 ]
+[f ]
+"160
+[; ;ds1302.c: 160:     time_rx = 0;
+[e = _time_rx -> -> 0 `i `uc ]
+"161
+[; ;ds1302.c: 161:    int j;
+[v _j `i ~T0 @X0 1 a ]
+"162
+[; ;ds1302.c: 162:    unsigned char bitmask = 0x01;
+[v _bitmask `uc ~T0 @X0 1 a ]
+[e = _bitmask -> -> 1 `i `uc ]
+"163
+[; ;ds1302.c: 163:    TRISB4=1;
+[e = _TRISB4 -> -> 1 `i `b ]
+"164
+[; ;ds1302.c: 164:    for(j=0;j<8;j++)
+{
+[e = _j -> 0 `i ]
+[e $ < _j -> 8 `i 112  ]
+[e $U 113  ]
+[e :U 112 ]
+"165
+[; ;ds1302.c: 165:       {
+{
+"166
+[; ;ds1302.c: 166:         RB0=0;
+[e = _RB0 -> -> 0 `i `b ]
+"169
+[; ;ds1302.c: 169:         if(RB4)time_rx = time_rx | (bitmask << j);
+[e $ ! _RB4 115  ]
+[e = _time_rx -> | -> _time_rx `i << -> _bitmask `i _j `uc ]
+[e :U 115 ]
+"172
+[; ;ds1302.c: 172:        RB0=1;
+[e = _RB0 -> -> 1 `i `b ]
+"173
+[; ;ds1302.c: 173:       }
+}
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 8 `i 112  ]
+[e :U 113 ]
+}
+"174
+[; ;ds1302.c: 174:     TRISB4=0;
+[e = _TRISB4 -> -> 0 `i `b ]
+"175
+[; ;ds1302.c: 175:     RB0=0;
+[e = _RB0 -> -> 0 `i `b ]
+"176
+[; ;ds1302.c: 176:     return(time_rx);
+[e ) _time_rx ]
+[e $UE 111  ]
+"177
+[; ;ds1302.c: 177:   }
+[e :UE 111 ]
+}
+"181
+[; ;ds1302.c: 181: void port_init()
+[v _port_init `(v ~T0 @X0 1 ef ]
+"182
+[; ;ds1302.c: 182:   {
+{
+[e :U _port_init ]
+[f ]
+"183
+[; ;ds1302.c: 183:     TRISA=0x00;
+[e = _TRISA -> -> 0 `i `uc ]
+"184
+[; ;ds1302.c: 184:     TRISD=0X00;
+[e = _TRISD -> -> 0 `i `uc ]
+"185
+[; ;ds1302.c: 185:     ADCON1=0X06;
+[e = _ADCON1 -> -> 6 `i `uc ]
+"186
+[; ;ds1302.c: 186:     TRISB=0X02;
+[e = _TRISB -> -> 2 `i `uc ]
+"187
+[; ;ds1302.c: 187:     PORTA=0XFF;
+[e = _PORTA -> -> 255 `i `uc ]
+"188
+[; ;ds1302.c: 188:     PORTD=0XFF;
+[e = _PORTD -> -> 255 `i `uc ]
+"189
+[; ;ds1302.c: 189:    }
+[e :UE 116 ]
+}
+"193
+[; ;ds1302.c: 193: void ds_display()
+[v _ds_display `(v ~T0 @X0 1 ef ]
+"194
+[; ;ds1302.c: 194:    {
+{
+[e :U _ds_display ]
+[f ]
+"195
+[; ;ds1302.c: 195:      int i;
+[v _i `i ~T0 @X0 1 a ]
+"196
+[; ;ds1302.c: 196:      if(Time_Date==1)
+[e $ ! == _Time_Date -> 1 `i 118  ]
+"197
+[; ;ds1302.c: 197:        {
+{
+"198
+[; ;ds1302.c: 198:           tableds1[0]=tableds1[3];
+[e = *U + &U _tableds1 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux *U + &U _tableds1 * -> -> -> 3 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux ]
+"199
+[; ;ds1302.c: 199:           tableds1[1]=tableds1[4];
+[e = *U + &U _tableds1 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux *U + &U _tableds1 * -> -> -> 4 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux ]
+"200
+[; ;ds1302.c: 200:           tableds1[2]=tableds1[6];
+[e = *U + &U _tableds1 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux *U + &U _tableds1 * -> -> -> 6 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux ]
+"201
+[; ;ds1302.c: 201:        }
+}
+[e :U 118 ]
+"202
+[; ;ds1302.c: 202:      i=tableds1[0]&0x0f;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 15 `i ]
+"205
+[; ;ds1302.c: 205:      Insert(5,i);
+[e ( _Insert (2 , -> 5 `i -> _i `uc ]
+"207
+[; ;ds1302.c: 207:      ds_delay();
+[e ( _ds_delay ..  ]
+"208
+[; ;ds1302.c: 208:      i=tableds1[0]&0xf0;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 0 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 240 `i ]
+"209
+[; ;ds1302.c: 209:      i=i>>4;
+[e = _i >> _i -> 4 `i ]
+"212
+[; ;ds1302.c: 212:      Insert(4,i);
+[e ( _Insert (2 , -> 4 `i -> _i `uc ]
+"214
+[; ;ds1302.c: 214:      ds_delay();
+[e ( _ds_delay ..  ]
+"216
+[; ;ds1302.c: 216:      i=tableds1[1]&0x0f;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 15 `i ]
+"219
+[; ;ds1302.c: 219:      Insert(3,i);
+[e ( _Insert (2 , -> 3 `i -> _i `uc ]
+"221
+[; ;ds1302.c: 221:      ds_delay();
+[e ( _ds_delay ..  ]
+"222
+[; ;ds1302.c: 222:      i=tableds1[1]&0xf0;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 1 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 240 `i ]
+"223
+[; ;ds1302.c: 223:      i=i>>4;
+[e = _i >> _i -> 4 `i ]
+"226
+[; ;ds1302.c: 226:      Insert(2,i);
+[e ( _Insert (2 , -> 2 `i -> _i `uc ]
+"228
+[; ;ds1302.c: 228:      ds_delay();
+[e ( _ds_delay ..  ]
+"230
+[; ;ds1302.c: 230:      i=tableds1[2]&0x0f;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 15 `i ]
+"233
+[; ;ds1302.c: 233:      Insert(1,i);
+[e ( _Insert (2 , -> 1 `i -> _i `uc ]
+"235
+[; ;ds1302.c: 235:      ds_delay();
+[e ( _ds_delay ..  ]
+"236
+[; ;ds1302.c: 236:      i=tableds1[2]&0xf0;
+[e = _i & -> *U + &U _tableds1 * -> -> -> 2 `i `ui `ux -> -> # *U &U _tableds1 `ui `ux `i -> 240 `i ]
+"237
+[; ;ds1302.c: 237:      i=i>>4;
+[e = _i >> _i -> 4 `i ]
+"240
+[; ;ds1302.c: 240:      Insert(0,i);
+[e ( _Insert (2 , -> 0 `i -> _i `uc ]
+"242
+[; ;ds1302.c: 242:      ds_delay();
+[e ( _ds_delay ..  ]
+"243
+[; ;ds1302.c: 243:    }
+[e :UE 117 ]
+}
+"245
+[; ;ds1302.c: 245: void Insert(int ArrayPos,char Number_To_insert)
+[v _Insert `(v ~T0 @X0 1 ef2`i`uc ]
+"246
+[; ;ds1302.c: 246: {
+{
+[e :U _Insert ]
+"245
+[; ;ds1302.c: 245: void Insert(int ArrayPos,char Number_To_insert)
+[v _ArrayPos `i ~T0 @X0 1 r1 ]
+[v _Number_To_insert `uc ~T0 @X0 1 r2 ]
+"246
+[; ;ds1302.c: 246: {
+[f ]
+"247
+[; ;ds1302.c: 247:      if(Time_Date==1)
+[e $ ! == _Time_Date -> 1 `i 120  ]
+"248
+[; ;ds1302.c: 248:      {
+{
+"249
+[; ;ds1302.c: 249:       Date[ArrayPos]=display_number_Clock[Number_To_insert];
+[e = *U + &U _Date * -> -> _ArrayPos `ui `ux -> -> # *U &U _Date `ui `ux -> *U + &U _display_number_Clock * -> _Number_To_insert `ux -> -> # *U &U _display_number_Clock `ui `ux `uc ]
+"250
+[; ;ds1302.c: 250:      }
+}
+[e :U 120 ]
+"251
+[; ;ds1302.c: 251:      if(Time_Date==0)
+[e $ ! == _Time_Date -> 0 `i 121  ]
+"252
+[; ;ds1302.c: 252:      {
+{
+"253
+[; ;ds1302.c: 253:      Time[ArrayPos]=display_number_Clock[Number_To_insert];
+[e = *U + &U _Time * -> -> _ArrayPos `ui `ux -> -> # *U &U _Time `ui `ux -> *U + &U _display_number_Clock * -> _Number_To_insert `ux -> -> # *U &U _display_number_Clock `ui `ux `uc ]
+"254
+[; ;ds1302.c: 254:      }
+}
+[e :U 121 ]
+"256
+[; ;ds1302.c: 256: }
+[e :UE 119 ]
+}
+"260
+[; ;ds1302.c: 260: void ds_delay()
+[v _ds_delay `(v ~T0 @X0 1 ef ]
+"261
+[; ;ds1302.c: 261:     {
+{
+[e :U _ds_delay ]
+[f ]
+"262
+[; ;ds1302.c: 262:      int i;
+[v _i `i ~T0 @X0 1 a ]
+"263
+[; ;ds1302.c: 263:      for(i=0x64;i--;)
+{
+[e = _i -> 100 `i ]
+[e $U 126  ]
+[e :U 123 ]
+"264
+[; ;ds1302.c: 264:      {;}
+{
+}
+[e :U 126 ]
+[e $ != -- _i -> 1 `i -> 0 `i 123  ]
+[e :U 124 ]
+}
+"265
+[; ;ds1302.c: 265:     }
+[e :UE 122 ]
+}
