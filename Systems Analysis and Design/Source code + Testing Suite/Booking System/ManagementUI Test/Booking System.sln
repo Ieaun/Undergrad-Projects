@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking System", "ManagementUI Test\Booking System.csproj", "{48A565DC-F4C7-451D-8A55-A2F1D132528E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{140B4E9B-4E83-4241-AC1F-DD7130F57217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48A565DC-F4C7-451D-8A55-A2F1D132528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A565DC-F4C7-451D-8A55-A2F1D132528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A565DC-F4C7-451D-8A55-A2F1D132528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A565DC-F4C7-451D-8A55-A2F1D132528E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140B4E9B-4E83-4241-AC1F-DD7130F57217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140B4E9B-4E83-4241-AC1F-DD7130F57217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140B4E9B-4E83-4241-AC1F-DD7130F57217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140B4E9B-4E83-4241-AC1F-DD7130F57217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39F2C21C-795A-4975-BE7D-C99AD9C2A69F}
+	EndGlobalSection
+EndGlobal
