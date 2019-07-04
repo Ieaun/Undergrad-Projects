@@ -5,9 +5,9 @@ Within this repo you will find past project I have completed while at the Univer
 Link to Demonstration video: https://youtu.be/glqE2nKNF8U 
 
 ## Breakdown of languages
-Embedded Systems: Language = C 
+Embedded Systems: C 
 
-Computational Science: Langauge = Python 
+Computational Science: Python 
 
-Dissertation: Language = Python (Client) and some C++ (Firmware)
+Dissertation: Python (Client) and some C++ (Firmware)
 
