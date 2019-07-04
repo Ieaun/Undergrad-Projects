@@ -1,0 +1,44 @@
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\ManagementUI.exe.config
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\ManagementUI.exe.manifest
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\ManagementUI.application
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\ManagementUI.exe
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\ManagementUI.pdb
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\EntityFramework.dll
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\System.Data.SQLite.dll
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\EntityFramework.xml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\System.Data.SQLite.xml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\bin\Debug\System.Data.SQLite.dll.config
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Booking System.csprojResolveAssemblyReference.cache
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\GoldMemberPage.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\mainwindow.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\MakeBooking.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagerMenu.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManageCustomer.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\NewsLetterMenu.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Reports.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Schedule.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ViewBookings.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\App.g.cs
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI_MarkupCompile.cache
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI_MarkupCompile.lref
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\GoldMemberPage.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\mainwindow.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\MakeBooking.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagerMenu.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManageCustomer.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\NewsLetterMenu.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Reports.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Schedule.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ViewBookings.baml
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI.g.resources
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI_Test.Properties.Resources.resources
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Booking System.csproj.GenerateResource.Cache
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\Booking System.csproj.CoreCompileInputs.cache
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI.exe.manifest
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI.application
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI.exe
+C:\Temp\Group 31\Lab2\Trunk\Source Code\Booking System\ManagementUI Test\obj\Debug\ManagementUI.pdb
