@@ -5,6 +5,7 @@ Within this repo you will find past project I have completed while at the Univer
 Link to Demonstration video: https://youtu.be/glqE2nKNF8U 
 
 ## Breakdown of languages
+# Third Year
 Embedded Systems: C, Grade : 90%
 
 Computational Science: Python, Grade : 84%
@@ -13,3 +14,11 @@ Dissertation: Python (Client) and some C++ (Firmware), Grade : 90%
 
 Computer Vision: MATLAB, Grade :  64%
 
+# Second Year 
+Systems analysis and procces: C#, Grade : 82%
+
+Advanced programming: C++, Grade : 63%
+
+Electronics and interfacing: C++, Grade : 69%
+
+Agile Software Development: C#, Grade : 95%
