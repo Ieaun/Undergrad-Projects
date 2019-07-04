@@ -5,9 +5,11 @@ Within this repo you will find past project I have completed while at the Univer
 Link to Demonstration video: https://youtu.be/glqE2nKNF8U 
 
 ## Breakdown of languages
-Embedded Systems: C 
+Embedded Systems: C, Grade : 90%
 
-Computational Science: Python 
+Computational Science: Python, Grade : 84%
 
-Dissertation: Python (Client) and some C++ (Firmware)
+Dissertation: Python (Client) and some C++ (Firmware), Grade : 90%
+
+Computer Vision: MATLAB, Grade :  64%
 
