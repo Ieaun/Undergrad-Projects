@@ -1,8 +1,10 @@
 # Projects
 
-Within this repo you will find past project I have completed while at the University of Hull as well as (most importantly for anyone here not named Ieaun) all documents relating to my dissertation including code, my demonstration video and my report. 
+Within this repo you will find past project I have completed while at the University of Hull as well as  all documents relating to my dissertation including code, my demonstration video and my report. 
 
 Link to Demonstration video: https://youtu.be/glqE2nKNF8U 
+
+For any visitors to the repo, i would reccomend my dissertation, embbeded systems coursework and computational science coursework to gauge my abilities.
 
 ## Breakdown of languages
 # Third Year
