@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_MTKvYNaBEeeHt41isykfdw" name="Report Use Case">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_PFUG4NaBEeeHt41isykfdw" name="Customer Representative">
+    <generalization xmi:type="uml:Generalization" xmi:id="_TvPfYNaBEeeHt41isykfdw" general="_ShMX4NaBEeeHt41isykfdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Ra1z0NaBEeeHt41isykfdw" name="Manager">
+    <generalization xmi:type="uml:Generalization" xmi:id="_UPcCYNaBEeeHt41isykfdw" general="_ShMX4NaBEeeHt41isykfdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_ShMX4NaBEeeHt41isykfdw" name="Staff Member"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_U7X7UNaBEeeHt41isykfdw" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_m01QMNaBEeeHt41isykfdw" name="Access reports">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_L5LsodaCEeeHt41isykfdw" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_MXGXsNaCEeeHt41isykfdw" name="ExtensionPoint2"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_MvqBodaCEeeHt41isykfdw" name="ExtensionPoint3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_xN4usNaBEeeHt41isykfdw" name="Get seats sold/unsold report">
+      <extend xmi:type="uml:Extend" xmi:id="_L5LsoNaCEeeHt41isykfdw" extendedCase="_m01QMNaBEeeHt41isykfdw" extensionLocation="_L5LsodaCEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_mb3hINaCEeeHt41isykfdw" addition="_bYTGANaCEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_m70MgNaCEeeHt41isykfdw" addition="_cuRacNaCEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_40t9MNaBEeeHt41isykfdw" name="Get report of all upcoming performances">
+      <extend xmi:type="uml:Extend" xmi:id="_MXFwoNaCEeeHt41isykfdw" extendedCase="_m01QMNaBEeeHt41isykfdw" extensionLocation="_MXGXsNaCEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_57Y04NaCEeeHt41isykfdw" addition="_uPZu4NaCEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_APLjoNaCEeeHt41isykfdw" name="Get list of gold club member renewals">
+      <extend xmi:type="uml:Extend" xmi:id="_MvqBoNaCEeeHt41isykfdw" extendedCase="_m01QMNaBEeeHt41isykfdw" extensionLocation="_MvqBodaCEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_JqTk0NaDEeeHt41isykfdw" addition="_9Ub0UNaCEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_J_-S0NaDEeeHt41isykfdw" addition="_Fa6zQNaDEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bYTGANaCEeeHt41isykfdw" name="Get sold seats">
+      <include xmi:type="uml:Include" xmi:id="_q8TmcNaCEeeHt41isykfdw" addition="_oo5ZYNaCEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_cuRacNaCEeeHt41isykfdw" name="Get unsold seats">
+      <include xmi:type="uml:Include" xmi:id="_qcuHcNaCEeeHt41isykfdw" addition="_oo5ZYNaCEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_oo5ZYNaCEeeHt41isykfdw" name="Query booking file"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_uPZu4NaCEeeHt41isykfdw" name="Get upcoming performances">
+      <include xmi:type="uml:Include" xmi:id="_6Rzw0NaCEeeHt41isykfdw" addition="_3E9aUNaCEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_3E9aUNaCEeeHt41isykfdw" name="Query performance file"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9Ub0UNaCEeeHt41isykfdw" name="Get list of members">
+      <include xmi:type="uml:Include" xmi:id="_Xk4pUNaDEeeHt41isykfdw" addition="_U6Xj0NaDEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Fa6zQNaDEeeHt41isykfdw" name="Get membership due date">
+      <include xmi:type="uml:Include" xmi:id="_X10BQNaDEeeHt41isykfdw" addition="_U6Xj0NaDEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_U6Xj0NaDEeeHt41isykfdw" name="Query Gold Club file"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HBmSoNaCEeeHt41isykfdw" memberEnd="_HBm5staCEeeHt41isykfdw _HBm5s9aCEeeHt41isykfdw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HBm5sNaCEeeHt41isykfdw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HBm5sdaCEeeHt41isykfdw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HBm5staCEeeHt41isykfdw" name="access reports" type="_m01QMNaBEeeHt41isykfdw" association="_HBmSoNaCEeeHt41isykfdw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HBm5s9aCEeeHt41isykfdw" name="staff member" type="_ShMX4NaBEeeHt41isykfdw" association="_HBmSoNaCEeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

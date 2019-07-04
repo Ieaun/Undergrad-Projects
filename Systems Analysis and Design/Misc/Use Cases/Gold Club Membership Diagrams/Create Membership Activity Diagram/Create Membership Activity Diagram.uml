@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7-yDUNWuEeeT3JQhebChgw" name="Create Membership Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Qh1bMNWwEeeT3JQhebChgw" name="Create Membership" node="_1yspoNWwEeeT3JQhebChgw _6G_JUNWwEeeT3JQhebChgw _FGMB0NWxEeeT3JQhebChgw _JdyUMNWxEeeT3JQhebChgw _cWvXMNWxEeeT3JQhebChgw _pV8YkNWxEeeT3JQhebChgw _tUdckNWxEeeT3JQhebChgw _gPG6cNWyEeeT3JQhebChgw _ovZggNWyEeeT3JQhebChgw _xkuicNWyEeeT3JQhebChgw _A5K84NWzEeeT3JQhebChgw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="__Dii4NWwEeeT3JQhebChgw" target="_6G_JUNWwEeeT3JQhebChgw" source="_1yspoNWwEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_OAOkoNWxEeeT3JQhebChgw" target="_JdyUMNWxEeeT3JQhebChgw" source="_FGMB0NWxEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SEiHkNWxEeeT3JQhebChgw" name="[No]" target="_FGMB0NWxEeeT3JQhebChgw" source="_JdyUMNWxEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_fhMhANWxEeeT3JQhebChgw" name="[Yes]" target="_cWvXMNWxEeeT3JQhebChgw" source="_JdyUMNWxEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ruXBcNWxEeeT3JQhebChgw" target="_pV8YkNWxEeeT3JQhebChgw" source="_cWvXMNWxEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_u4AS8NWxEeeT3JQhebChgw" target="_tUdckNWxEeeT3JQhebChgw" source="_pV8YkNWxEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mvbz4NWyEeeT3JQhebChgw" target="_gPG6cNWyEeeT3JQhebChgw" source="_6G_JUNWwEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ssSM0NWyEeeT3JQhebChgw" target="_ovZggNWyEeeT3JQhebChgw" source="_gPG6cNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_5Ss6wNWyEeeT3JQhebChgw" target="_xkuicNWyEeeT3JQhebChgw" source="_ovZggNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_DpAnQNWzEeeT3JQhebChgw" name="[Yes]" target="_A5K84NWzEeeT3JQhebChgw" source="_xkuicNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Hp97QNWzEeeT3JQhebChgw" name="[No]" target="_FGMB0NWxEeeT3JQhebChgw" source="_xkuicNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_LfQx0NWzEeeT3JQhebChgw" target="_tUdckNWxEeeT3JQhebChgw" source="_A5K84NWzEeeT3JQhebChgw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_1yspoNWwEeeT3JQhebChgw" outgoing="__Dii4NWwEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_6G_JUNWwEeeT3JQhebChgw" name="Customer requests to create a membership" incoming="__Dii4NWwEeeT3JQhebChgw" outgoing="_mvbz4NWyEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_FGMB0NWxEeeT3JQhebChgw" name="Customer gives required details" incoming="_SEiHkNWxEeeT3JQhebChgw _Hp97QNWzEeeT3JQhebChgw" outgoing="_OAOkoNWxEeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_JdyUMNWxEeeT3JQhebChgw" name="[Check all required details are given]" incoming="_OAOkoNWxEeeT3JQhebChgw" outgoing="_SEiHkNWxEeeT3JQhebChgw _fhMhANWxEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_cWvXMNWxEeeT3JQhebChgw" name="Customer pays £10" incoming="_fhMhANWxEeeT3JQhebChgw" outgoing="_ruXBcNWxEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_pV8YkNWxEeeT3JQhebChgw" name="Customer is now a member" incoming="_ruXBcNWxEeeT3JQhebChgw" outgoing="_u4AS8NWxEeeT3JQhebChgw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_tUdckNWxEeeT3JQhebChgw" incoming="_u4AS8NWxEeeT3JQhebChgw _LfQx0NWzEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gPG6cNWyEeeT3JQhebChgw" name="Get current membership status" incoming="_mvbz4NWyEeeT3JQhebChgw" outgoing="_ssSM0NWyEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ovZggNWyEeeT3JQhebChgw" name="Query member file" incoming="_ssSM0NWyEeeT3JQhebChgw" outgoing="_5Ss6wNWyEeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_xkuicNWyEeeT3JQhebChgw" name="[Check if customer is already a member]" incoming="_5Ss6wNWyEeeT3JQhebChgw" outgoing="_DpAnQNWzEeeT3JQhebChgw _Hp97QNWzEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_A5K84NWzEeeT3JQhebChgw" name="Membership request cancelled" incoming="_DpAnQNWzEeeT3JQhebChgw" outgoing="_LfQx0NWzEeeT3JQhebChgw"/>
+  </packagedElement>
+</uml:Model>

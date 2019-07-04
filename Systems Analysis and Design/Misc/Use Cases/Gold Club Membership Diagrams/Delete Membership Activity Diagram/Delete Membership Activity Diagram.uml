@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_X7Tw4NW1EeeT3JQhebChgw" name="Delete Membership Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_aUzX0NW1EeeT3JQhebChgw" name="Delete Membership" node="_kmitYNW1EeeT3JQhebChgw _xwgNQNW1EeeT3JQhebChgw _BH2xwNW2EeeT3JQhebChgw _eVkpINW2EeeT3JQhebChgw _-hq9MNW2EeeT3JQhebChgw _MBYDkNW3EeeT3JQhebChgw _b0zgENW3EeeT3JQhebChgw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="__v8joNW1EeeT3JQhebChgw" target="_xwgNQNW1EeeT3JQhebChgw" source="_kmitYNW1EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_M1WToNW2EeeT3JQhebChgw" target="_BH2xwNW2EeeT3JQhebChgw" source="_xwgNQNW1EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gGPVgNW2EeeT3JQhebChgw" target="_eVkpINW2EeeT3JQhebChgw" source="_BH2xwNW2EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_PUxG8NW3EeeT3JQhebChgw" name="[No]" target="_MBYDkNW3EeeT3JQhebChgw" source="_-hq9MNW2EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QUO_4NW3EeeT3JQhebChgw" target="_-hq9MNW2EeeT3JQhebChgw" source="_eVkpINW2EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_nYSKUNW3EeeT3JQhebChgw" name="[Yes]" target="_b0zgENW3EeeT3JQhebChgw" source="_-hq9MNW2EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pAznUNW3EeeT3JQhebChgw" target="_MBYDkNW3EeeT3JQhebChgw" source="_b0zgENW3EeeT3JQhebChgw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_kmitYNW1EeeT3JQhebChgw" outgoing="__v8joNW1EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_xwgNQNW1EeeT3JQhebChgw" name="Customer requests to delete their existing membership" incoming="__v8joNW1EeeT3JQhebChgw" outgoing="_M1WToNW2EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_BH2xwNW2EeeT3JQhebChgw" name="Get current membership status" incoming="_M1WToNW2EeeT3JQhebChgw" outgoing="_gGPVgNW2EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_eVkpINW2EeeT3JQhebChgw" name="Query member file" incoming="_gGPVgNW2EeeT3JQhebChgw" outgoing="_QUO_4NW3EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_-hq9MNW2EeeT3JQhebChgw" name="[Is customer a member]" incoming="_QUO_4NW3EeeT3JQhebChgw" outgoing="_PUxG8NW3EeeT3JQhebChgw _nYSKUNW3EeeT3JQhebChgw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_MBYDkNW3EeeT3JQhebChgw" incoming="_PUxG8NW3EeeT3JQhebChgw _pAznUNW3EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_b0zgENW3EeeT3JQhebChgw" name="Delete member details from file" incoming="_nYSKUNW3EeeT3JQhebChgw" outgoing="_pAznUNW3EeeT3JQhebChgw"/>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_I1OtENZ6EeeHt41isykfdw" name="Send Reminders Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Jy-HsNZ6EeeHt41isykfdw" name="Send Reminders" node="_MW4O4NZ6EeeHt41isykfdw _hQfiENZ6EeeHt41isykfdw _ir5wINZ6EeeHt41isykfdw _p_kyENZ6EeeHt41isykfdw _9KrVANZ6EeeHt41isykfdw _EW318NZ7EeeHt41isykfdw _LQKB8NZ7EeeHt41isykfdw _pEBTUNZ7EeeHt41isykfdw _y688MNZ7EeeHt41isykfdw _4isAwNZ7EeeHt41isykfdw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_oJYsgNZ6EeeHt41isykfdw" target="_ir5wINZ6EeeHt41isykfdw" source="_hQfiENZ6EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_t83uENZ6EeeHt41isykfdw" target="_p_kyENZ6EeeHt41isykfdw" source="_ir5wINZ6EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_BcGG4NZ7EeeHt41isykfdw" name="[Yes]" target="_9KrVANZ6EeeHt41isykfdw" source="_p_kyENZ6EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SuRZUNZ7EeeHt41isykfdw" target="_EW318NZ7EeeHt41isykfdw" source="_9KrVANZ6EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_UQxG0NZ7EeeHt41isykfdw" target="_LQKB8NZ7EeeHt41isykfdw" source="_EW318NZ7EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_q_EDsNZ7EeeHt41isykfdw" target="_pEBTUNZ7EeeHt41isykfdw" source="_LQKB8NZ7EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_0AhdINZ7EeeHt41isykfdw" name="[Reminder is sent]" target="_y688MNZ7EeeHt41isykfdw" source="_pEBTUNZ7EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_72ALoNZ7EeeHt41isykfdw" name="[No]" target="_4isAwNZ7EeeHt41isykfdw" source="_p_kyENZ6EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Zp0u0NZ-EeeHt41isykfdw" target="_hQfiENZ6EeeHt41isykfdw" source="_MW4O4NZ6EeeHt41isykfdw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_MW4O4NZ6EeeHt41isykfdw" name="[System needs to send reminder]" outgoing="_Zp0u0NZ-EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_hQfiENZ6EeeHt41isykfdw" name="Get Current Date" incoming="_Zp0u0NZ-EeeHt41isykfdw" outgoing="_oJYsgNZ6EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ir5wINZ6EeeHt41isykfdw" name="Get membership due date" incoming="_oJYsgNZ6EeeHt41isykfdw" outgoing="_t83uENZ6EeeHt41isykfdw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_p_kyENZ6EeeHt41isykfdw" name="[Is current date exactly one month before due date?]" incoming="_t83uENZ6EeeHt41isykfdw" outgoing="_BcGG4NZ7EeeHt41isykfdw _72ALoNZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_9KrVANZ6EeeHt41isykfdw" name="Write reminder" incoming="_BcGG4NZ7EeeHt41isykfdw" outgoing="_SuRZUNZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_EW318NZ7EeeHt41isykfdw" name="Get customer phone number" incoming="_SuRZUNZ7EeeHt41isykfdw" outgoing="_UQxG0NZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_LQKB8NZ7EeeHt41isykfdw" name="Get customer email address" incoming="_UQxG0NZ7EeeHt41isykfdw" outgoing="_q_EDsNZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_pEBTUNZ7EeeHt41isykfdw" name="Send reminder via email and text" incoming="_q_EDsNZ7EeeHt41isykfdw" outgoing="_0AhdINZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_y688MNZ7EeeHt41isykfdw" incoming="_0AhdINZ7EeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_4isAwNZ7EeeHt41isykfdw" name="[Reminder is not sent]" incoming="_72ALoNZ7EeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_44oqYNWxEeeT3JQhebChgw" name="Get required Details Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_54lrgNWxEeeT3JQhebChgw" name="Get Required Details" node="_FpAlkNWyEeeT3JQhebChgw _ILDrkNWyEeeT3JQhebChgw _bm3kANWyEeeT3JQhebChgw _mK3RwNWzEeeT3JQhebChgw _p_wfsNWzEeeT3JQhebChgw _t2HtQNWzEeeT3JQhebChgw _6Q8PMNWzEeeT3JQhebChgw _MR0asNW0EeeT3JQhebChgw _kL7qcNW0EeeT3JQhebChgw _7YOK4NW0EeeT3JQhebChgw _J0-vYNW1EeeT3JQhebChgw _PAPTUNW1EeeT3JQhebChgw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_yy8MkNWzEeeT3JQhebChgw" target="_ILDrkNWyEeeT3JQhebChgw" source="_FpAlkNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="__7YpgNWzEeeT3JQhebChgw" target="_6Q8PMNWzEeeT3JQhebChgw" source="_ILDrkNWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_BZ_VgNW0EeeT3JQhebChgw" name="[Yes]" target="_bm3kANWyEeeT3JQhebChgw" source="_6Q8PMNWzEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_CCk_gNW0EeeT3JQhebChgw" name="[No]" target="_ILDrkNWyEeeT3JQhebChgw" source="_6Q8PMNWzEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_PfKgcNW0EeeT3JQhebChgw" target="_MR0asNW0EeeT3JQhebChgw" source="_bm3kANWyEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QJa-YNW0EeeT3JQhebChgw" name="[No]" target="_bm3kANWyEeeT3JQhebChgw" source="_MR0asNW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_h0BX4NW0EeeT3JQhebChgw" name="[Yes]" target="_p_wfsNWzEeeT3JQhebChgw" source="_MR0asNW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_l_MX0NW0EeeT3JQhebChgw" target="_kL7qcNW0EeeT3JQhebChgw" source="_p_wfsNWzEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_n-J-4NW0EeeT3JQhebChgw" name="[No]" target="_p_wfsNWzEeeT3JQhebChgw" source="_kL7qcNW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_rwrOQNW0EeeT3JQhebChgw" name="[Yes]" target="_mK3RwNWzEeeT3JQhebChgw" source="_kL7qcNW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_96jkwNW0EeeT3JQhebChgw" target="_7YOK4NW0EeeT3JQhebChgw" source="_mK3RwNWzEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_COgtQNW1EeeT3JQhebChgw" name="[No]" target="_mK3RwNWzEeeT3JQhebChgw" source="_7YOK4NW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_FE-kENW1EeeT3JQhebChgw" name="[Yes]" target="_t2HtQNWzEeeT3JQhebChgw" source="_7YOK4NW0EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_L8J3QNW1EeeT3JQhebChgw" target="_J0-vYNW1EeeT3JQhebChgw" source="_t2HtQNWzEeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Mh1-QNW1EeeT3JQhebChgw" name="[No]" target="_t2HtQNWzEeeT3JQhebChgw" source="_J0-vYNW1EeeT3JQhebChgw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_QUdUQNW1EeeT3JQhebChgw" name="[Yes]" target="_PAPTUNW1EeeT3JQhebChgw" source="_J0-vYNW1EeeT3JQhebChgw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_FpAlkNWyEeeT3JQhebChgw" outgoing="_yy8MkNWzEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ILDrkNWyEeeT3JQhebChgw" name="Customer gives first name" incoming="_yy8MkNWzEeeT3JQhebChgw _CCk_gNW0EeeT3JQhebChgw" outgoing="__7YpgNWzEeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_bm3kANWyEeeT3JQhebChgw" name="Customer gives last name" incoming="_BZ_VgNW0EeeT3JQhebChgw _QJa-YNW0EeeT3JQhebChgw" outgoing="_PfKgcNW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_mK3RwNWzEeeT3JQhebChgw" name="Customer gives payment information" incoming="_rwrOQNW0EeeT3JQhebChgw _COgtQNW1EeeT3JQhebChgw" outgoing="_96jkwNW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_p_wfsNWzEeeT3JQhebChgw" name="Customer gives contact information" incoming="_h0BX4NW0EeeT3JQhebChgw _n-J-4NW0EeeT3JQhebChgw" outgoing="_l_MX0NW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_t2HtQNWzEeeT3JQhebChgw" name="Customer gives email address" incoming="_FE-kENW1EeeT3JQhebChgw _Mh1-QNW1EeeT3JQhebChgw" outgoing="_L8J3QNW1EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_6Q8PMNWzEeeT3JQhebChgw" name="[Check if detail is in the correct format]" incoming="__7YpgNWzEeeT3JQhebChgw" outgoing="_BZ_VgNW0EeeT3JQhebChgw _CCk_gNW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_MR0asNW0EeeT3JQhebChgw" name="[Check if detail is in the correct format]" incoming="_PfKgcNW0EeeT3JQhebChgw" outgoing="_QJa-YNW0EeeT3JQhebChgw _h0BX4NW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_kL7qcNW0EeeT3JQhebChgw" name="[Check if detail is in the correct format]" incoming="_l_MX0NW0EeeT3JQhebChgw" outgoing="_n-J-4NW0EeeT3JQhebChgw _rwrOQNW0EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_7YOK4NW0EeeT3JQhebChgw" name="[Check if detail is in the correct format]" incoming="_96jkwNW0EeeT3JQhebChgw" outgoing="_COgtQNW1EeeT3JQhebChgw _FE-kENW1EeeT3JQhebChgw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_J0-vYNW1EeeT3JQhebChgw" name="[Check if detail is in the correct format]" incoming="_L8J3QNW1EeeT3JQhebChgw" outgoing="_Mh1-QNW1EeeT3JQhebChgw _QUdUQNW1EeeT3JQhebChgw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_PAPTUNW1EeeT3JQhebChgw" incoming="_QUdUQNW1EeeT3JQhebChgw"/>
+  </packagedElement>
+</uml:Model>

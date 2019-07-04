@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Fv3zwNZ8EeeHt41isykfdw" name="Newsletter Use Case">
+  <packagedElement xmi:type="uml:Package" xmi:id="_J9m_gNZ8EeeHt41isykfdw" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_UfbYcNZ8EeeHt41isykfdw" name="Send Newsletters">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="__8aK4NZ8EeeHt41isykfdw" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_yFrPINZ9EeeHt41isykfdw" name="ExtensionPoint2"/>
+      <include xmi:type="uml:Include" xmi:id="_Qe9XMNZ9EeeHt41isykfdw" addition="_NE0yoNZ9EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_qR174NZ8EeeHt41isykfdw" name="Get upcoming performances">
+      <extend xmi:type="uml:Extend" xmi:id="__8Zj0NZ8EeeHt41isykfdw" extendedCase="_UfbYcNZ8EeeHt41isykfdw" extensionLocation="__8aK4NZ8EeeHt41isykfdw"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_NdOZodZ_EeeHt41isykfdw" name="ExtensionPoint1"/>
+      <include xmi:type="uml:Include" xmi:id="_A2UOYNZ9EeeHt41isykfdw" addition="_5qF4QNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_5qF4QNZ8EeeHt41isykfdw" name="Query File"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NE0yoNZ9EeeHt41isykfdw" name="Check if first of the month">
+      <include xmi:type="uml:Include" xmi:id="_f22HMNZ9EeeHt41isykfdw" addition="_X9dwINZ9EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_X9dwINZ9EeeHt41isykfdw" name="Get Current Date"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_uuqQANZ9EeeHt41isykfdw" name="Send Newsletter">
+      <extend xmi:type="uml:Extend" xmi:id="_yFqoENZ9EeeHt41isykfdw" extendedCase="_UfbYcNZ8EeeHt41isykfdw" extensionLocation="_yFrPINZ9EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_AOu0gNZ-EeeHt41isykfdw" addition="_-Yd2cNZ9EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_00JAgNZ9EeeHt41isykfdw" name="Get performance dates and times">
+      <extend xmi:type="uml:Extend" xmi:id="_NdOZoNZ_EeeHt41isykfdw" extendedCase="_qR174NZ8EeeHt41isykfdw" extensionLocation="_NdOZodZ_EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_8U9GkNZ9EeeHt41isykfdw" addition="_5qF4QNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_-Yd2cNZ9EeeHt41isykfdw" name="Write newsletter"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_MaAwgNZ8EeeHt41isykfdw" name="Customer Representative">
+    <generalization xmi:type="uml:Generalization" xmi:id="_RnpTANZ8EeeHt41isykfdw" general="_PothINZ8EeeHt41isykfdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_OwijANZ8EeeHt41isykfdw" name="Manager">
+    <generalization xmi:type="uml:Generalization" xmi:id="_SLltkNZ8EeeHt41isykfdw" general="_PothINZ8EeeHt41isykfdw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_PothINZ8EeeHt41isykfdw" name="Staff Member"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_j4Tm8NZ8EeeHt41isykfdw" memberEnd="_j4UOAtZ8EeeHt41isykfdw _j4UOA9Z8EeeHt41isykfdw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_j4UOANZ8EeeHt41isykfdw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_j4UOAdZ8EeeHt41isykfdw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_j4UOAtZ8EeeHt41isykfdw" name="send newsletters" type="_UfbYcNZ8EeeHt41isykfdw" association="_j4Tm8NZ8EeeHt41isykfdw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_j4UOA9Z8EeeHt41isykfdw" name="staff member" type="_PothINZ8EeeHt41isykfdw" association="_j4Tm8NZ8EeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

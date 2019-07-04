@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2gV4ENaHEeeHt41isykfdw" name="Plays Use Case">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_5EVe0NaHEeeHt41isykfdw" name="Manager"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="__wMS0NaHEeeHt41isykfdw" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zL2MANaIEeeHt41isykfdw" name="Manage Plays">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_APNUoNaJEeeHt41isykfdw" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_B1brkdaJEeeHt41isykfdw" name="ExtensionPoint2"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ES07EdaJEeeHt41isykfdw" name="ExtensionPoint3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_-km0ANaIEeeHt41isykfdw" name="Create Play">
+      <extend xmi:type="uml:Extend" xmi:id="_APMtkNaJEeeHt41isykfdw" extendedCase="_zL2MANaIEeeHt41isykfdw" extensionLocation="_APNUoNaJEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_awzukNaKEeeHt41isykfdw" addition="_R_8LUNaJEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_bKhPENaKEeeHt41isykfdw" addition="_VLHt4NaJEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_AwTPgNaJEeeHt41isykfdw" name="Edit Play">
+      <extend xmi:type="uml:Extend" xmi:id="_B1brkNaJEeeHt41isykfdw" extendedCase="_zL2MANaIEeeHt41isykfdw" extensionLocation="_B1brkdaJEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_4XZY8NaKEeeHt41isykfdw" addition="_1vYN0NaKEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_CRQr8NaJEeeHt41isykfdw" name="Delete Play">
+      <extend xmi:type="uml:Extend" xmi:id="_ES07ENaJEeeHt41isykfdw" extendedCase="_zL2MANaIEeeHt41isykfdw" extensionLocation="_ES07EdaJEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_n9UWsNaLEeeHt41isykfdw" addition="_kSUroNaLEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_R_8LUNaJEeeHt41isykfdw" name="Add play name">
+      <include xmi:type="uml:Include" xmi:id="_SpGyMNaLEeeHt41isykfdw" addition="_Q1hUsNaLEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_VLHt4NaJEeeHt41isykfdw" name="Add list of performances">
+      <include xmi:type="uml:Include" xmi:id="_SNNgYNaLEeeHt41isykfdw" addition="_Q1hUsNaLEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1vYN0NaKEeeHt41isykfdw" name="Edit selected performance">
+      <include xmi:type="uml:Include" xmi:id="_-n2DUNaKEeeHt41isykfdw" addition="_7Bb9UNaKEeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_UoXCQNaNEeeHt41isykfdw" addition="_56zFYNaKEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_56zFYNaKEeeHt41isykfdw" name="Edit date">
+      <include xmi:type="uml:Include" xmi:id="_S5-fwNaLEeeHt41isykfdw" addition="_Q1hUsNaLEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7Bb9UNaKEeeHt41isykfdw" name="Edit time">
+      <include xmi:type="uml:Include" xmi:id="_TPkVQNaLEeeHt41isykfdw" addition="_Q1hUsNaLEeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Q1hUsNaLEeeHt41isykfdw" name="Access necessary file"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_kSUroNaLEeeHt41isykfdw" name="Delete all information for desired play">
+      <include xmi:type="uml:Include" xmi:id="_oVgNMNaLEeeHt41isykfdw" addition="_Q1hUsNaLEeeHt41isykfdw"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Huw2cNaJEeeHt41isykfdw" memberEnd="_HuxdgtaJEeeHt41isykfdw _HuyEkNaJEeeHt41isykfdw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HuxdgNaJEeeHt41isykfdw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HuxdgdaJEeeHt41isykfdw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HuxdgtaJEeeHt41isykfdw" name="manage plays" type="_zL2MANaIEeeHt41isykfdw" association="_Huw2cNaJEeeHt41isykfdw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_HuyEkNaJEeeHt41isykfdw" name="manager" type="_5EVe0NaHEeeHt41isykfdw" association="_Huw2cNaJEeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

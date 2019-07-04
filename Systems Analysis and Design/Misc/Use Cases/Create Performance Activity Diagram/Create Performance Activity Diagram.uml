@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_FKPJINv4EeeER9mTEIccOQ" name="Create Performance Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_F4dhENv4EeeER9mTEIccOQ" name="Create Performance" node="_4ZSwwNv4EeeER9mTEIccOQ _wyFHwNv4EeeER9mTEIccOQ _pxL34Nv4EeeER9mTEIccOQ _gDZj8Nv4EeeER9mTEIccOQ _d7qbYNv4EeeER9mTEIccOQ _RWCXoNv4EeeER9mTEIccOQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_isuWoNv4EeeER9mTEIccOQ" target="_d7qbYNv4EeeER9mTEIccOQ" source="_RWCXoNv4EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_j5edoNv4EeeER9mTEIccOQ" target="_gDZj8Nv4EeeER9mTEIccOQ" source="_d7qbYNv4EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_s9c_kNv4EeeER9mTEIccOQ" target="_pxL34Nv4EeeER9mTEIccOQ" source="_gDZj8Nv4EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_t0YAgNv4EeeER9mTEIccOQ" name="[No]" target="_d7qbYNv4EeeER9mTEIccOQ" source="_pxL34Nv4EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1f7-ANv4EeeER9mTEIccOQ" name="[Yes]" target="_wyFHwNv4EeeER9mTEIccOQ" source="_pxL34Nv4EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6i46gNv4EeeER9mTEIccOQ" target="_4ZSwwNv4EeeER9mTEIccOQ" source="_wyFHwNv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_RWCXoNv4EeeER9mTEIccOQ" name="[Manager wishes to create a performance]" outgoing="_isuWoNv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_d7qbYNv4EeeER9mTEIccOQ" name="Enter performance date" incoming="_isuWoNv4EeeER9mTEIccOQ _t0YAgNv4EeeER9mTEIccOQ" outgoing="_j5edoNv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_gDZj8Nv4EeeER9mTEIccOQ" name="Enter performance time" incoming="_j5edoNv4EeeER9mTEIccOQ" outgoing="_s9c_kNv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_pxL34Nv4EeeER9mTEIccOQ" name="[Check if input is valid]" incoming="_s9c_kNv4EeeER9mTEIccOQ" outgoing="_t0YAgNv4EeeER9mTEIccOQ _1f7-ANv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_wyFHwNv4EeeER9mTEIccOQ" name="Performance added to system" incoming="_1f7-ANv4EeeER9mTEIccOQ" outgoing="_6i46gNv4EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_4ZSwwNv4EeeER9mTEIccOQ" name="[Performance added]" incoming="_6i46gNv4EeeER9mTEIccOQ"/>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_-PfaQNZ1EeeHt41isykfdw" name="Reminders Use Case">
+  <packagedElement xmi:type="uml:Package" xmi:id="_KYKcQNZ2EeeHt41isykfdw" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_f8zCYNZ2EeeHt41isykfdw" name="Send reminders">
+      <include xmi:type="uml:Include" xmi:id="_zkCuwNZ2EeeHt41isykfdw" addition="_sKGFsNZ2EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_nvEE0NZ2EeeHt41isykfdw" name="Write reminder"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_sKGFsNZ2EeeHt41isykfdw" name="Check if reminder should be sent">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_3PkTYNZ4EeeHt41isykfdw" name="ExtensionPoint1"/>
+      <include xmi:type="uml:Include" xmi:id="_EoypMNZ3EeeHt41isykfdw" addition="_07itMNZ2EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_7bwnANZ4EeeHt41isykfdw" addition="_QcnckNZ3EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_07itMNZ2EeeHt41isykfdw" name="Get Current Date">
+      <include xmi:type="uml:Include" xmi:id="_z9lBYNZ8EeeHt41isykfdw" addition="_wqsUUNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_QcnckNZ3EeeHt41isykfdw" name="Get membership due date">
+      <include xmi:type="uml:Include" xmi:id="_zgSocNZ8EeeHt41isykfdw" addition="_wqsUUNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_t8hlQNZ5EeeHt41isykfdw" name="Get customer phone number">
+      <include xmi:type="uml:Include" xmi:id="_zCwX4NZ8EeeHt41isykfdw" addition="_wqsUUNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wQTlwNZ5EeeHt41isykfdw" name="Get customer email address">
+      <include xmi:type="uml:Include" xmi:id="_yRjkcNZ8EeeHt41isykfdw" addition="_wqsUUNZ8EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zYVGoNZ5EeeHt41isykfdw" name="Send reminder via email and text">
+      <extend xmi:type="uml:Extend" xmi:id="_3PjFQNZ4EeeHt41isykfdw" extendedCase="_f8zCYNZ2EeeHt41isykfdw" extensionLocation="_3PkTYNZ4EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_6JsFsNZ5EeeHt41isykfdw" addition="_nvEE0NZ2EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_8k3usNZ5EeeHt41isykfdw" addition="_t8hlQNZ5EeeHt41isykfdw"/>
+      <include xmi:type="uml:Include" xmi:id="_89lwsNZ5EeeHt41isykfdw" addition="_wQTlwNZ5EeeHt41isykfdw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_wqsUUNZ8EeeHt41isykfdw" name="Query File"/>
+  </packagedElement>
+</uml:Model>

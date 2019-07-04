@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_EqVZsNv7EeeER9mTEIccOQ" name="Delete Performance Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_Fkf74Nv7EeeER9mTEIccOQ" name="Delete Performance" node="_idrtsNv7EeeER9mTEIccOQ _mFJjoNv7EeeER9mTEIccOQ _n8dqkNv7EeeER9mTEIccOQ _v3b9ENv7EeeER9mTEIccOQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_tDVdwNv7EeeER9mTEIccOQ" target="_mFJjoNv7EeeER9mTEIccOQ" source="_idrtsNv7EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uRJUsNv7EeeER9mTEIccOQ" target="_n8dqkNv7EeeER9mTEIccOQ" source="_mFJjoNv7EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ypJPsNv7EeeER9mTEIccOQ" target="_v3b9ENv7EeeER9mTEIccOQ" source="_n8dqkNv7EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_idrtsNv7EeeER9mTEIccOQ" name="[Manager wishes to delete a performance]" outgoing="_tDVdwNv7EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_mFJjoNv7EeeER9mTEIccOQ" name="Select Performance" incoming="_tDVdwNv7EeeER9mTEIccOQ" outgoing="_uRJUsNv7EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_n8dqkNv7EeeER9mTEIccOQ" name="Remove performance from file" incoming="_uRJUsNv7EeeER9mTEIccOQ" outgoing="_ypJPsNv7EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_v3b9ENv7EeeER9mTEIccOQ" name="[Performance removed]" incoming="_ypJPsNv7EeeER9mTEIccOQ"/>
+  </packagedElement>
+</uml:Model>

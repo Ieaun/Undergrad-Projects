@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_HqAlMNZ8EeeHt41isykfdw" type="UseCase" name="Newsletter use Case" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_J9oNoNZ8EeeHt41isykfdw" type="Package_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_J9oNo9Z8EeeHt41isykfdw" type="Package_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_J9oNpNZ8EeeHt41isykfdw" type="Package_PackagedElementCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_Uffp4NZ8EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Uffp4tZ8EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Uffp49Z8EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Uffp5NZ8EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_Uffp5dZ8EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_Uffp5tZ8EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_Uffp59Z8EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uffp6NZ8EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_UfbYcNZ8EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uffp4dZ8EeeHt41isykfdw" x="14" y="132" width="121" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_qR7bcNZ8EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_qR7bctZ8EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_qR7bc9Z8EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_qR7bdNZ8EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_qR7bddZ8EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_qR7bdtZ8EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_qR7bd9Z8EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qR7beNZ8EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_qR174NZ8EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qR7bcdZ8EeeHt41isykfdw" x="174" y="172" width="181" height="81"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_5qKwwNZ8EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_5qKwwtZ8EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_5qKww9Z8EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_5qKwxNZ8EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_5qKwxdZ8EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_5qKwxtZ8EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_5qKwx9Z8EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5qKwyNZ8EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_5qF4QNZ8EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5qKwwdZ8EeeHt41isykfdw" x="414" y="172" width="101" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_NE65QNZ9EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_NE65QtZ9EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_NE65Q9Z9EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_NE65RNZ9EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_NE65RdZ9EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_NE65RtZ9EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_NE65R9Z9EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NE65SNZ9EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_NE0yoNZ9EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NE65QdZ9EeeHt41isykfdw" x="154" y="32" width="201" height="81"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_X9j2wNZ9EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_X9j2wtZ9EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_X9j2w9Z9EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_X9j2xNZ9EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_X9kd0NZ9EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_X9kd0dZ9EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_X9kd0tZ9EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X9kd09Z9EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_X9dwINZ9EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X9j2wdZ9EeeHt41isykfdw" x="434" y="12" width="121" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_uuxkwNZ9EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_uuyL0NZ9EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_uuyL0dZ9EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_uuyL0tZ9EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_uuyL09Z9EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_uuyL1NZ9EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_uuyL1dZ9EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uuyL1tZ9EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_uuqQANZ9EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uuxkwdZ9EeeHt41isykfdw" x="74" y="292" width="121" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_00PuMNZ9EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_00PuMtZ9EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_00QVQNZ9EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_00QVQdZ9EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_00QVQtZ9EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_00QVQ9Z9EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_00QVRNZ9EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00QVRdZ9EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_00JAgNZ9EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00PuMdZ9EeeHt41isykfdw" x="314" y="272" width="201" height="81"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-YnAYNZ9EeeHt41isykfdw" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_-YnAYtZ9EeeHt41isykfdw" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_-YnAY9Z9EeeHt41isykfdw" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_-YnncNZ9EeeHt41isykfdw" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_-YnncdZ9EeeHt41isykfdw" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_-YnnctZ9EeeHt41isykfdw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_-Ynnc9Z9EeeHt41isykfdw"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-YnndNZ9EeeHt41isykfdw"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Newsletter%20Use%20Case.uml#_-Yd2cNZ9EeeHt41isykfdw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-YnAYdZ9EeeHt41isykfdw" x="214" y="352" width="121" height="61"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J9oNpdZ8EeeHt41isykfdw"/>
+    </children>
+    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_J9oNodZ8EeeHt41isykfdw"/>
+    <element xmi:type="uml:Package" href="Newsletter%20Use%20Case.uml#_J9m_gNZ8EeeHt41isykfdw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J9oNotZ8EeeHt41isykfdw" x="240" y="140" width="581" height="461"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_MaBXkNZ8EeeHt41isykfdw" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_MaBXktZ8EeeHt41isykfdw" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MaBXk9Z8EeeHt41isykfdw" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_MaBXlNZ8EeeHt41isykfdw" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MaBXldZ8EeeHt41isykfdw" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_MaBXltZ8EeeHt41isykfdw" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MaBXl9Z8EeeHt41isykfdw" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_MaBXmNZ8EeeHt41isykfdw" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_MaBXmdZ8EeeHt41isykfdw" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Newsletter%20Use%20Case.uml#_MaAwgNZ8EeeHt41isykfdw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MaBXkdZ8EeeHt41isykfdw" y="153" width="61" height="101"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_OwjKENZ8EeeHt41isykfdw" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OwjKEtZ8EeeHt41isykfdw" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OwjKE9Z8EeeHt41isykfdw" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OwjKFNZ8EeeHt41isykfdw" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OwjKFdZ8EeeHt41isykfdw" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OwjKFtZ8EeeHt41isykfdw" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OwjKF9Z8EeeHt41isykfdw" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OwjKGNZ8EeeHt41isykfdw" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OwjKGdZ8EeeHt41isykfdw" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Newsletter%20Use%20Case.uml#_OwijANZ8EeeHt41isykfdw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OwjKEdZ8EeeHt41isykfdw" y="300" width="61" height="101"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_PouvQNZ8EeeHt41isykfdw" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_PouvQtZ8EeeHt41isykfdw" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PouvQ9Z8EeeHt41isykfdw" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_PouvRNZ8EeeHt41isykfdw" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PouvRdZ8EeeHt41isykfdw" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_PouvRtZ8EeeHt41isykfdw" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PouvR9Z8EeeHt41isykfdw" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_PouvSNZ8EeeHt41isykfdw" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PouvSdZ8EeeHt41isykfdw" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Newsletter%20Use%20Case.uml#_PothINZ8EeeHt41isykfdw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PouvQdZ8EeeHt41isykfdw" x="120" y="240" width="61" height="101"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_HqAlMdZ8EeeHt41isykfdw" name="diagram_compatibility_version" stringValue="1.3.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_HqAlMtZ8EeeHt41isykfdw"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_HqAlM9Z8EeeHt41isykfdw" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
+    <owner xmi:type="uml:Model" href="Newsletter%20Use%20Case.uml#_Fv3zwNZ8EeeHt41isykfdw"/>
+  </styles>
+  <element xmi:type="uml:Model" href="Newsletter%20Use%20Case.uml#_Fv3zwNZ8EeeHt41isykfdw"/>
+  <edges xmi:type="notation:Connector" xmi:id="_Rns9YNZ8EeeHt41isykfdw" type="Generalization_Edge" source="_MaBXkNZ8EeeHt41isykfdw" target="_PouvQNZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Rns9Y9Z8EeeHt41isykfdw" type="Generalization_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BhCJ4NZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Rns9ZNZ8EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_Rns9YdZ8EeeHt41isykfdw"/>
+    <element xmi:type="uml:Generalization" href="Newsletter%20Use%20Case.uml#_RnpTANZ8EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Rns9YtZ8EeeHt41isykfdw" points="[61, 180, -643984, -643984]$[120, 280, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Rn6YwNZ8EeeHt41isykfdw" id="(1.0,0.8613861386138614)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Rn6YwdZ8EeeHt41isykfdw" id="(0.0,0.39603960396039606)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_SLpX8NZ8EeeHt41isykfdw" type="Generalization_Edge" source="_OwjKENZ8EeeHt41isykfdw" target="_PouvQNZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_SLp_ANZ8EeeHt41isykfdw" type="Generalization_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SLp_AdZ8EeeHt41isykfdw" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_SLpX8dZ8EeeHt41isykfdw"/>
+    <element xmi:type="uml:Generalization" href="Newsletter%20Use%20Case.uml#_SLltkNZ8EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SLpX8tZ8EeeHt41isykfdw" points="[61, 360, -643984, -643984]$[120, 320, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SLyh4NZ8EeeHt41isykfdw" id="(1.0,0.594059405940594)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SLyh4dZ8EeeHt41isykfdw" id="(0.0,0.7920792079207921)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_j4U1ENZ8EeeHt41isykfdw" type="Association_Edge" source="_PouvQNZ8EeeHt41isykfdw" target="_Uffp4NZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_j4U1E9Z8EeeHt41isykfdw" type="Association_NameLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FBhOENZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j4U1FNZ8EeeHt41isykfdw" y="39"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_j4U1FdZ8EeeHt41isykfdw" type="Association_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FBoi0NZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j4U1FtZ8EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_j4U1EdZ8EeeHt41isykfdw"/>
+    <element xmi:type="uml:Association" href="Newsletter%20Use%20Case.uml#_j4Tm8NZ8EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_j4U1EtZ8EeeHt41isykfdw" points="[181, 300, -643984, -643984]$[243, 320, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_j4gbQNZ8EeeHt41isykfdw" id="(1.0,0.594059405940594)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_j4gbQdZ8EeeHt41isykfdw" id="(0.024793388429752067,0.32786885245901637)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="__8fqcNZ8EeeHt41isykfdw" type="Extend_Edge" source="_qR7bcNZ8EeeHt41isykfdw" target="_Uffp4NZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="__8fqc9Z8EeeHt41isykfdw" type="Extend_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FBweoNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__8fqdNZ8EeeHt41isykfdw" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="__8fqddZ8EeeHt41isykfdw" type="Extend_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FB5BgNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="__8fqdtZ8EeeHt41isykfdw" x="-1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="__8fqcdZ8EeeHt41isykfdw"/>
+    <element xmi:type="uml:Extend" href="Newsletter%20Use%20Case.uml#__8Zj0NZ8EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__8fqctZ8EeeHt41isykfdw" points="[440, 355, -643984, -643984]$[380, 336, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__8r3sNZ8EeeHt41isykfdw" id="(0.11049723756906077,0.18518518518518517)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__8r3sdZ8EeeHt41isykfdw" id="(0.9917355371900827,0.5901639344262295)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_A2ZG4NZ9EeeHt41isykfdw" type="Include_Edge" source="_qR7bcNZ8EeeHt41isykfdw" target="_5qKwwNZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_A2ZG49Z9EeeHt41isykfdw" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCQN4NZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_A2Zt8NZ9EeeHt41isykfdw" x="-1" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_A2Zt8dZ9EeeHt41isykfdw" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCYwwNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_A2Zt8tZ9EeeHt41isykfdw" x="2" y="-17"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_A2ZG4dZ9EeeHt41isykfdw"/>
+    <element xmi:type="uml:Include" href="Newsletter%20Use%20Case.uml#_A2UOYNZ9EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_A2ZG4tZ9EeeHt41isykfdw" points="[600, 374, -643984, -643984]$[660, 371, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_A2ktENZ9EeeHt41isykfdw" id="(0.994475138121547,0.41975308641975306)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_A2ktEdZ9EeeHt41isykfdw" id="(0.0,0.5081967213114754)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_QfDd0NZ9EeeHt41isykfdw" type="Include_Edge" source="_Uffp4NZ8EeeHt41isykfdw" target="_NE65QNZ9EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QfDd09Z9EeeHt41isykfdw" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FBRWcNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_QfDd1NZ9EeeHt41isykfdw" x="1" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_QfDd1dZ9EeeHt41isykfdw" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FBZSQNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_QfDd1tZ9EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_QfDd0dZ9EeeHt41isykfdw"/>
+    <element xmi:type="uml:Include" href="Newsletter%20Use%20Case.uml#_Qe9XMNZ9EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QfDd0tZ9EeeHt41isykfdw" points="[377, 320, -643984, -643984]$[420, 263, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QfRgQNZ9EeeHt41isykfdw" id="(0.8264462809917356,0.11475409836065574)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QfSHUNZ9EeeHt41isykfdw" id="(0.09049773755656108,0.7777777777777778)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_f29b8NZ9EeeHt41isykfdw" type="Include_Edge" source="_NE65QNZ9EeeHt41isykfdw" target="_X9j2wNZ9EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_f29b89Z9EeeHt41isykfdw" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCh6sNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_f29b9NZ9EeeHt41isykfdw" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_f29b9dZ9EeeHt41isykfdw" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCp2gNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_f29b9tZ9EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_f29b8dZ9EeeHt41isykfdw"/>
+    <element xmi:type="uml:Include" href="Newsletter%20Use%20Case.uml#_f22HMNZ9EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_f29b8tZ9EeeHt41isykfdw" points="[605, 220, -643984, -643984]$[680, 210, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f3K3UNZ9EeeHt41isykfdw" id="(0.9276018099547512,0.24691358024691357)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f3K3UdZ9EeeHt41isykfdw" id="(0.0,0.4918032786885246)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_yFyj4NZ9EeeHt41isykfdw" type="Extend_Edge" source="_uuxkwNZ9EeeHt41isykfdw" target="_Uffp4NZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_yFyj49Z9EeeHt41isykfdw" type="Extend_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCA9UNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yFyj5NZ9EeeHt41isykfdw" x="-1" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_yFyj5dZ9EeeHt41isykfdw" type="Extend_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCI5INZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yFyj5tZ9EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_yFyj4dZ9EeeHt41isykfdw"/>
+    <element xmi:type="uml:Extend" href="Newsletter%20Use%20Case.uml#_yFqoENZ9EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yFyj4tZ9EeeHt41isykfdw" points="[360, 461, -643984, -643984]$[320, 361, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yGFe0NZ9EeeHt41isykfdw" id="(0.3305785123966942,0.01639344262295082)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yGFe0dZ9EeeHt41isykfdw" id="(0.49586776859504134,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_8VEbUNZ9EeeHt41isykfdw" type="Include_Edge" source="_00PuMNZ9EeeHt41isykfdw" target="_5qKwwNZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_8VEbU9Z9EeeHt41isykfdw" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_9HvOYNZ9EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_8VEbVNZ9EeeHt41isykfdw" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_8VEbVdZ9EeeHt41isykfdw" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_9H2jINZ9EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_8VEbVtZ9EeeHt41isykfdw" x="-1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_8VEbUdZ9EeeHt41isykfdw"/>
+    <element xmi:type="uml:Include" href="Newsletter%20Use%20Case.uml#_8U9GkNZ9EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8VEbUtZ9EeeHt41isykfdw" points="[620, 483, -643984, -643984]$[680, 394, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8VU6ANZ9EeeHt41isykfdw" id="(0.4975124378109453,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8VU6AdZ9EeeHt41isykfdw" id="(0.19801980198019803,0.8852459016393442)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_AO2wUNZ-EeeHt41isykfdw" type="Include_Edge" source="_uuxkwNZ9EeeHt41isykfdw" target="_-YnAYNZ9EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_AO2wU9Z-EeeHt41isykfdw" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FCxyUNZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_AO2wVNZ-EeeHt41isykfdw" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_AO2wVdZ-EeeHt41isykfdw" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_FC5uINZ-EeeHt41isykfdw" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_AO2wVtZ-EeeHt41isykfdw" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_AO2wUdZ-EeeHt41isykfdw"/>
+    <element xmi:type="uml:Include" href="Newsletter%20Use%20Case.uml#_AOu0gNZ-EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AO2wUtZ-EeeHt41isykfdw" points="[420, 513, -643984, -643984]$[463, 540, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_APJEMNZ-EeeHt41isykfdw" id="(0.8264462809917356,0.8688524590163934)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_APJrQNZ-EeeHt41isykfdw" id="(0.024793388429752067,0.32786885245901637)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_NdW8gNZ_EeeHt41isykfdw" type="Extend_Edge" source="_00PuMNZ9EeeHt41isykfdw" target="_qR7bcNZ8EeeHt41isykfdw">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NdW8g9Z_EeeHt41isykfdw" type="Extend_KeywordLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NdW8hNZ_EeeHt41isykfdw" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_NdW8hdZ_EeeHt41isykfdw" type="Extend_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NdW8htZ_EeeHt41isykfdw" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NdW8gdZ_EeeHt41isykfdw"/>
+    <element xmi:type="uml:Extend" href="Newsletter%20Use%20Case.uml#_NdOZoNZ_EeeHt41isykfdw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NdW8gtZ_EeeHt41isykfdw" points="[600, 448, -643984, -643984]$[560, 414, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NdoCQNZ_EeeHt41isykfdw" id="(0.19900497512437812,0.09876543209876543)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NdoCQdZ_EeeHt41isykfdw" id="(0.7734806629834254,0.9135802469135802)"/>
+  </edges>
+</notation:Diagram>

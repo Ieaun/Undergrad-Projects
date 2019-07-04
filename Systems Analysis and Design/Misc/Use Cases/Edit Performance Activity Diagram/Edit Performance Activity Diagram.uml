@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_WXd0sNv5EeeER9mTEIccOQ" name="Edit Performance Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_XDLrMNv5EeeER9mTEIccOQ" name="Edit Performance" node="_dybKYNv5EeeER9mTEIccOQ _i-m7YNv5EeeER9mTEIccOQ _lWDT4Nv5EeeER9mTEIccOQ _wTBXwNv5EeeER9mTEIccOQ _0IJ2QNv5EeeER9mTEIccOQ _TPStYNv6EeeER9mTEIccOQ _VisTYNv6EeeER9mTEIccOQ _ZpvoUNv6EeeER9mTEIccOQ _xPaSENv6EeeER9mTEIccOQ">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_pu_DANv5EeeER9mTEIccOQ" target="_i-m7YNv5EeeER9mTEIccOQ" source="_dybKYNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_sHHYANv5EeeER9mTEIccOQ" name="[No]" target="_lWDT4Nv5EeeER9mTEIccOQ" source="_i-m7YNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_yNfgYNv5EeeER9mTEIccOQ" target="_wTBXwNv5EeeER9mTEIccOQ" source="_i-m7YNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_4PzBENv5EeeER9mTEIccOQ" target="_0IJ2QNv5EeeER9mTEIccOQ" source="_wTBXwNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_5nFkINv5EeeER9mTEIccOQ" name="[No]" target="_wTBXwNv5EeeER9mTEIccOQ" source="_0IJ2QNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_FUEvsNv6EeeER9mTEIccOQ" name="[Yes]" target="_lWDT4Nv5EeeER9mTEIccOQ" source="_0IJ2QNv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_XgYIENv6EeeER9mTEIccOQ" target="_VisTYNv6EeeER9mTEIccOQ" source="_lWDT4Nv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_dikUANv6EeeER9mTEIccOQ" target="_ZpvoUNv6EeeER9mTEIccOQ" source="_VisTYNv6EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gJHfgNv6EeeER9mTEIccOQ" name="[No]" target="_VisTYNv6EeeER9mTEIccOQ" source="_ZpvoUNv6EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qkSd4Nv6EeeER9mTEIccOQ" name="[Yes]" target="_TPStYNv6EeeER9mTEIccOQ" source="_ZpvoUNv6EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_r_Ox4Nv6EeeER9mTEIccOQ" name="[No]" target="_TPStYNv6EeeER9mTEIccOQ" source="_lWDT4Nv5EeeER9mTEIccOQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_5fVg4Nv6EeeER9mTEIccOQ" target="_xPaSENv6EeeER9mTEIccOQ" source="_TPStYNv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_dybKYNv5EeeER9mTEIccOQ" name="[Manager wishes to edit a performance]" outgoing="_pu_DANv5EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_i-m7YNv5EeeER9mTEIccOQ" name="[Does time need to be changed?]" incoming="_pu_DANv5EeeER9mTEIccOQ" outgoing="_sHHYANv5EeeER9mTEIccOQ _yNfgYNv5EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_lWDT4Nv5EeeER9mTEIccOQ" name="[Does date need to be changed?]" incoming="_sHHYANv5EeeER9mTEIccOQ _FUEvsNv6EeeER9mTEIccOQ" outgoing="_XgYIENv6EeeER9mTEIccOQ _r_Ox4Nv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_wTBXwNv5EeeER9mTEIccOQ" name="Enter new time" incoming="_yNfgYNv5EeeER9mTEIccOQ _5nFkINv5EeeER9mTEIccOQ" outgoing="_4PzBENv5EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_0IJ2QNv5EeeER9mTEIccOQ" name="[Check if input is valid]" incoming="_4PzBENv5EeeER9mTEIccOQ" outgoing="_5nFkINv5EeeER9mTEIccOQ _FUEvsNv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_TPStYNv6EeeER9mTEIccOQ" name="Save changes" incoming="_qkSd4Nv6EeeER9mTEIccOQ _r_Ox4Nv6EeeER9mTEIccOQ" outgoing="_5fVg4Nv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_VisTYNv6EeeER9mTEIccOQ" name="Enter new date" incoming="_XgYIENv6EeeER9mTEIccOQ _gJHfgNv6EeeER9mTEIccOQ" outgoing="_dikUANv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_ZpvoUNv6EeeER9mTEIccOQ" name="[Check if input is valid]" incoming="_dikUANv6EeeER9mTEIccOQ" outgoing="_gJHfgNv6EeeER9mTEIccOQ _qkSd4Nv6EeeER9mTEIccOQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_xPaSENv6EeeER9mTEIccOQ" name="[Changes saved in system]" incoming="_5fVg4Nv6EeeER9mTEIccOQ"/>
+  </packagedElement>
+</uml:Model>

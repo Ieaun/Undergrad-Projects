@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ReqEMNZ-EeeHt41isykfdw" name="Send Newsletter Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_SMLRgNZ-EeeHt41isykfdw" name="Send Newsletter" node="_UlD0cNZ-EeeHt41isykfdw _hex44NZ-EeeHt41isykfdw _pWFzYNZ-EeeHt41isykfdw _zJmU0NZ-EeeHt41isykfdw _SpfqMNZ_EeeHt41isykfdw _W90mINZ_EeeHt41isykfdw _fzipoNZ_EeeHt41isykfdw _jhapkNZ_EeeHt41isykfdw _oTSdINZ_EeeHt41isykfdw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_l36cUNZ-EeeHt41isykfdw" target="_hex44NZ-EeeHt41isykfdw" source="_UlD0cNZ-EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uYf9UNZ-EeeHt41isykfdw" target="_pWFzYNZ-EeeHt41isykfdw" source="_hex44NZ-EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_38bxsNZ-EeeHt41isykfdw" name="[No]" target="_zJmU0NZ-EeeHt41isykfdw" source="_pWFzYNZ-EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_aM8NgNZ_EeeHt41isykfdw" name="[Yes]" target="_SpfqMNZ_EeeHt41isykfdw" source="_pWFzYNZ-EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_coSOkNZ_EeeHt41isykfdw" target="_W90mINZ_EeeHt41isykfdw" source="_SpfqMNZ_EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_hzOpcNZ_EeeHt41isykfdw" target="_fzipoNZ_EeeHt41isykfdw" source="_W90mINZ_EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lMrRgNZ_EeeHt41isykfdw" target="_jhapkNZ_EeeHt41isykfdw" source="_fzipoNZ_EeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_r07X4NZ_EeeHt41isykfdw" target="_oTSdINZ_EeeHt41isykfdw" source="_jhapkNZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_UlD0cNZ-EeeHt41isykfdw" name="[Staff member wants to send newsletter]" outgoing="_l36cUNZ-EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_hex44NZ-EeeHt41isykfdw" name="Get Current Date" incoming="_l36cUNZ-EeeHt41isykfdw" outgoing="_uYf9UNZ-EeeHt41isykfdw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_pWFzYNZ-EeeHt41isykfdw" name="[Is date the 1st of the month?]" incoming="_uYf9UNZ-EeeHt41isykfdw" outgoing="_38bxsNZ-EeeHt41isykfdw _aM8NgNZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_zJmU0NZ-EeeHt41isykfdw" name="[Not 1st of the month, newsletter not sent]" incoming="_38bxsNZ-EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_SpfqMNZ_EeeHt41isykfdw" name="Get list of all upcoming performances" incoming="_aM8NgNZ_EeeHt41isykfdw" outgoing="_coSOkNZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_W90mINZ_EeeHt41isykfdw" name="Get date and time of each performance" incoming="_coSOkNZ_EeeHt41isykfdw" outgoing="_hzOpcNZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_fzipoNZ_EeeHt41isykfdw" name="Write Newsletter" incoming="_hzOpcNZ_EeeHt41isykfdw" outgoing="_lMrRgNZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_jhapkNZ_EeeHt41isykfdw" name="Send newsletter" incoming="_lMrRgNZ_EeeHt41isykfdw" outgoing="_r07X4NZ_EeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_oTSdINZ_EeeHt41isykfdw" name="[Newsletter sent]" incoming="_r07X4NZ_EeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

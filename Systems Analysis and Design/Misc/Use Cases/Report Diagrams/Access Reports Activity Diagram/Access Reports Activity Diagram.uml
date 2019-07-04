@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_JY4BINaEEeeHt41isykfdw" name="Access Reports Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_3RUJYNaEEeeHt41isykfdw" name="Acces Reports" node="_Aws08NaFEeeHt41isykfdw _Cw388NaFEeeHt41isykfdw _VP4O4NaFEeeHt41isykfdw _khafQNaFEeeHt41isykfdw _jZVncNaGEeeHt41isykfdw _uJbF4NaGEeeHt41isykfdw _-2DbQNaGEeeHt41isykfdw _FlH7UNaHEeeHt41isykfdw _L0luQNaHEeeHt41isykfdw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KXcswNaFEeeHt41isykfdw" target="_Cw388NaFEeeHt41isykfdw" source="_Aws08NaFEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Z5naINaFEeeHt41isykfdw" name="[Seats sold/unsold report]" target="_VP4O4NaFEeeHt41isykfdw" source="_Cw388NaFEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_n37IENaFEeeHt41isykfdw" name="[Upcoming performance report]" target="_khafQNaFEeeHt41isykfdw" source="_Cw388NaFEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lbBLUNaGEeeHt41isykfdw" name="[Gold Club renewals report]" target="_jZVncNaGEeeHt41isykfdw" source="_Cw388NaFEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_yFxmsNaGEeeHt41isykfdw" target="_uJbF4NaGEeeHt41isykfdw" source="_jZVncNaGEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_UmPKENaHEeeHt41isykfdw" target="_-2DbQNaGEeeHt41isykfdw" source="_VP4O4NaFEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_VAs4gNaHEeeHt41isykfdw" target="_FlH7UNaHEeeHt41isykfdw" source="_uJbF4NaGEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_eBBpgNaHEeeHt41isykfdw" target="_L0luQNaHEeeHt41isykfdw" source="_khafQNaFEeeHt41isykfdw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_Aws08NaFEeeHt41isykfdw" outgoing="_KXcswNaFEeeHt41isykfdw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_Cw388NaFEeeHt41isykfdw" name="[Which report is needed?]" incoming="_KXcswNaFEeeHt41isykfdw" outgoing="_Z5naINaFEeeHt41isykfdw _n37IENaFEeeHt41isykfdw _lbBLUNaGEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_VP4O4NaFEeeHt41isykfdw" name="Get seats sold and unsold" incoming="_Z5naINaFEeeHt41isykfdw" outgoing="_UmPKENaHEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_khafQNaFEeeHt41isykfdw" name="Get upcoming performances" incoming="_n37IENaFEeeHt41isykfdw" outgoing="_eBBpgNaHEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_jZVncNaGEeeHt41isykfdw" name="Get List of members" incoming="_lbBLUNaGEeeHt41isykfdw" outgoing="_yFxmsNaGEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_uJbF4NaGEeeHt41isykfdw" name="Get membership due date" incoming="_yFxmsNaGEeeHt41isykfdw" outgoing="_VAs4gNaHEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_-2DbQNaGEeeHt41isykfdw" name="[Show the seats sold/unsold report]" incoming="_UmPKENaHEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_FlH7UNaHEeeHt41isykfdw" name="[Show membership renewal report]" incoming="_VAs4gNaHEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_L0luQNaHEeeHt41isykfdw" name="[Show upcoming performance report]" incoming="_eBBpgNaHEeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

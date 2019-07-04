@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_-prqUM4OEeeWCoZVqpQG2A" name="Gold Club Membership">
+  <packagedElement xmi:type="uml:Package" xmi:id="_BzGSUM4PEeeWCoZVqpQG2A" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_XrW_EM4PEeeWCoZVqpQG2A" name="Manage Gold Club Membership">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_FLvMoM4QEeeWCoZVqpQG2A" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ZeetEM4QEeeWCoZVqpQG2A" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_fIF2YM4PEeeWCoZVqpQG2A" name="Create Membership">
+      <extend xmi:type="uml:Extend" xmi:id="_FLt-gM4QEeeWCoZVqpQG2A" extendedCase="_XrW_EM4PEeeWCoZVqpQG2A" extensionLocation="_FLvMoM4QEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_kqnq0M4PEeeWCoZVqpQG2A" addition="_hv_swM4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_vl5FkM4PEeeWCoZVqpQG2A" addition="_qFk3oM4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_sFz0kM4QEeeWCoZVqpQG2A" addition="_kQQ0oM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_hv_swM4PEeeWCoZVqpQG2A" name="Customer Pays £10">
+      <include xmi:type="uml:Include" xmi:id="_QQJVQM4QEeeWCoZVqpQG2A" addition="_NxI8MM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_qFk3oM4PEeeWCoZVqpQG2A" name="Customer gives Required Details">
+      <include xmi:type="uml:Include" xmi:id="_GUMCcM4QEeeWCoZVqpQG2A" addition="_xfo1cM4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_GnMeAM4QEeeWCoZVqpQG2A" addition="_0RnN0M4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_G3lqcM4QEeeWCoZVqpQG2A" addition="_2eYAUM4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_HGebAM4QEeeWCoZVqpQG2A" addition="_9cqoIM4PEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_HaEscM4QEeeWCoZVqpQG2A" addition="_AjxjAM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_xfo1cM4PEeeWCoZVqpQG2A" name="Get First Name"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_0RnN0M4PEeeWCoZVqpQG2A" name="Get Last Name"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_2eYAUM4PEeeWCoZVqpQG2A" name="Get Contact Number"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9cqoIM4PEeeWCoZVqpQG2A" name="Get Email Address"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_AjxjAM4QEeeWCoZVqpQG2A" name="Get Payment Information"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_NxI8MM4QEeeWCoZVqpQG2A" name="Use Payment Information"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_RWAxIM4QEeeWCoZVqpQG2A" name="Delete Membership">
+      <extend xmi:type="uml:Extend" xmi:id="_ZeeGAM4QEeeWCoZVqpQG2A" extendedCase="_XrW_EM4PEeeWCoZVqpQG2A" extensionLocation="_ZeetEM4QEeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_LBIdQM4REeeWCoZVqpQG2A" addition="_HC1bsM4REeeWCoZVqpQG2A"/>
+      <include xmi:type="uml:Include" xmi:id="_sli5YNW3EeeT3JQhebChgw" addition="_kQQ0oM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_kQQ0oM4QEeeWCoZVqpQG2A" name="Get customer membership status">
+      <include xmi:type="uml:Include" xmi:id="_1KDcQM4QEeeWCoZVqpQG2A" addition="_zSWTwM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zSWTwM4QEeeWCoZVqpQG2A" name="Query Member File"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_HC1bsM4REeeWCoZVqpQG2A" name="Remove Member Data from File">
+      <include xmi:type="uml:Include" xmi:id="_SsWcgM4REeeWCoZVqpQG2A" addition="_zSWTwM4QEeeWCoZVqpQG2A"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_L7010M4PEeeWCoZVqpQG2A" name="Staff Member"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_NWmxwM4PEeeWCoZVqpQG2A" name="Manager">
+    <generalization xmi:type="uml:Generalization" xmi:id="_SYaewM4PEeeWCoZVqpQG2A" general="_L7010M4PEeeWCoZVqpQG2A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_OxKrQM4PEeeWCoZVqpQG2A" name="Customer Representative">
+    <generalization xmi:type="uml:Generalization" xmi:id="_RtQo8M4PEeeWCoZVqpQG2A" general="_L7010M4PEeeWCoZVqpQG2A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_cHArAM4PEeeWCoZVqpQG2A" memberEnd="_cHEVYM4PEeeWCoZVqpQG2A _cHFjgM4PEeeWCoZVqpQG2A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cHDHQM4PEeeWCoZVqpQG2A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cHDuUM4PEeeWCoZVqpQG2A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cHEVYM4PEeeWCoZVqpQG2A" name="manage gold club membership" type="_XrW_EM4PEeeWCoZVqpQG2A" association="_cHArAM4PEeeWCoZVqpQG2A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_cHFjgM4PEeeWCoZVqpQG2A" name="staff member" type="_L7010M4PEeeWCoZVqpQG2A" association="_cHArAM4PEeeWCoZVqpQG2A"/>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Gq144Nv7EeeER9mTEIccOQ" type="PapyrusUMLActivityDiagram" name="Delete Performance Activity Diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_Gq144dv7EeeER9mTEIccOQ" type="Activity_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Gq144tv7EeeER9mTEIccOQ" type="Activity_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Gq145Nv7EeeER9mTEIccOQ" type="Activity_ParameterCompartment">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Gq145dv7EeeER9mTEIccOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Gq145tv7EeeER9mTEIccOQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gq1459v7EeeER9mTEIccOQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Gq146Nv7EeeER9mTEIccOQ" type="Activity_PreconditionCompartment">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Gq146dv7EeeER9mTEIccOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Gq146tv7EeeER9mTEIccOQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gq1469v7EeeER9mTEIccOQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Gq147Nv7EeeER9mTEIccOQ" type="Activity_PostconditionCompartment">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Gq147dv7EeeER9mTEIccOQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Gq147tv7EeeER9mTEIccOQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gq1479v7EeeER9mTEIccOQ"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Gq148Nv7EeeER9mTEIccOQ" type="Activity_ActivityNodeCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_idti4Nv7EeeER9mTEIccOQ" type="InitialNode_Shape">
+        <children xmi:type="notation:DecorationNode" xmi:id="_idti49v7EeeER9mTEIccOQ" type="InitialNode_FloatingNameLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_idti5Nv7EeeER9mTEIccOQ" x="32" y="-20"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_idti5dv7EeeER9mTEIccOQ" type="InitialNode_StereotypeLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_idti5tv7EeeER9mTEIccOQ" y="15"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_idti4dv7EeeER9mTEIccOQ"/>
+        <element xmi:type="uml:InitialNode" href="Delete%20Performance%20Activity%20Diagram.uml#_idrtsNv7EeeER9mTEIccOQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_idti4tv7EeeER9mTEIccOQ" x="75" y="48" width="41" height="41"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_mFL_4Nv7EeeER9mTEIccOQ" type="OpaqueAction_Shape">
+        <children xmi:type="notation:DecorationNode" xmi:id="_mFL_49v7EeeER9mTEIccOQ" type="OpaqueAction_NameLabel"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_mFL_5Nv7EeeER9mTEIccOQ" type="OpaqueAction_FloatingNameLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_mFL_5dv7EeeER9mTEIccOQ" y="15"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_mFL_4dv7EeeER9mTEIccOQ"/>
+        <element xmi:type="uml:OpaqueAction" href="Delete%20Performance%20Activity%20Diagram.uml#_mFJjoNv7EeeER9mTEIccOQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mFL_5tv7EeeER9mTEIccOQ" x="195" y="108" width="121" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_n8gt4Nv7EeeER9mTEIccOQ" type="OpaqueAction_Shape">
+        <children xmi:type="notation:DecorationNode" xmi:id="_n8gt49v7EeeER9mTEIccOQ" type="OpaqueAction_NameLabel"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_n8gt5Nv7EeeER9mTEIccOQ" type="OpaqueAction_FloatingNameLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_n8gt5dv7EeeER9mTEIccOQ" y="15"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_n8gt4dv7EeeER9mTEIccOQ"/>
+        <element xmi:type="uml:OpaqueAction" href="Delete%20Performance%20Activity%20Diagram.uml#_n8dqkNv7EeeER9mTEIccOQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n8gt5tv7EeeER9mTEIccOQ" x="155" y="228" width="181" height="61"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_v3fncNv7EeeER9mTEIccOQ" type="ActivityFinalNode_Shape">
+        <children xmi:type="notation:DecorationNode" xmi:id="_v3fnc9v7EeeER9mTEIccOQ" type="ActivityFinalNode_FloatingNameLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_v3fndNv7EeeER9mTEIccOQ" x="44" y="-20"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_v3fnddv7EeeER9mTEIccOQ" type="ActivityFinalNode_StereotypeLabel">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_v3fndtv7EeeER9mTEIccOQ" y="15"/>
+        </children>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_v3fncdv7EeeER9mTEIccOQ"/>
+        <element xmi:type="uml:ActivityFinalNode" href="Delete%20Performance%20Activity%20Diagram.uml#_v3b9ENv7EeeER9mTEIccOQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v3fnctv7EeeER9mTEIccOQ" x="235" y="388" width="41" height="41"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gq148dv7EeeER9mTEIccOQ"/>
+    </children>
+    <element xmi:type="uml:Activity" href="Delete%20Performance%20Activity%20Diagram.uml#_Fkf74Nv7EeeER9mTEIccOQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gq148tv7EeeER9mTEIccOQ"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_Gq1489v7EeeER9mTEIccOQ" name="diagram_compatibility_version" stringValue="1.3.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_Gq149Nv7EeeER9mTEIccOQ"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_Gq149dv7EeeER9mTEIccOQ" diagramKindId="org.eclipse.papyrus.uml.diagram.activity">
+    <owner xmi:type="uml:Model" href="Delete%20Performance%20Activity%20Diagram.uml#_EqVZsNv7EeeER9mTEIccOQ"/>
+  </styles>
+  <element xmi:type="uml:Activity" href="Delete%20Performance%20Activity%20Diagram.uml#_Fkf74Nv7EeeER9mTEIccOQ"/>
+  <edges xmi:type="notation:Connector" xmi:id="_tDZIINv7EeeER9mTEIccOQ" type="ControlFlow_Edge" source="_idti4Nv7EeeER9mTEIccOQ" target="_mFL_4Nv7EeeER9mTEIccOQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tDZII9v7EeeER9mTEIccOQ" type="ControlFlow_NameLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_tXjaQNv7EeeER9mTEIccOQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tDZIJNv7EeeER9mTEIccOQ" x="-27" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tDZIJdv7EeeER9mTEIccOQ" type="ControlFlow_WeightLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_tXl2gNv7EeeER9mTEIccOQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tDZIJtv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tDZIJ9v7EeeER9mTEIccOQ" type="ControlFlow_GuardLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_tXoSwNv7EeeER9mTEIccOQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tDZIKNv7EeeER9mTEIccOQ" x="27" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_tDZIKdv7EeeER9mTEIccOQ" type="ControlFlow_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_tXrWENv7EeeER9mTEIccOQ" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tDZIKtv7EeeER9mTEIccOQ" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_tDZIIdv7EeeER9mTEIccOQ"/>
+    <element xmi:type="uml:ControlFlow" href="Delete%20Performance%20Activity%20Diagram.uml#_tDVdwNv7EeeER9mTEIccOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tDZIItv7EeeER9mTEIccOQ" points="[118, 100, -643984, -643984]$[258, 100, -643984, -643984]$[258, 140, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tDkuUNv7EeeER9mTEIccOQ" id="(0.926829268292683,0.4878048780487805)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_tDlVYNv7EeeER9mTEIccOQ" id="(0.4793388429752066,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_uRM_ENv7EeeER9mTEIccOQ" type="ControlFlow_Edge" source="_mFL_4Nv7EeeER9mTEIccOQ" target="_n8gt4Nv7EeeER9mTEIccOQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_uRM_E9v7EeeER9mTEIccOQ" type="ControlFlow_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uRM_FNv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_uRM_Fdv7EeeER9mTEIccOQ" type="ControlFlow_WeightLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uRM_Ftv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_uRM_F9v7EeeER9mTEIccOQ" type="ControlFlow_GuardLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uRM_GNv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_uRM_Gdv7EeeER9mTEIccOQ" type="ControlFlow_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_uRM_Gtv7EeeER9mTEIccOQ" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_uRM_Edv7EeeER9mTEIccOQ"/>
+    <element xmi:type="uml:ControlFlow" href="Delete%20Performance%20Activity%20Diagram.uml#_uRJUsNv7EeeER9mTEIccOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uRM_Etv7EeeER9mTEIccOQ" points="[-1, 2, 0, -71]$[-1, 61, 0, -12]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uRXXINv7EeeER9mTEIccOQ" id="(0.5041322314049587,0.9672131147540983)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uRXXIdv7EeeER9mTEIccOQ" id="(0.5524861878453039,0.19672131147540983)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ypOIMNv7EeeER9mTEIccOQ" type="ControlFlow_Edge" source="_n8gt4Nv7EeeER9mTEIccOQ" target="_v3fncNv7EeeER9mTEIccOQ">
+    <children xmi:type="notation:DecorationNode" xmi:id="_ypOIM9v7EeeER9mTEIccOQ" type="ControlFlow_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ypOINNv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_ypOINdv7EeeER9mTEIccOQ" type="ControlFlow_WeightLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ypOINtv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_ypOIN9v7EeeER9mTEIccOQ" type="ControlFlow_GuardLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ypOIONv7EeeER9mTEIccOQ" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_ypOIOdv7EeeER9mTEIccOQ" type="ControlFlow_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ypOIOtv7EeeER9mTEIccOQ" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ypOIMdv7EeeER9mTEIccOQ"/>
+    <element xmi:type="uml:ControlFlow" href="Delete%20Performance%20Activity%20Diagram.uml#_ypJPsNv7EeeER9mTEIccOQ"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ypOIMtv7EeeER9mTEIccOQ" points="[-1, 79, 4, -77]$[-1, 180, 4, 24]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yqTtUNv7EeeER9mTEIccOQ" id="(0.5580110497237569,0.9344262295081968)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yqTtUdv7EeeER9mTEIccOQ" id="(0.5121951219512195,0.24390243902439024)"/>
+  </edges>
+</notation:Diagram>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_3r1L4MBvEee8kYuPgpw0eQ" name="Theatre Use Case 1">
+  <packagedElement xmi:type="uml:Package" xmi:id="_UdBC0MBxEee8kYuPgpw0eQ" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_FUl1sMByEee8kYuPgpw0eQ" name="Create Booking">
+      <include xmi:type="uml:Include" xmi:id="_WXhVwMBzEee8kYuPgpw0eQ" addition="_KTKzEMBzEee8kYuPgpw0eQ"/>
+      <include xmi:type="uml:Include" xmi:id="_kIrYgMBzEee8kYuPgpw0eQ" addition="_if75EMBzEee8kYuPgpw0eQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_KTKzEMBzEee8kYuPgpw0eQ" name="Store Customer Details"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_if75EMBzEee8kYuPgpw0eQ" name="Remove seat from available seats"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Q-WcMMB0Eee8kYuPgpw0eQ" name="Delete Booking">
+      <include xmi:type="uml:Include" xmi:id="_g4JmcMB0Eee8kYuPgpw0eQ" addition="_bx43QMB0Eee8kYuPgpw0eQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bx43QMB0Eee8kYuPgpw0eQ" name="Add Seat to available seats"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_5LOv0MB0Eee8kYuPgpw0eQ" name="Edit booking"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_JKpZ4MB1Eee8kYuPgpw0eQ" name="Change Details">
+      <include xmi:type="uml:Include" xmi:id="_PSapYMB1Eee8kYuPgpw0eQ" addition="_5LOv0MB0Eee8kYuPgpw0eQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_U0pi4MB1Eee8kYuPgpw0eQ" name="Manage Booking">
+      <include xmi:type="uml:Include" xmi:id="_ZmoEIMB1Eee8kYuPgpw0eQ" addition="_FUl1sMByEee8kYuPgpw0eQ"/>
+      <include xmi:type="uml:Include" xmi:id="_atKOYMB1Eee8kYuPgpw0eQ" addition="_Q-WcMMB0Eee8kYuPgpw0eQ"/>
+      <include xmi:type="uml:Include" xmi:id="_b51c4MB1Eee8kYuPgpw0eQ" addition="_5LOv0MB0Eee8kYuPgpw0eQ"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_XtcRwMBxEee8kYuPgpw0eQ" name="Manager"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Z2UCwMBxEee8kYuPgpw0eQ" name="Customer Representative"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_mPGH4MByEee8kYuPgpw0eQ" name="Customer"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_c77zEMB1Eee8kYuPgpw0eQ"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_d4aCYMB1Eee8kYuPgpw0eQ"/>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_a-2l4MB2Eee8kYuPgpw0eQ" name="Booking a Seat" node="_GDjlwMB4Eee8kYuPgpw0eQ _Jou8sMB4Eee8kYuPgpw0eQ _eeK6gMB4Eee8kYuPgpw0eQ _wx5JgMB4Eee8kYuPgpw0eQ _DOk2EMXxEeeNlaDQ9_ibIA _QXZmIMX0EeeNlaDQ9_ibIA _WXncIMX0EeeNlaDQ9_ibIA _VwCh8MX4Eee2gYqM9DZDYA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SCzmAMB4Eee8kYuPgpw0eQ" target="_Jou8sMB4Eee8kYuPgpw0eQ" source="_GDjlwMB4Eee8kYuPgpw0eQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jVq08MB4Eee8kYuPgpw0eQ" name="Yes" target="_eeK6gMB4Eee8kYuPgpw0eQ" source="_Jou8sMB4Eee8kYuPgpw0eQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6gCp0MB4Eee8kYuPgpw0eQ" name="No" target="_wx5JgMB4Eee8kYuPgpw0eQ" source="_Jou8sMB4Eee8kYuPgpw0eQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_IJJSoMXxEeeNlaDQ9_ibIA" name="No" target="_DOk2EMXxEeeNlaDQ9_ibIA" source="_eeK6gMB4Eee8kYuPgpw0eQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_dufjEMX0EeeNlaDQ9_ibIA" name="Yes" target="_WXncIMX0EeeNlaDQ9_ibIA" source="_eeK6gMB4Eee8kYuPgpw0eQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_a968EMX4Eee2gYqM9DZDYA" target="_QXZmIMX0EeeNlaDQ9_ibIA" source="_VwCh8MX4Eee2gYqM9DZDYA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_GDjlwMB4Eee8kYuPgpw0eQ" name="Request to make a booking" outgoing="_SCzmAMB4Eee8kYuPgpw0eQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_Jou8sMB4Eee8kYuPgpw0eQ" name="Is the performance in the schedule?" incoming="_SCzmAMB4Eee8kYuPgpw0eQ" outgoing="_jVq08MB4Eee8kYuPgpw0eQ _6gCp0MB4Eee8kYuPgpw0eQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_eeK6gMB4Eee8kYuPgpw0eQ" name="Are Seats available?" incoming="_jVq08MB4Eee8kYuPgpw0eQ" outgoing="_IJJSoMXxEeeNlaDQ9_ibIA _dufjEMX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_wx5JgMB4Eee8kYuPgpw0eQ" name="Play is not in schedule, unable to make booking" incoming="_6gCp0MB4Eee8kYuPgpw0eQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_DOk2EMXxEeeNlaDQ9_ibIA" name="Not enough seats available, unable to make booking" incoming="_IJJSoMXxEeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_QXZmIMX0EeeNlaDQ9_ibIA" name="Booking made" incoming="_a968EMX4Eee2gYqM9DZDYA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_WXncIMX0EeeNlaDQ9_ibIA" name="Seats are marked as booked" incoming="_dufjEMX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_VwCh8MX4Eee2gYqM9DZDYA" name="Customer Details are stored" outgoing="_a968EMX4Eee2gYqM9DZDYA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_erYJcMXxEeeNlaDQ9_ibIA" name="Canceling a booking" node="_i1zigMXxEeeNlaDQ9_ibIA _KrTQ4MXyEeeNlaDQ9_ibIA _-fXqEMXyEeeNlaDQ9_ibIA _CEsyAMXzEeeNlaDQ9_ibIA _nNyIAMX0EeeNlaDQ9_ibIA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_RY-p0MXyEeeNlaDQ9_ibIA" target="_KrTQ4MXyEeeNlaDQ9_ibIA" source="_i1zigMXxEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_RLzUAMXzEeeNlaDQ9_ibIA" name="No" target="_CEsyAMXzEeeNlaDQ9_ibIA" source="_KrTQ4MXyEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_q7JKkMX0EeeNlaDQ9_ibIA" name="Yes" target="_nNyIAMX0EeeNlaDQ9_ibIA" source="_KrTQ4MXyEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_r1vKkMX0EeeNlaDQ9_ibIA" target="_-fXqEMXyEeeNlaDQ9_ibIA" source="_nNyIAMX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_i1zigMXxEeeNlaDQ9_ibIA" name="Request to cancel a booking" outgoing="_RY-p0MXyEeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_KrTQ4MXyEeeNlaDQ9_ibIA" name="Does the booking exist?" incoming="_RY-p0MXyEeeNlaDQ9_ibIA" outgoing="_RLzUAMXzEeeNlaDQ9_ibIA _q7JKkMX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_-fXqEMXyEeeNlaDQ9_ibIA" name="Booking canceled" incoming="_r1vKkMX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_CEsyAMXzEeeNlaDQ9_ibIA" name="Booking not found, no bookings canceled" incoming="_RLzUAMXzEeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_nNyIAMX0EeeNlaDQ9_ibIA" name="Seats are marked as available" incoming="_q7JKkMX0EeeNlaDQ9_ibIA" outgoing="_r1vKkMX0EeeNlaDQ9_ibIA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_oKTQEMXzEeeNlaDQ9_ibIA" name="Changing a booking" node="_sbBeYMXzEeeNlaDQ9_ibIA _uzwQUMXzEeeNlaDQ9_ibIA _8l3VUMXzEeeNlaDQ9_ibIA _3gQQ8MX0EeeNlaDQ9_ibIA _APaZcMX1EeeNlaDQ9_ibIA _IcehgMX1EeeNlaDQ9_ibIA _QWDF0MX1EeeNlaDQ9_ibIA _b_NhUMX1EeeNlaDQ9_ibIA _pdtGwMX1EeeNlaDQ9_ibIA">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_zG8j0MXzEeeNlaDQ9_ibIA" target="_uzwQUMXzEeeNlaDQ9_ibIA" source="_sbBeYMXzEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_y1zUAMX0EeeNlaDQ9_ibIA" name="Yes" target="_8l3VUMXzEeeNlaDQ9_ibIA" source="_uzwQUMXzEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_7yJj8MX0EeeNlaDQ9_ibIA" name="No" target="_3gQQ8MX0EeeNlaDQ9_ibIA" source="_uzwQUMXzEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_XNbNUMX1EeeNlaDQ9_ibIA" name="Yes" target="_QWDF0MX1EeeNlaDQ9_ibIA" source="_8l3VUMXzEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ZywQ0MX1EeeNlaDQ9_ibIA" name="Yes" target="_APaZcMX1EeeNlaDQ9_ibIA" source="_QWDF0MX1EeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gRenwMX1EeeNlaDQ9_ibIA" target="_b_NhUMX1EeeNlaDQ9_ibIA" source="_IcehgMX1EeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_sXGVwMX1EeeNlaDQ9_ibIA" name="No" target="_pdtGwMX1EeeNlaDQ9_ibIA" source="_8l3VUMXzEeeNlaDQ9_ibIA"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_vEa3oMX1EeeNlaDQ9_ibIA" name="No" target="_pdtGwMX1EeeNlaDQ9_ibIA" source="_QWDF0MX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_sbBeYMXzEeeNlaDQ9_ibIA" name="Request to change a booking" outgoing="_zG8j0MXzEeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_uzwQUMXzEeeNlaDQ9_ibIA" name="Does the booking exist?" incoming="_zG8j0MXzEeeNlaDQ9_ibIA" outgoing="_y1zUAMX0EeeNlaDQ9_ibIA _7yJj8MX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_8l3VUMXzEeeNlaDQ9_ibIA" name="Is the new performance in the schedule?" incoming="_y1zUAMX0EeeNlaDQ9_ibIA" outgoing="_XNbNUMX1EeeNlaDQ9_ibIA _sXGVwMX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_3gQQ8MX0EeeNlaDQ9_ibIA" name="Booking does not exist" incoming="_7yJj8MX0EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_APaZcMX1EeeNlaDQ9_ibIA" name="Seats from old performance marked as available" incoming="_ZywQ0MX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_IcehgMX1EeeNlaDQ9_ibIA" name="Seats from new performance marked as booked" outgoing="_gRenwMX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_QWDF0MX1EeeNlaDQ9_ibIA" name="Are seats available" incoming="_XNbNUMX1EeeNlaDQ9_ibIA" outgoing="_ZywQ0MX1EeeNlaDQ9_ibIA _vEa3oMX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_b_NhUMX1EeeNlaDQ9_ibIA" name="Booking Succesfully changed" incoming="_gRenwMX1EeeNlaDQ9_ibIA"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_pdtGwMX1EeeNlaDQ9_ibIA" name="Booking not changed" incoming="_sXGVwMX1EeeNlaDQ9_ibIA _vEa3oMX1EeeNlaDQ9_ibIA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_lnTLAMX3Eee2gYqM9DZDYA" memberEnd="_lnbG0MX3Eee2gYqM9DZDYA _lncU8MX3Eee2gYqM9DZDYA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lnUZIMX3Eee2gYqM9DZDYA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lnVAMMX3Eee2gYqM9DZDYA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_lnbG0MX3Eee2gYqM9DZDYA" name="customer representative" type="_Z2UCwMBxEee8kYuPgpw0eQ" association="_lnTLAMX3Eee2gYqM9DZDYA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_lncU8MX3Eee2gYqM9DZDYA" name="customer" type="_mPGH4MByEee8kYuPgpw0eQ" association="_lnTLAMX3Eee2gYqM9DZDYA"/>
+  </packagedElement>
+</uml:Model>

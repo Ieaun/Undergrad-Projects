@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_zkWxMMX2Eee2gYqM9DZDYA" name="Manage Performances">
+  <packagedElement xmi:type="uml:Package" xmi:id="_BSIv0MX3Eee2gYqM9DZDYA" name="System">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_vFV_sNm0Eee428-OFcaGAw" name="Manage Performances">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_AT-2wNv2EeeER9mTEIccOQ" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_bkdI4Nv3EeeER9mTEIccOQ" name="ExtensionPoint2"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_pEsawNv3EeeER9mTEIccOQ" name="ExtensionPoint3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_yytpUNm0Eee428-OFcaGAw" name="Create Performance">
+      <extend xmi:type="uml:Extend" xmi:id="_AT-PsNv2EeeER9mTEIccOQ" extendedCase="_vFV_sNm0Eee428-OFcaGAw" extensionLocation="_AT-2wNv2EeeER9mTEIccOQ"/>
+      <include xmi:type="uml:Include" xmi:id="__QTMMNv1EeeER9mTEIccOQ" addition="_7IZisNv1EeeER9mTEIccOQ"/>
+      <include xmi:type="uml:Include" xmi:id="__wzRMNv1EeeER9mTEIccOQ" addition="_84PIoNv1EeeER9mTEIccOQ"/>
+      <include xmi:type="uml:Include" xmi:id="_ZsYpcNv2EeeER9mTEIccOQ" addition="_N1zdANv2EeeER9mTEIccOQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7IZisNv1EeeER9mTEIccOQ" name="Add performance date"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_84PIoNv1EeeER9mTEIccOQ" name="Add performance time"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_N1zdANv2EeeER9mTEIccOQ" name="Can't be same date and time as another performance"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Zc7bsNv3EeeER9mTEIccOQ" name="Edit Performance">
+      <extend xmi:type="uml:Extend" xmi:id="_bkch0Nv3EeeER9mTEIccOQ" extendedCase="_vFV_sNm0Eee428-OFcaGAw" extensionLocation="_bkdI4Nv3EeeER9mTEIccOQ"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_hIHlwNv3EeeER9mTEIccOQ" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_hfduwdv3EeeER9mTEIccOQ" name="ExtensionPoint2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_d-ilsNv3EeeER9mTEIccOQ" name="Change date">
+      <extend xmi:type="uml:Extend" xmi:id="_hIG-sNv3EeeER9mTEIccOQ" extendedCase="_Zc7bsNv3EeeER9mTEIccOQ" extensionLocation="_hIHlwNv3EeeER9mTEIccOQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_eeDMMNv3EeeER9mTEIccOQ" name="Change time">
+      <extend xmi:type="uml:Extend" xmi:id="_hfduwNv3EeeER9mTEIccOQ" extendedCase="_Zc7bsNv3EeeER9mTEIccOQ" extensionLocation="_hfduwdv3EeeER9mTEIccOQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ms3AsNv3EeeER9mTEIccOQ" name="Delete performance">
+      <extend xmi:type="uml:Extend" xmi:id="_pErzsNv3EeeER9mTEIccOQ" extendedCase="_vFV_sNm0Eee428-OFcaGAw" extensionLocation="_pEsawNv3EeeER9mTEIccOQ"/>
+      <include xmi:type="uml:Include" xmi:id="_vvxLoNv3EeeER9mTEIccOQ" addition="_rtMuENv3EeeER9mTEIccOQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_rtMuENv3EeeER9mTEIccOQ" name="Delete performance from file"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_rqebUNm0Eee428-OFcaGAw" name="Manager"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_x1nH4Nm0Eee428-OFcaGAw" memberEnd="_x1tOgNm0Eee428-OFcaGAw _x1tOgdm0Eee428-OFcaGAw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x1nH4dm0Eee428-OFcaGAw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x1nH4tm0Eee428-OFcaGAw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x1tOgNm0Eee428-OFcaGAw" name="manage performances" type="_vFV_sNm0Eee428-OFcaGAw" association="_x1nH4Nm0Eee428-OFcaGAw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_x1tOgdm0Eee428-OFcaGAw" name="manager" type="_rqebUNm0Eee428-OFcaGAw" association="_x1nH4Nm0Eee428-OFcaGAw"/>
+  </packagedElement>
+</uml:Model>

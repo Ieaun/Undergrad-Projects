@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8dkusNaLEeeHt41isykfdw" name="Manage Plays Activity Diagram">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_9FId8NaLEeeHt41isykfdw" name="Manage Plays" node="_-baUYNaLEeeHt41isykfdw _NrNfYNaMEeeHt41isykfdw _Uvs10NaMEeeHt41isykfdw _WA8bQNaMEeeHt41isykfdw _XCCE0NaMEeeHt41isykfdw _25CSoNaMEeeHt41isykfdw _4Ub5oNaMEeeHt41isykfdw _C_UvANaNEeeHt41isykfdw _GGJ9ENaNEeeHt41isykfdw _bXYfANaNEeeHt41isykfdw _fwcJ8NaNEeeHt41isykfdw _qI3WUNaNEeeHt41isykfdw _xvw2QNaNEeeHt41isykfdw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_StXKoNaMEeeHt41isykfdw" target="_NrNfYNaMEeeHt41isykfdw" source="_-baUYNaLEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_c-7hENaMEeeHt41isykfdw" name="[Create Plays]" target="_XCCE0NaMEeeHt41isykfdw" source="_NrNfYNaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_d744kNaMEeeHt41isykfdw" name="[Delete Plays]" target="_Uvs10NaMEeeHt41isykfdw" source="_NrNfYNaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gN_eENaMEeeHt41isykfdw" name="[Edit Plays]" target="_WA8bQNaMEeeHt41isykfdw" source="_NrNfYNaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_6xB34NaMEeeHt41isykfdw" target="_25CSoNaMEeeHt41isykfdw" source="_XCCE0NaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_7Xn90NaMEeeHt41isykfdw" target="_4Ub5oNaMEeeHt41isykfdw" source="_25CSoNaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_J9O8UNaNEeeHt41isykfdw" target="_C_UvANaNEeeHt41isykfdw" source="_WA8bQNaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_LgZ_QNaNEeeHt41isykfdw" target="_GGJ9ENaNEeeHt41isykfdw" source="_C_UvANaNEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_efwlMNaNEeeHt41isykfdw" target="_bXYfANaNEeeHt41isykfdw" source="_Uvs10NaMEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_3q5_ANaNEeeHt41isykfdw" target="_fwcJ8NaNEeeHt41isykfdw" source="_bXYfANaNEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_4I6JoNaNEeeHt41isykfdw" target="_qI3WUNaNEeeHt41isykfdw" source="_GGJ9ENaNEeeHt41isykfdw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_4pxbANaNEeeHt41isykfdw" target="_xvw2QNaNEeeHt41isykfdw" source="_4Ub5oNaMEeeHt41isykfdw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_-baUYNaLEeeHt41isykfdw" name="[Manager wants to manage plays]" outgoing="_StXKoNaMEeeHt41isykfdw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_NrNfYNaMEeeHt41isykfdw" name="[How do you want to manage plays?]" incoming="_StXKoNaMEeeHt41isykfdw" outgoing="_c-7hENaMEeeHt41isykfdw _d744kNaMEeeHt41isykfdw _gN_eENaMEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_Uvs10NaMEeeHt41isykfdw" name="Delete Plays" incoming="_d744kNaMEeeHt41isykfdw" outgoing="_efwlMNaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_WA8bQNaMEeeHt41isykfdw" name="Edit Plays" incoming="_gN_eENaMEeeHt41isykfdw" outgoing="_J9O8UNaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_XCCE0NaMEeeHt41isykfdw" name="Create Plays" incoming="_c-7hENaMEeeHt41isykfdw" outgoing="_6xB34NaMEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_25CSoNaMEeeHt41isykfdw" name="Add play name" incoming="_6xB34NaMEeeHt41isykfdw" outgoing="_7Xn90NaMEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_4Ub5oNaMEeeHt41isykfdw" name="Add list of performances" incoming="_7Xn90NaMEeeHt41isykfdw" outgoing="_4pxbANaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_C_UvANaNEeeHt41isykfdw" name="Select performance to edit" incoming="_J9O8UNaNEeeHt41isykfdw" outgoing="_LgZ_QNaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_GGJ9ENaNEeeHt41isykfdw" name="Change performance time/ date" incoming="_LgZ_QNaNEeeHt41isykfdw" outgoing="_4I6JoNaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_bXYfANaNEeeHt41isykfdw" name="Remove selected play from file" incoming="_efwlMNaNEeeHt41isykfdw" outgoing="_3q5_ANaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_fwcJ8NaNEeeHt41isykfdw" name="[Exit, play info deleted]" incoming="_3q5_ANaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_qI3WUNaNEeeHt41isykfdw" name="[Exit, play information changed]" incoming="_4I6JoNaNEeeHt41isykfdw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_xvw2QNaNEeeHt41isykfdw" name="[Exit, play added]" incoming="_4pxbANaNEeeHt41isykfdw"/>
+  </packagedElement>
+</uml:Model>

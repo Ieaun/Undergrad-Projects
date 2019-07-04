@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_A8mIIM4PEeeWCoZVqpQG2A" type="UseCase" name="Gold Club Membership Use Case" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_BzPcQM4PEeeWCoZVqpQG2A" type="Package_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_BzYmMM4PEeeWCoZVqpQG2A" type="Package_NameLabel"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_BzYmMc4PEeeWCoZVqpQG2A" type="Package_PackagedElementCompartment">
+      <children xmi:type="notation:Shape" xmi:id="_XrgJAM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_XrgwEM4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_XrgwEc4PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_XrgwEs4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_XrgwE84PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_XrgwFM4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_XrgwFc4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XrgwFs4PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_XrW_EM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XrgJAc4PEeeWCoZVqpQG2A" x="34" y="252" width="200" height="100"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_fIMkEM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_fINLIM4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_fINLIc4PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_fINLIs4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_fINLI84PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_fINLJM4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_fINLJc4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fINLJs4PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_fIF2YM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fIMkEc4PEeeWCoZVqpQG2A" x="98" y="36" width="160" height="100"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_hwI2sM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_hwI2ss4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_hwI2s84PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_hwI2tM4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_hwI2tc4PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_hwI2ts4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_hwI2t84PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hwI2uM4PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_hv_swM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hwI2sc4PEeeWCoZVqpQG2A" x="314" y="12" width="160" height="100"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_qFtagM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_qFtags4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_qFtag84PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_qFtahM4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_qFuBkM4PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_qFuBkc4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_qFuBks4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFuBk84PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_qFk3oM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFtagc4PEeeWCoZVqpQG2A" x="294" y="132" width="200" height="100"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xfx_YM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xfx_Ys4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_xfx_Y84PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_xfx_ZM4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_xfymcM4PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_xfymcc4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_xfymcs4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xfymc84PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_xfo1cM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xfx_Yc4PEeeWCoZVqpQG2A" x="674" y="72" width="100" height="60"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_0RwXwM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_0Rw-0M4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_0Rw-0c4PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_0Rw-0s4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_0Rw-084PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_0Rw-1M4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_0Rw-1c4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0Rw-1s4PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_0RnN0M4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0RwXwc4PEeeWCoZVqpQG2A" x="694" y="132" width="100" height="60"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_2ehKQM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_2ehKQs4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_2ehKQ84PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_2ehKRM4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_2ehxUM4PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_2ehxUc4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_2ehxUs4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ehxU84PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_2eYAUM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2ehKQc4PEeeWCoZVqpQG2A" x="674" y="212" width="140" height="60"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_9c1AMM4PEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_9c1nQM4PEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_9c1nQc4PEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_9c1nQs4PEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_9c1nQ84PEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_9c1nRM4PEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_9c1nRc4PEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9c1nRs4PEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_9cqoIM4PEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9c1AMc4PEeeWCoZVqpQG2A" x="518" y="276" width="120" height="80"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_Aj77EM4QEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Aj77Es4QEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Aj77E84QEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Aj77FM4QEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_Aj77Fc4QEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_Aj77Fs4QEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_Aj77F84QEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Aj77GM4QEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_AjxjAM4QEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Aj77Ec4QEeeWCoZVqpQG2A" x="314" y="272" width="160" height="80"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_NxT7UM4QEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_NxT7Us4QEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_NxUiYM4QEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_NxUiYc4QEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_NxUiYs4QEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_NxUiY84QEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_NxUiZM4QEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NxUiZc4QEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_NxI8MM4QEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NxT7Uc4QEeeWCoZVqpQG2A" x="514" y="12" width="160" height="80"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_RWMXUM4QEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_RWM-YM4QEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_RWM-Yc4QEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_RWM-Ys4QEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_RWM-Y84QEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_RWM-ZM4QEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_RWM-Zc4QEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RWM-Zs4QEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_RWAxIM4QEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RWMXUc4QEeeWCoZVqpQG2A" x="54" y="432" width="160" height="100"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_kQbzwM4QEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_kQbzws4QEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_kQbzw84QEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_kQbzxM4QEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_kQbzxc4QEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_kQbzxs4QEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_kQbzx84QEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQbzyM4QEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_kQQ0oM4QEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQbzwc4QEeeWCoZVqpQG2A" x="274" y="372" width="220" height="80"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_zShS4M4QEeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_zShS4s4QEeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_zShS484QEeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_zShS5M4QEeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_zShS5c4QEeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_zShS5s4QEeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_zShS584QEeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zShS6M4QEeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_zSWTwM4QEeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zShS4c4QEeeWCoZVqpQG2A" x="498" y="496" width="140" height="60"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_HDBo8M4REeeWCoZVqpQG2A" type="UseCase_Shape_CN">
+        <children xmi:type="notation:DecorationNode" xmi:id="_HDCQAM4REeeWCoZVqpQG2A" type="UseCase_NameLabel_CN"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_HDCQAc4REeeWCoZVqpQG2A" type="UseCase_FloatingNameLabel_CN">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_HDCQAs4REeeWCoZVqpQG2A" y="15"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_HDCQA84REeeWCoZVqpQG2A" type="UseCase_ExtensionPointCompartment_CN">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_HDCQBM4REeeWCoZVqpQG2A"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_HDCQBc4REeeWCoZVqpQG2A"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDCQBs4REeeWCoZVqpQG2A"/>
+        </children>
+        <element xmi:type="uml:UseCase" href="Gold%20Club%20Membership.uml#_HC1bsM4REeeWCoZVqpQG2A"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HDBo8c4REeeWCoZVqpQG2A" x="234" y="512" width="200" height="100"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BzYmMs4PEeeWCoZVqpQG2A"/>
+    </children>
+    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_BzPcQc4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Package" href="Gold%20Club%20Membership.uml#_BzGSUM4PEeeWCoZVqpQG2A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BzPcQs4PEeeWCoZVqpQG2A" x="440" y="100" width="861" height="661"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_L72D8M4PEeeWCoZVqpQG2A" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_L72D8s4PEeeWCoZVqpQG2A" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L72rAM4PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_L72rAc4PEeeWCoZVqpQG2A" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L72rAs4PEeeWCoZVqpQG2A" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_L72rA84PEeeWCoZVqpQG2A" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L72rBM4PEeeWCoZVqpQG2A" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_L72rBc4PEeeWCoZVqpQG2A" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_L72rBs4PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Gold%20Club%20Membership.uml#_L7010M4PEeeWCoZVqpQG2A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L72D8c4PEeeWCoZVqpQG2A" x="280" y="300" width="120" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_NWpOAM4PEeeWCoZVqpQG2A" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NWpOAs4PEeeWCoZVqpQG2A" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NWpOA84PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_NWpOBM4PEeeWCoZVqpQG2A" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NWpOBc4PEeeWCoZVqpQG2A" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_NWpOBs4PEeeWCoZVqpQG2A" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NWpOB84PEeeWCoZVqpQG2A" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_NWpOCM4PEeeWCoZVqpQG2A" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_NWpOCc4PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Gold%20Club%20Membership.uml#_NWmxwM4PEeeWCoZVqpQG2A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NWpOAc4PEeeWCoZVqpQG2A" x="120" y="120" width="120" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_OxLSUM4PEeeWCoZVqpQG2A" type="Actor_Shape">
+    <children xmi:type="notation:DecorationNode" xmi:id="_OxL5YM4PEeeWCoZVqpQG2A" type="Actor_NameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OxL5Yc4PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OxL5Ys4PEeeWCoZVqpQG2A" type="Actor_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OxL5Y84PEeeWCoZVqpQG2A" x="20" y="100"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OxL5ZM4PEeeWCoZVqpQG2A" type="Actor_QualifiedNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OxL5Zc4PEeeWCoZVqpQG2A" x="20" y="80"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_OxL5Zs4PEeeWCoZVqpQG2A" type="Actor_FloatingNameLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_OxL5Z84PEeeWCoZVqpQG2A" y="15"/>
+    </children>
+    <element xmi:type="uml:Actor" href="Gold%20Club%20Membership.uml#_OxKrQM4PEeeWCoZVqpQG2A"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OxLSUc4PEeeWCoZVqpQG2A" x="60" y="340" width="100" height="160"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_A8mIIc4PEeeWCoZVqpQG2A" name="diagram_compatibility_version" stringValue="1.3.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_A8mIIs4PEeeWCoZVqpQG2A"/>
+  <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_A8mII84PEeeWCoZVqpQG2A" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
+    <owner xmi:type="uml:Model" href="Gold%20Club%20Membership.uml#_-prqUM4OEeeWCoZVqpQG2A"/>
+  </styles>
+  <element xmi:type="uml:Model" href="Gold%20Club%20Membership.uml#_-prqUM4OEeeWCoZVqpQG2A"/>
+  <edges xmi:type="notation:Connector" xmi:id="_RtaZ8M4PEeeWCoZVqpQG2A" type="Generalization_Edge" source="_OxLSUM4PEeeWCoZVqpQG2A" target="_L72D8M4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RtbBAM4PEeeWCoZVqpQG2A" type="Generalization_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WAjqIM4PEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_RtbBAc4PEeeWCoZVqpQG2A" x="1" y="-17"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_RtaZ8c4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Generalization" href="Gold%20Club%20Membership.uml#_RtQo8M4PEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RtaZ8s4PEeeWCoZVqpQG2A" points="[160, 440, -643984, -643984]$[240, 400, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RuGWcM4PEeeWCoZVqpQG2A" id="(1.0,0.5)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RuGWcc4PEeeWCoZVqpQG2A" id="(0.0,0.625)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_SYhzgM4PEeeWCoZVqpQG2A" type="Generalization_Edge" source="_NWpOAM4PEeeWCoZVqpQG2A" target="_L72D8M4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_SYiakM4PEeeWCoZVqpQG2A" type="Generalization_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WArl8M4PEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SYiakc4PEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_SYhzgc4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Generalization" href="Gold%20Club%20Membership.uml#_SYaewM4PEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SYhzgs4PEeeWCoZVqpQG2A" points="[200, 260, -643984, -643984]$[240, 320, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SYzgUM4PEeeWCoZVqpQG2A" id="(1.0,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SY0HYM4PEeeWCoZVqpQG2A" id="(0.0,0.125)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_cHHYsM4PEeeWCoZVqpQG2A" type="Association_Edge" source="_L72D8M4PEeeWCoZVqpQG2A" target="_XrgJAM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_cHHYs84PEeeWCoZVqpQG2A" type="Association_NameLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DDnCgM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_cHHYtM4PEeeWCoZVqpQG2A" y="39"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_cHHYtc4PEeeWCoZVqpQG2A" type="Association_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DDxakM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_cHHYts4PEeeWCoZVqpQG2A" x="-1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_cHHYsc4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Association" href="Gold%20Club%20Membership.uml#_cHArAM4PEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_cHHYss4PEeeWCoZVqpQG2A" points="[360, 460, -643984, -643984]$[480, 420, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cHfMIM4PEeeWCoZVqpQG2A" id="(1.0,0.625)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cHfMIc4PEeeWCoZVqpQG2A" id="(0.0,0.4)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_kqyp8M4PEeeWCoZVqpQG2A" type="Include_Edge" source="_fIMkEM4PEeeWCoZVqpQG2A" target="_hwI2sM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqzRAM4PEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DD8ZsM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqzRAc4PEeeWCoZVqpQG2A" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_kqzRAs4PEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DEGKsM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_kqzRA84PEeeWCoZVqpQG2A" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kqyp8c4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_kqnq0M4PEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_kqyp8s4PEeeWCoZVqpQG2A" points="[760, 317, -643984, -643984]$[880, 309, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_krQkAM4PEeeWCoZVqpQG2A" id="(0.98125,0.36)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_krQkAc4PEeeWCoZVqpQG2A" id="(0.0,0.6)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_vmC2kM4PEeeWCoZVqpQG2A" type="Include_Edge" source="_fIMkEM4PEeeWCoZVqpQG2A" target="_qFtagM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_vmDdoM4PEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DERw4M4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vmDdoc4PEeeWCoZVqpQG2A" x="1" y="17"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_vmDdos4PEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DEcI8M4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vmDdo84PEeeWCoZVqpQG2A" x="1" y="-17"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vmC2kc4PEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_vl5FkM4PEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vmC2ks4PEeeWCoZVqpQG2A" points="[740, 320, -643984, -643984]$[800, 350, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vmZb4M4PEeeWCoZVqpQG2A" id="(0.975,0.76)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vmZb4c4PEeeWCoZVqpQG2A" id="(0.1,0.10666666666666628)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_FL6LwM4QEeeWCoZVqpQG2A" type="Extend_Edge" source="_fIMkEM4PEeeWCoZVqpQG2A" target="_XrgJAM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_FL6Lw84QEeeWCoZVqpQG2A" type="Extend_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_eGidUM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_FL6LxM4QEeeWCoZVqpQG2A" x="1" y="17"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_FL6Lxc4QEeeWCoZVqpQG2A" type="Extend_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_eGsOUM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_FL6Lxs4QEeeWCoZVqpQG2A" y="-19"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_FL6Lwc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Extend" href="Gold%20Club%20Membership.uml#_FLt-gM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FL6Lws4QEeeWCoZVqpQG2A" points="[660, 309, -643984, -643984]$[605, 380, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FMW3sM4QEeeWCoZVqpQG2A" id="(0.35,0.97)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FMW3sc4QEeeWCoZVqpQG2A" id="(0.36,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GUVMYM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_qFtagM4PEeeWCoZVqpQG2A" target="_xfx_YM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GUVzcM4QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_SzYuEM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GUVzcc4QEeeWCoZVqpQG2A" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_GUVzcs4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Szk7UM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GUVzc84QEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GUVMYc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_GUMCcM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GUVMYs4QEeeWCoZVqpQG2A" points="[980, 380, -643984, -643984]$[1040, 352, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GUrxsM4QEeeWCoZVqpQG2A" id="(0.945,0.2)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GUrxsc4QEeeWCoZVqpQG2A" id="(0.0,0.5333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_GnW2EM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_qFtagM4PEeeWCoZVqpQG2A" target="_0RwXwM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_GnW2E84QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_TZnAkM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GnW2FM4QEeeWCoZVqpQG2A" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_GnW2Fc4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_TZymwM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_GnW2Fs4QEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_GnW2Ec4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_GnMeAM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GnW2Es4QEeeWCoZVqpQG2A" points="[970, 420, -643984, -643984]$[1040, 432, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GntbYM4QEeeWCoZVqpQG2A" id="(1.0,0.6)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GntbYc4QEeeWCoZVqpQG2A" id="(0.0,0.5333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_G3wCgM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_qFtagM4PEeeWCoZVqpQG2A" target="_2ehKQM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_G3wCg84QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_UWLWgM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_G3wChM4QEeeWCoZVqpQG2A" x="1" y="17"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_G3wChc4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_UWWVoM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_G3wChs4QEeeWCoZVqpQG2A" x="1" y="-17"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_G3wCgc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_G3lqcM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_G3wCgs4QEeeWCoZVqpQG2A" points="[940, 434, -643984, -643984]$[1000, 464, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_G4FZsM4QEeeWCoZVqpQG2A" id="(0.945,0.8)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_G4FZsc4QEeeWCoZVqpQG2A" id="(0.0,0.3333333333333333)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_HGoMAM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_qFtagM4PEeeWCoZVqpQG2A" target="_9c1AMM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_HGozEM4QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_VBEtoM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HGozEc4QEeeWCoZVqpQG2A" x="-1" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_HGozEs4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_VBQT0M4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HGozE84QEeeWCoZVqpQG2A" y="-19"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_HGoMAc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_HGebAM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HGoMAs4QEeeWCoZVqpQG2A" points="[880, 440, -643984, -643984]$[888, 460, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HHDCwM4QEeeWCoZVqpQG2A" id="(0.8,0.93)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HHDCwc4QEeeWCoZVqpQG2A" id="(0.13333333333333333,0.0625)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_HaOdcM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_qFtagM4PEeeWCoZVqpQG2A" target="_Aj77EM4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_HaOdc84QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WKcwgM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HaOddM4QEeeWCoZVqpQG2A" x="-1" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_HaOddc4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WKoWsM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_HaOdds4QEeeWCoZVqpQG2A" x="1" y="-19"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_HaOdcc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_HaEscM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HaOdcs4QEeeWCoZVqpQG2A" points="[820, 434, -643984, -643984]$[768, 460, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HanfAM4QEeeWCoZVqpQG2A" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HanfAc4QEeeWCoZVqpQG2A" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_QQZz8M4QEeeWCoZVqpQG2A" type="Include_Edge" source="_hwI2sM4PEeeWCoZVqpQG2A" target="_NxT7UM4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QQZz884QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_eG30gM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_QQZz9M4QEeeWCoZVqpQG2A" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_QQZz9c4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_eHEBwM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_QQZz9s4QEeeWCoZVqpQG2A" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_QQZz8c4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_QQJVQM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QQZz8s4QEeeWCoZVqpQG2A" points="[1020, 260, -643984, -643984]$[1080, 260, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QQ1RwM4QEeeWCoZVqpQG2A" id="(1.0,0.4)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QQ1Rwc4QEeeWCoZVqpQG2A" id="(0.0,0.5)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_ZeqTQM4QEeeWCoZVqpQG2A" type="Extend_Edge" source="_RWMXUM4QEeeWCoZVqpQG2A" target="_XrgJAM4PEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Zeq6UM4QEeeWCoZVqpQG2A" type="Extend_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_bkCEUM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Zeq6Uc4QEeeWCoZVqpQG2A" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_Zeq6Us4QEeeWCoZVqpQG2A" type="Extend_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_bkMcYM4QEeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Zeq6U84QEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ZeqTQc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Extend" href="Gold%20Club%20Membership.uml#_ZeeGAM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ZeqTQs4QEeeWCoZVqpQG2A" points="[600, 568, -643984, -643984]$[580, 480, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZfG_MM4QEeeWCoZVqpQG2A" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ZfG_Mc4QEeeWCoZVqpQG2A" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_sGAB0M4QEeeWCoZVqpQG2A" type="Include_Edge" source="_fIMkEM4PEeeWCoZVqpQG2A" target="_kQbzwM4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_sGAB084QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_LsXyoM4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_sGAB1M4QEeeWCoZVqpQG2A" x="1" y="18"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_sGAB1c4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Lskm8M4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_sGAB1s4QEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_sGAB0c4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_sFz0kM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sGAB0s4QEeeWCoZVqpQG2A" points="[700, 240, -643984, -643984]$[840, 280, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sGZqcM4QEeeWCoZVqpQG2A" id="(0.6,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sGZqcc4QEeeWCoZVqpQG2A" id="(0.09090909090909091,0.1)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_1KPCcM4QEeeWCoZVqpQG2A" type="Include_Edge" source="_kQbzwM4QEeeWCoZVqpQG2A" target="_zShS4M4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_1KPCc84QEeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Lr_YIM4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_1KPCdM4QEeeWCoZVqpQG2A" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_1KPCdc4QEeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_LsK-UM4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_1KPpgM4QEeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_1KPCcc4QEeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_1KDcQM4QEeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1KPCcs4QEeeWCoZVqpQG2A" points="[1060, 276, -643984, -643984]$[1100, 269, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1KmO0M4QEeeWCoZVqpQG2A" id="(0.9681818181818181,0.75)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1KmO0c4QEeeWCoZVqpQG2A" id="(0.2571428571428571,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_LBTcYM4REeeWCoZVqpQG2A" type="Include_Edge" source="_RWMXUM4QEeeWCoZVqpQG2A" target="_HDBo8M4REeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_LBUDcM4REeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_LBUDcc4REeeWCoZVqpQG2A" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_LBUDcs4REeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_LBUDc84REeeWCoZVqpQG2A" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_LBTcYc4REeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_LBIdQM4REeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LBTcYs4REeeWCoZVqpQG2A" points="[620, 657, -643984, -643984]$[680, 676, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LBsd8M4REeeWCoZVqpQG2A" id="(0.75,0.9733333333333326)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LBsd8c4REeeWCoZVqpQG2A" id="(0.0,0.36)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_SsjQ0M4REeeWCoZVqpQG2A" type="Include_Edge" source="_HDBo8M4REeeWCoZVqpQG2A" target="_zShS4M4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_SsjQ084REeeWCoZVqpQG2A" type="Include_KeywordLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_S3fVgM4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SsjQ1M4REeeWCoZVqpQG2A" x="-1" y="19"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_SsjQ1c4REeeWCoZVqpQG2A" type="Include_StereotypeLabel">
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_S3sJ0M4REeeWCoZVqpQG2A" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_SsjQ1s4REeeWCoZVqpQG2A" x="1" y="-18"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_SsjQ0c4REeeWCoZVqpQG2A"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_SsWcgM4REeeWCoZVqpQG2A"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SsjQ0s4REeeWCoZVqpQG2A" points="[840, 644, -643984, -643984]$[945, 640, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ss_VsM4REeeWCoZVqpQG2A" id="(1.0,0.36)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ss_Vsc4REeeWCoZVqpQG2A" id="(0.0,0.6)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_slyJ8NW3EeeT3JQhebChgw" type="Include_Edge" source="_RWMXUM4QEeeWCoZVqpQG2A" target="_kQbzwM4QEeeWCoZVqpQG2A">
+    <children xmi:type="notation:DecorationNode" xmi:id="_slyJ89W3EeeT3JQhebChgw" type="Include_KeywordLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_slyxANW3EeeT3JQhebChgw" y="20"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_slyxAdW3EeeT3JQhebChgw" type="Include_StereotypeLabel">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_slyxAtW3EeeT3JQhebChgw" y="-20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_slyJ8dW3EeeT3JQhebChgw"/>
+    <element xmi:type="uml:Include" href="Gold%20Club%20Membership.uml#_sli5YNW3EeeT3JQhebChgw"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_slyJ8tW3EeeT3JQhebChgw" points="[680, 570, -643984, -643984]$[780, 554, -643984, -643984]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_smTHUNW3EeeT3JQhebChgw" id="(0.8,0.1)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_smTHUdW3EeeT3JQhebChgw" id="(0.03636363636363636,0.675)"/>
+  </edges>
+</notation:Diagram>
