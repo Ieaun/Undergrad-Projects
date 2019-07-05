@@ -17,7 +17,7 @@ Dissertation: Python (Client) and some C++ (Firmware), Grade : 90%
 Computer Vision: MATLAB, Grade :  64%
 
 ## Second Year (Average 64%)
-Agile Software Development: C#, Grade : 95%
+Agile Software Development: Grade : 95%
 
 Systems analysis and procces: C#, Grade : 82%
 
