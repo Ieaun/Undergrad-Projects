@@ -4,7 +4,7 @@ Within this repo you will find past project I have completed while at the Univer
 
 Link to Demonstration video: https://youtu.be/glqE2nKNF8U 
 
-For any visitors to the repo, i would reccomend my dissertation, embbeded systems coursework and computational science coursework to gauge my abilities (all third year modules).
+For any visitors to the repo, i would reccomend my dissertation, embbeded systems coursework and computational science coursework to gauge my abilities (all third year modules in C/C++ and python).
 
 # Breakdown of languages
 ## Third Year (Average 82%)
