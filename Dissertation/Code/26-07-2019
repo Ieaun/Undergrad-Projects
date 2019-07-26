@@ -1,0 +1,1071 @@
+#!/usr/bin/env python
+# Code altered by IEAUN ROBERTS of the University of Hull
+# -*- coding: utf-8 -*-
+#
+#     ||          ____  _ __
+#  +------+      / __ )(_) /_______________ _____  ___
+#  | 0xBC |     / __  / / __/ ___/ ___/ __ `/_  / / _ \
+#  +------+    / /_/ / / /_/ /__/ /  / /_/ / / /_/  __/
+#   ||  ||    /_____/_/\__/\___/_/   \__,_/ /___/\___/
+#
+#  Copyright (C) 2011-2013 Bitcraze AB
+#
+#  Crazyflie Nano Quadcopter Client
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+
+#  You should have received a copy of the GNU General Public License along with
+#  this program; if not, write to the Free Software Foundation, Inc.,
+#  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+"""
+The console tab is used as a console for printouts from the Crazyflie.
+"""
+import logging
+from dbm import error
+from multiprocessing.util import Finalize
+
+from PyQt5 import uic
+from PyQt5.QtCore import pyqtSignal
+# noinspection PyUnresolvedReferences
+from PyQt5.QtWidgets import QMessageBox
+from socket import socket, gethostbyname, AF_INET , SOCK_DGRAM , error
+import sys
+import select
+from dbus.server import Server
+from ufw.util import msg
+
+import cfclient
+from cfclient.ui.tab import Tab
+# noinspection PyUnresolvedReferences
+import cflib.crtp
+# noinspection PyUnresolvedReferences
+from cfclient.utils.input.inputreaderinterface import InputData
+from cfclient.utils.logconfigreader import LogConfig
+from cflib.crazyflie.log import LogConfig , Log
+# noinspection PyUnresolvedReferences
+from cfclient.utils.logconfigreader import LogVariable
+# noinspection PyUnresolvedReferences
+from cflib.crazyflie import Crazyflie
+# noinspection PyUnresolvedReferences
+from cflib.crazyflie.param import Param
+logging.basicConfig(level=logging.DEBUG)
+
+import time
+import numpy as np
+from numpy import zeros
+import matplotlib.pyplot as plt
+import datetime
+
+try:
+    import zmq
+except ImportError as e:
+    raise Exception("ZMQ library probably not installed ({})".format(e))
+
+__author__ = 'Bitcraze AB and Ieaun Roberts'
+__all__ = ['ConsoleTab']
+
+logger = logging.getLogger(__name__)
+
+console_tab_class = uic.loadUiType(cfclient.module_path +
+                                   "/ui/tabs/consoleTab.ui")[0]
+
+class ConsoleTab(Tab, console_tab_class):
+    """Console tab for showing printouts from Crazyflie"""
+    _connected_signal = pyqtSignal(str)
+    _disconnected_signal = pyqtSignal(str)
+    _log_data_signal: pyqtSignal = pyqtSignal(int, object, object)
+    _log_error_signal = pyqtSignal(object, str)
+    _param_updated_signal = pyqtSignal(str, str)
+    _update = pyqtSignal(str)
+
+    TransPositions = zeros([3,10]) #holds 3 Trans values
+    Counter = 0
+
+
+
+    def __init__(self, tabWidget, helper, *args):
+        super(ConsoleTab, self).__init__(*args)
+        self.setupUi(self)
+
+        self.tabName = "Virtual Trajectory"
+        self.menuName = "Virtual Trajectory Tab"
+        self.tabWidget = tabWidget
+        self._helper = helper
+
+        # Always wrap callbacks from Crazyflie API though QT Signal/Slots
+        # to avoid manipulating the UI when rendering it
+        self._connected_signal.connect(self._connected)
+        self._disconnected_signal.connect(self._disconnected)
+        self._update.connect(self.printText)
+        self._log_data_signal.connect(self._log_data_recieved)
+        self._param_updated_signal.connect(self._param_updated)
+
+        self._helper.cf.console.receivedChar.add_callback(self._update.emit)
+        self._helper.cf.connected.add_callback(self._connected_signal.emit)
+        self._helper.cf.disconnected.add_callback(
+            self._disconnected_signal.emit)
+
+        self._clearButton.clicked.connect(self.clear)
+        self.BtnConnect.clicked.connect(self.ConnectUDP)
+        self._dumpSystemLoadButton.clicked.connect(
+            lambda enabled:
+            self._helper.cf.param.set_value("system.taskDump", '1'))
+        self._propellerTestButton.clicked.connect(
+            lambda enabled:
+            self._helper.cf.param.set_value("health.startPropTest", '1'))
+        #self.BtnEnter.clicked.connect(self.ThrustCommand)
+        self.BtnEnterZMQ.clicked.connect(self.ZMQCommand)
+        self.LoggerTest.clicked.connect(self.Ramp)
+
+
+    def printText(self, text):
+        # Make sure we get printouts from the Crazyflie into the log (such as
+        # build version and test ok/fail)
+        logger.debug("[%s]", text)
+        self.console.insertPlainText(text)
+
+
+    def clear(self):
+        self.console.clear()
+        #self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+        #for i in range(50):
+            #self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+            #self._helper.cf.commander.send_setpoint(0, 0, 0, 10001)
+            #time.sleep(0.1)
+
+
+    # initially unlocks thrust protection, if pressed again then it sends a kill signal to the drone
+    def Zlog(self):
+        if self.StartLog.isChecked():
+            self.DeactiveThrustProtection()
+        else:
+            self._helper.cf.commander.send_stop_setpoint()
+
+
+    # Deactivate thrust protection
+    def DeactiveThrustProtection(self):
+        for i in range(10):
+            self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+
+
+    #Gradually increase thurst levels from 20000 to 30000 with 500 steps
+    def Ramp(self):
+        thrust_step = 500
+        thrust = 20000
+        pitch = 0
+        roll = 0
+        yawrate = 0
+        self.DeactiveThrustProtection()
+
+        while thrust < 30000:
+            self._helper.cf.commander.send_setpoint(roll, pitch, yawrate, thrust)
+            self.console.insertPlainText("R:" + str(roll) + " P:" + str(pitch) + " Y:" + str(yawrate) + " T:" + str(thrust) + "\n")
+            time.sleep(0.2)
+            thrust += thrust_step
+        self.EndCommand()
+
+
+    def _log_data_recieved(self, timestamp, data, log_conf):
+        """Callback when the log layer receives new data"""
+        """logger.debug("{0}:{1}:{2}".format(timestamp, log_conf.name, data))"""
+        self._temp_c.setText("{0:.2f}C".format(data["baro.temp"]))
+        self._temp_f.setText("{0:.2f}C".format(data["baro.temp"] * 1.8 + 32))
+
+        self.lblRollValue.setText("{0:.2f}".format(data["stabilizer.roll"]))
+        self.lblPitchValue.setText("{0:.2f}".format(data["stabilizer.pitch"]))
+        self.lblYawValue.setText("{0:.2f}".format(data["stabilizer.yaw"]))
+        self.lblThrustValue.setText("{0:.2f}".format(data["stabilizer.thrust"]))
+
+        Pitch = float(round((data["stabilizer.pitch"]), 1))
+        Pitch = round((Pitch + 1.80),1)                           #Trim Pitch (on my drone pitch needs to be trimmed, this may be due to damage to the gyro)
+        Yaw = int(round((data["stabilizer.yaw"]),1))
+        Roll = float(round((data["stabilizer.roll"]), 1))
+        Roll = round((Roll - 0.01),1)
+        Thrust = (data["stabilizer.thrust"])
+
+        if self.Off.isChecked() == False:
+            self.LogTest2(Roll, Pitch, Yaw, Thrust)
+
+        if self.RBConnectUDP.isChecked():
+            UDPSocket = self.ConnectToUDPStream()
+            self.UDPDataCoordinator(UDPSocket)
+        else:
+            self.UDPCOnnectStatus.setText("Socket Not Found")
+
+
+    def LogTest(self, Roll, Pitch, Yaw, Thrust):
+        if self.StartLog.isChecked():
+            self.RollV.setText(str(Roll))
+            self.PitchV.setText(str(Pitch))
+            self.YawV.setText(str(Yaw)) #Yaw does not matter as it will drift regardless
+            self.ThrustV.setText(str(Thrust))
+            # self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+            self._helper.cf.commander.send_setpoint(Roll, Pitch, 0, 20000)
+        else:
+            self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+        return
+
+
+    def LogTest2(self, Roll, Pitch, Yaw, Thrust):
+        self.RollV.setText(str(Roll))
+        self.PitchV.setText(str(Pitch))
+        self.YawV.setText(str(Yaw))
+        self.ThrustV.setText(str(Thrust))
+
+        #Deactivate thrust protection
+        if self.LoggingLock.isChecked():
+            self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+
+        #Rize
+        if self.StartLog.isChecked():
+            Yaw = 0 #Yaw is irrelavant
+            Thrustest =int(self.TxtThrust.toPlainText()) #Get Speed
+            self.progressBar.setValue(int((Thrustest / 60000) * 100))
+
+            if Thrustest <= 60000 and Thrustest > 10000:
+                #self.console.insertPlainText("R:" + str(Roll) + " P:" + str(Pitch) + " Y:" + str(Yaw) + " T:" + str(Thrustest) + "\n")
+                self._helper.cf.commander.send_setpoint(Roll, Pitch, Yaw, Thrustest)
+                #self._helper.cf.commander.send_setpoint(0, 0, 0, 20000)
+                self.lblThrusty.setText(str(Thrustest))
+
+        #Land (Locks controls)
+        if self.LandLog.isChecked() :
+            currentThrust = int(self.lblThrusty.text())
+            self.Land(Roll,Pitch,Yaw,currentThrust)
+
+
+        #Hover
+        if self.RBHover.isChecked():
+            HoverSpeed = int(self.txtHover.toPlainText()) #Get Speed
+            self.progressBar.setValue(int((HoverSpeed / 60000) * 100))
+            self._helper.cf.commander.send_setpoint(Roll, Pitch, 0, HoverSpeed)
+            self.lblThrusty.setText(str(HoverSpeed))
+
+        return
+
+    #TODO: incorperate PID controler into this method for smoother landing ?
+    def Land(self, Roll , Pitch, Yaw, thrust):
+        if thrust >= 35000:                                                                       #Decrease thrust to Hover level
+            thrust -= int(thrust * 0.005) + 3                                                        #Decrease thrust
+            self._helper.cf.commander.send_setpoint(Roll, Pitch, 0, int(thrust))                    #Send command
+            self.progressBar.setValue(int((thrust / 60000) * 100))
+            self.lblThrusty.setText(str(thrust))                                                    #Update GUI with new thrust
+            #time.sleep(0.01)                                                                        #Sleep
+
+        if thrust >= 15500 and thrust < 35000:                                                     #Decrease thrust to Land
+            thrust -= int(thrust * 0.015) + 8
+            self._helper.cf.commander.send_setpoint(Roll, Pitch, 0, int(thrust))
+            self.progressBar.setValue(int((thrust / 60000) * 100))
+            self.lblThrusty.setText(str(thrust))
+            #time.sleep(0.01)
+
+        if thrust < 15500:                                                                        #Send terminate command
+            self.EndCommand()
+            self.Off.setChecked(True)
+
+
+    def EndCommand(self):
+        self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+        # Make sure that the last packet leaves before the link is closed
+        # since the message queue is not flushed before closing
+        self.lblThrusty.setText("0")
+        self.progressBar.setValue(int((0 / 60000) * 100))
+        time.sleep(0.1)
+        self._helper.cf.commander.send_stop_setpoint()
+
+
+    def _connected(self, link_uri):
+        """Callback when the Crazyflie has been connected"""
+        self._dumpSystemLoadButton.setEnabled(True)
+        self._propellerTestButton.setEnabled(True)
+        self.BtnEnter.setEnabled(True)
+        self.BtnEnterZMQ.setEnabled(True)
+        self.lblStatus.setText("Connected")
+
+        """Enable all the panels"""
+        self.groupBox_3.setEnabled(True)
+        self.groupBox.setEnabled(True)
+        self.GBZMQ.setEnabled(True)
+
+        self.TxtThrust.setEnabled(True)
+        self.txtHover.setEnabled(True)
+        self.Move_Left_Box.setEnabled(True)
+        self.Move_Right_Box.setEnabled(True)
+
+
+        temp_conf = LogConfig("Ieaun Sensor", 100)
+        temp_conf.add_variable("baro.temp")
+        temp_conf.add_variable("stabilizer.roll")
+        temp_conf.add_variable("stabilizer.pitch")
+        temp_conf.add_variable("stabilizer.yaw")
+        temp_conf.add_variable("stabilizer.thrust")
+
+        self._helper.cf.commander.set_client_xmode(False)  # True)
+        self.DeactiveThrustProtection() #Deactivate thrust protection
+
+        self._helper.cf.log.add_config(temp_conf)
+        if temp_conf.valid:
+            temp_conf.data_received_cb.add_callback(self._log_data_signal.emit)
+            temp_conf.start()
+
+
+    def _disconnected(self, link_uri):
+        """Callback for when the Crazyflie has been disconnected"""
+        self.progressBar.setValue(0)
+        self.lblThrusty.setText("0")
+
+        """Memo"""
+        self._dumpSystemLoadButton.setEnabled(False)
+        self._propellerTestButton.setEnabled(False)
+
+        """ Adjust Thrust """
+        self.BtnEnter.setEnabled(False)
+        self.TxtEditThrust.clear()
+
+        """ Status """
+        self.lblStatus.setText("Disconnected")
+        self._temp_c.setText("0")
+        self._temp_f.setText("0")
+        self.lblThrustValue.setText("0")
+
+        """ Directional Information """
+        self.lblPitchValue.setText("0")
+        self.lblYawValue.setText("0")
+        self.lblRollValue.setText("0")
+
+        """ ZMQ """
+        self.BtnEnterZMQ.setEnabled(False)
+        self.TEDPitch.clear()
+        self.TEDRoll.clear()
+        self.TEDThrust.clear()
+        self.TEDYaw.clear()
+        self.progressBar.setValue(0)
+
+        """ Testing"""
+        self.YawV.setText("0")
+        self.PitchV.setText("0")
+        self.RollV.setText("0")
+        self.ThrustV.setText("0")
+
+        """UDP / Virtual trajectory"""
+        self.UDPCOnnectStatus.setText("Disconnected")
+        self.UDPX.setText("0")
+        self.UDPY.setText("0")
+        self.UDPZ.setText("0")
+        self.lblItemName.setText("None")
+        self.UDPCOnnectStatus.setText("Socket Not Found")
+        self.RBConnectUDP.setChecked(False)
+
+        """disable all the panels"""
+        self.groupBox_3.setEnabled(False)
+        self.groupBox.setEnabled(False)
+        self.GBZMQ.setEnabled(False)
+
+
+    def _param_updated(self, name, value):
+        """Callback when the registered parameter get's updated"""
+        logger.debug("Updated {0} to {1}".format(name, value))
+
+
+    def ZMQCommand(self):
+        self.progressBar2.setValue(0)
+        context = zmq.Context()
+        sender = context.socket(zmq.PUSH)
+        bind_addr = "tcp://127.0.0.1:{}".format(1024 + 188)
+        sender.connect(bind_addr)
+        Thrust = int(self.TEDThrust.toPlainText())
+        roll = int(self.TEDRoll.toPlainText())
+        Pitch = int(self.TEDPitch.toPlainText())
+        Yaw = int(self.TEDYaw.toPlainText())
+
+        cmdmess = {
+            "version": 1,
+            "ctrl": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0,
+                "thrust": 0.0
+            }
+        }
+        self.progressBar2.setValue(25)
+
+        # Unlocking thrust protection
+        cmdmess["ctrl"]["thrust"] = 0
+        sender.send_json(cmdmess)
+
+        for i in range(10):
+            cmdmess["ctrl"]["thrust"] = Thrust
+            sender.send_json(cmdmess)
+            time.sleep(0.5)
+
+        self.progressBar2.setValue(50)
+
+        for i in range(10):
+            Thrust -= Thrust*0.1
+            cmdmess["ctrl"]["thrust"] = Thrust
+            sender.send_json(cmdmess)
+            time.sleep(0.5)
+
+        cmdmess["ctrl"]["thrust"] = 0
+        sender.send_json(cmdmess)
+        self.progressBar2.setValue(100)
+
+###################################################################################  Connect ################
+    def getaddress(self):
+        ## IP Address Set
+        index = self.IPAddressSelect.currentIndex()
+        Message = ""
+        if index == 0:
+            Message += "LocalVMIP "
+            UDP_IP_ADDRESS = "127.0.0.1"
+        elif index == 1:
+            Message += "ViconIP"
+            UDP_IP_ADDRESS = "255.255.255.255"
+        else:
+            Message += "Error>>>:Default IP used: LocalVMIP "
+            UDP_IP_ADDRESS = "127.0.0.1"
+        return UDP_IP_ADDRESS, Message
+
+
+    def getPort(self):
+        Message = ""
+        PortNumber = self.TxeditPort.toPlainText()
+        if str(PortNumber) == "":
+            UDP_PORT_NO = 5000
+            Message += ("DEFAULT/" + str(UDP_PORT_NO))
+        else:
+            UDP_PORT_NO = int(float(self.TxeditPort.toPlainText()))
+            Message += str(UDP_PORT_NO)
+        return UDP_PORT_NO, Message
+
+
+    def BinderCoOrdinator(self,FinalMessagez):
+        # IP address Set
+        UDP_IP_ADDRESS, IPaddress = self.getaddress()
+        # Port Number Set
+        UDP_PORT_NO, IPPort = self.getPort()
+        FinalMessagez += ("IP Name : " + IPaddress + '\n' + "Searching on Port : " + IPPort)
+
+        #  Try to Bind
+        if UDP_IP_ADDRESS == "255.255.255.255":  # Bind to vicon subnet
+            clientSock = socket(AF_INET, SOCK_DGRAM)  # Socket
+            clientSock.bind((UDP_IP_ADDRESS, UDP_PORT_NO))
+            FinalMessagez += "\n" + "Bind successful"
+
+        if UDP_IP_ADDRESS == "127.0.0.1":  # Bind to LocalHost
+            hostName = gethostbyname('0.0.0.0')
+            clientSock = socket(AF_INET, SOCK_DGRAM)  # Socket
+            clientSock.bind((hostName, UDP_PORT_NO))
+        return FinalMessagez,clientSock
+
+
+    def ConnectToUDPStream(self):
+        ##### find stream  #########################################
+        FinalMessage,UDPSocket = self.BinderCoOrdinator("")
+        #self.RBConnectUDP.setChecked(False)
+        self.UDPCOnnectStatus.setText("Socket Found")
+        return UDPSocket
+
+
+    def GetUDPPacket(self, dataBlockSize,clientSock):
+        try:
+            clientSock.settimeout(5)  # to disable the vicon read for testing at home, comment the next line "recvfrom" and comment out Parse(self,data) and instead set all values to 0 "0,0,0,0,0,0,0,0,0"
+            data, addr = clientSock.recvfrom(dataBlockSize)
+            FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ = self.Parse(data)
+        except error:
+            print("ERROR >>>:Time Out with socket error :>>>" + str(error))
+            self.UDPCOnnectStatus.setText("Socket Time Out")
+            sys.exit()
+        return FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ,clientSock
+
+
+    # TODO: WORKING HERE
+    def UDPDataCoordinator(self,clientSock):
+        ##### Read UDP data ######################
+        dataBlockSize = 256  # Size of UDP blocks recieved by Vicon
+        FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ, clientSock = self.GetUDPPacket(dataBlockSize,clientSock)
+
+        counter = ConsoleTab.Counter                                #Add Values to global variable
+
+        if counter == 10:                                            #End of list
+            counter = 0
+            self.console.clear()
+
+
+        ConsoleTab.TransPositions[0, counter] = TransX
+        ConsoleTab.TransPositions[1, counter] = TransY
+        ConsoleTab.TransPositions[2, counter] = TransZ
+        ConsoleTab.Counter = counter + 1
+
+        self.UDPX.setText(str(TransX))
+        self.UDPX.setText(str(np.sum(ConsoleTab.TransPositions[0])))
+        self.UDPY.setText(str(TransY))
+        self.UDPY.setText(str(np.sum(ConsoleTab.TransPositions[1])))
+        self.UDPZ.setText(str(TransZ))
+        self.UDPZ.setText(str(np.sum(ConsoleTab.TransPositions[2])))
+        self.lblItemName.setText(str(ItemNamez))
+
+
+        self.console.insertPlainText(str(ConsoleTab.TransPositions))
+
+
+    # Plot the axis of the recoded data
+    def PlotAxis(self,ThrustLevels, Positions, Target, Locked, Time):
+        XThrust = np.array(ThrustLevels)
+        XPos = np.array(Positions)
+        TimeZ = np.array(Time)
+
+        plt.subplot(1, 2, 1)
+        plt.plot(TimeZ, XPos, label="Actual Position")
+        plt.plot(TimeZ, Target, label="Desired Position")
+        plt.xlabel('X - Time (Seconds)')
+        plt.ylabel('Y - Position (mm)')
+        plt.legend(loc='best')
+        plt.title("Position")
+
+        plt.subplot(1, 2, 2)
+        plt.plot(TimeZ, XThrust, label="Thrust command")
+        plt.plot(TimeZ, Locked, label="Maximum thrust clamp")
+        plt.title("Thrust levels")
+        plt.xlabel('X - Time (Seconds)')
+        plt.ylabel('Y - Thrust Value')
+        plt.legend(loc='best')
+        plt.show()
+        return
+
+    # parse UDP datastream into variables
+    def Parse(self, data):
+        FrameNumber = data[1] + data[2] + data[3]
+        Itemsinblock = data[4]
+        ItemNamez = data[8:31]
+        TransX = self.TransCoverter(32, 39,data)
+        TransY = self.TransCoverter(40, 47, data)
+        TransZ = self.TransCoverter(48, 55,data)
+        RotX = self.TransCoverter(56, 63,data)
+        RotY = self.TransCoverter(64, 71,data)
+        RotZ = self.TransCoverter(72, 79,data)
+        return FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ
+
+    # if a value is too far over the thresh hold it gets ignored and marked as an error
+    # +20 -20 gives a leway of 40
+    # if it evalueates as true then do not use value
+    def Range(self, Previous, Current):
+        # print("Previous :"+str(Previous) +"  Current :"+str(Current))
+        if Current <= Previous + 25 and Current >= Previous - 25:
+            # print("True")
+            return True
+        else:
+            # print("False")
+            return False
+
+    # Converts the byte value obtained from UDP stream into usable data (Convert to string then int then store in variable)
+    def TransCoverter(self, Low_Index, High_Index,data):
+        finalvalue = 0
+        holder = 0
+        while Low_Index <= High_Index:
+            holder = data[Low_Index]
+            finalvalue += int(str(holder))
+            Low_Index += 1
+        return finalvalue
+
+    def AddtoAverage(PrevioT, Tran, Aver):
+        BooT = Range(self, PrevioT, Tran)  # if too different dont use(assume noise)
+        if BooT != False:
+            Aver += Tran
+        return Aver
+
+
+    def PrintAllData(self, FrameNumber, Itemsinblock, ItemNamez, AverageTransX, AverageTransY, AverageTransZ,
+                     Moved, StartingPoint, Calibrated):
+        if Calibrated == False:
+            print("Frame Number :", FrameNumber, "TransX :", AverageTransX, " | ", "TransY :", AverageTransZ,
+                  " | ",
+                  "TransZ :", AverageTransY, " | ", "Moved:", Moved, " F")
+        if Calibrated == True:
+            print("Frame Number :", FrameNumber, "TransX :", AverageTransX, " | ", "TransY :", AverageTransZ,
+                  " | ",
+                  "TransZ :", AverageTransY, " | ", "Moved:", Moved, " | ", "Origin,", "X:", StartingPoint[0],
+                  " Y:", StartingPoint[2], " Z:", StartingPoint[1])
+        Printer = ""
+        Printer = "\n" + "Frame Number :" + str(FrameNumber) + "\n" + "Transition " + "\n" + "X :" + str(
+            AverageTransX) + " ," + "Y :" + str(AverageTransY) + " ," + "Z :" + str(
+            AverageTransZ)
+        return Printer
+
+
+    def IntegralArm(self, errorTerm, intergralSum, thrust, Ki):
+        # test if final value needs to be clamped (over 60000)
+        integralthrust = (intergralSum + errorTerm) * Ki
+        preThrust = thrust + integralthrust
+        Clamped, preThrust = Clamp(self, preThrust)
+
+        if (errorTerm >= 0 and errorTerm <= 30) == False and Clamped == 1:
+            # add value to sum, keep the test integral thrust
+            intergralSum += errorTerm
+            thrust += integralthrust
+        elif (errorTerm >= 0 and errorTerm <= 30) == False and Clamped == 0:
+            # uses previous integralSUm/ does not add new error value
+            integralthrust = intergralSum * Ki
+            thrust = 60000
+
+        return thrust, Clamped, integralthrust, intergralSum
+
+
+    # max thrust/ so clamp / conditional intergration, the controller shuts down intergration if it meets these conditions
+    def Clamp(self, thrust):
+        Saturating, SignsEqual = False, False
+        currentThrust = thrust
+
+        if thrust >= 60000:
+            thrust = 60000
+
+        # if true then no saturation taking place/ not at max thrust
+        if currentThrust == thrust:
+            Saturating = False
+        else:
+            Saturating = True
+
+        # if both positive then integrator tries to make more positive, if both negative then intergator tries to make more negative|| if both same sign
+        if (thrust > 0 and errorTerm > 0) or (thrust < 0 and errorTerm < 0):
+            SignsEqual = True
+        else:
+            SignsEqual = False
+
+        # if saturating and attempting to make values worse then intergator must be turned off
+        if (SignsEqual == True) and (Saturating == True):
+            return 0, thrust  # turn integral sum integration off
+        else:
+            return 1, thrust  # Keep integral sum integration on
+
+
+    def ProportionalArm(self, errorTerm, thrustp, Kp):
+        thrustp = errorTerm * Kp
+        return thrustp
+
+    def HasDroneMoved(self, PreviousTx, PreviousTy, PreviousTz, ActualAverageX, ActualAverageY, ActualAverageZ,
+                      Moved):
+        if PreviousTx == 0:
+            PreviousTx, PreviousTy, PreviousTz = ActualAverageX, ActualAverageY, ActualAverageZ
+            Moved = True
+        else:
+            if ActualAverageX <= PreviousTx + 20 and ActualAverageX >= PreviousTx - 20 or \
+                    ActualAverageY <= PreviousTy + 20 and ActualAverageY >= PreviousTy - 20 or \
+                    ActualAverageZ <= PreviousTz + 20 and ActualAverageZ >= PreviousTz - 20:
+                Moved = False
+            else:
+                Moved = True
+            PreviousTx, PreviousTy, PreviousTz = ActualAverageX, ActualAverageY, ActualAverageZ
+        return PreviousTx, PreviousTy, PreviousTz, Moved
+
+
+    # Gets the origin of the drone
+    def Calibrate(self, Calibrated, StartingPoint, SumsX, SumsY, SumsZ, ActualAverageX, ActualAverageY,
+                  ActualAverageZ):
+        if len(SumsZ) >= 20 and Calibrated == False:
+            X, Y, Z = 0, 0, 0
+            # Use values 40 - 50 as the first couple of values will always be on the lower end of the deviation
+            for i in range(10, 20):
+                X += SumsX[i]
+                Y += SumsY[i]
+                Z += SumsZ[i]
+
+            StartingPoint.append(X / 10)
+            StartingPoint.append(Y / 10)
+            StartingPoint.append(Z / 10)
+            Calibrated = True
+        else:
+            SumsX.append(ActualAverageX)
+            SumsY.append(ActualAverageY)
+            SumsZ.append(ActualAverageZ)
+            Calibrated = False
+        return Calibrated, StartingPoint, SumsX, SumsY, SumsZ
+
+
+    # Subtracts the first value in the array from the total and then deletes it from the array, then adds last value added (New) to total (Average)
+    def SlidingWindow(self, AverageX, AverageY, AverageZ, ArrayX, ArrayY, ArrayZ, NewX, NewY, NewZ):
+
+        ArrayX.append(NewX)
+        ArrayY.append(NewY)
+        ArrayZ.append(NewZ)
+        # print("Before",AverageX, "New value:",NewX)
+        AverageX += ArrayX[-1]
+        # print("After addidng new value",AverageX, "Next sub value:",ArrayX[0])
+        AverageX -= ArrayX[0]
+        # print("After sub first value",AverageX)
+        AverageY += ArrayY[-1]
+        AverageY -= ArrayY[0]
+
+        AverageZ += ArrayZ[-1]
+        AverageZ -= ArrayZ[0]
+
+        del ArrayZ[0]
+        del ArrayY[0]
+        del ArrayX[0]
+
+        return AverageX, AverageY, AverageZ, ArrayX, ArrayY, ArrayZ
+
+
+    # average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+    def GetActualAverage(self, ActualAverageX, ActualAverageY, ActualAverageZ, TotalX, TotalY, TotalZ,
+                         windowSize):
+        ActualAverageX = sum(TotalX) / len(TotalX) / windowSize
+        ActualAverageY = sum(TotalY) / len(TotalY) / windowSize
+        ActualAverageZ = sum(TotalZ) / len(TotalZ) / windowSize
+        return ActualAverageX, ActualAverageY, ActualAverageZ
+
+
+    def Writetofile1(Data):
+        File_object = open("Thrust.txt", "w")
+        File_object.write("\n" + str(Data))
+        File_object = open("Averages.txt", "w")
+        File_object.write("\n" + str(Data))
+
+
+    def Writetofile(Name, Data, Error):
+        File_object = open(Name + ".txt", "a")
+        if Name == "Thrust":
+            File_object.write("\n" + "Thurst = " + str(Data) + " Error = " + str(Error))
+            File_object.close()
+        if Name == "Averages":
+            File_object.write("\n" + "Data = " + str(Data) + " Error = " + str(Error))
+            File_object.close()
+
+
+    def StandardD(Array):
+        Sq = []
+        mean = sum(Array) / len(Array)
+        for i in range(len(Array)):
+            Sq.append((Array[i] - mean) * (Array[i] - mean))
+
+        newmean = sum(Sq) * (1 / len(Sq))
+        print(newmean)
+        deviation = math.sqrt(newmean)
+        print(deviation)
+
+
+    def DerivativeRateofChange(errorTerm, PreviousError):
+        if PreviousError == 0:
+            RateofChange = 0
+        else:
+            RateofChange = PreviousError - errorTerm
+        return RateofChange
+
+
+    def PIDController(self, thrust, errorTerm, IntCLamp, intergralSum, PreviousError):
+        Ki = 3
+        Kd = 15
+        Kp = 50
+        IntCLamp = 0
+
+        # These all calculate the next send_setpoint command
+        '''PROPORTIONAL'''
+        proportionalthrust = ProportionalArm(self, errorTerm, thrust, Kp)
+        '''DERIVATIVE'''
+        RateOchange = DerivativeRateofChange(errorTerm, PreviousError)
+        derivativethrust = RateOchange * Kd
+        # Add each arms thust values together to get final thrust
+        thrust = proportionalthrust + derivativethrust
+        '''INTEGRAL'''
+        # Clamp, checks if values are saturating (Intergral growing out of bounds) /returns either 1 = dont clamp  or 0= clamp
+        thrust, IntCLamp, integralthrust, intergralSum = IntegralArm(self, errorTerm, intergralSum, thrust, Ki)
+
+        # Write Data to file and Print
+        if True:
+            Writetofile("Thrust", str(thrust) + " Prop" + str(proportionalthrust) + " Integral" + str(
+                integralthrust) + " Der:" + str(derivativethrust) + " Integral Sum :" + str(
+                intergralSum) + " intClamp :" + str(IntCLamp), errorTerm)
+            print("Thrust", thrust, "Error Term:", errorTerm, " Propor", proportionalthrust, " Deriv",
+                  derivativethrust, " Integr",
+                  integralthrust)
+
+        return thrust, intergralSum, IntCLamp
+
+
+    def OriginTranslator(ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint):
+        ActualAverageX, ActualAverageY, ActualAverageZ = ActualAverageX - StartingPoint[0], ActualAverageY - \
+                                                         StartingPoint[1], ActualAverageZ - StartingPoint[2]
+        return ActualAverageX, ActualAverageY, ActualAverageZ
+
+
+    # Send command to drone
+    def SendCommand(TotalX, thrust, TimeVar, ThrustLevels, Time, Positions, TotalY, roll, pitch, yawrate, PosY):
+        # Set Thrust to 0 to disable movement
+        # Send command to drone for the big 4 variables
+        if len(TotalX) % 10 == 0:
+            if thrust < 0: thrust = 0
+            ThrustLevels.append(thrust)
+            Time.append(TimeVar)
+            TimeVar += 0.1
+            Positions.append(PosY)
+            self._helper.cf.commander.send_setpoint(roll, pitch, yawrate, int(thrust))
+        return ThrustLevels, Time, TimeVar, Positions
+
+
+    def initPID():
+        ###### Initialize PID Variables
+        thrust = 4000
+        ClientPID = self.CBOXPID.isChecked()
+        IntCLamp = False
+        commandVariableX = int(self.TEDX.toPlainText())
+        commandVariableY = int(self.TEDY.toPlainText())
+        commandVariableZ = int(self.TEDZ.toPlainText())
+        errorTerm, PreviousError, intergralSum = 0, 0, 0
+        # when the desired value is reached twice then boolDone = true and exit
+        DoubleCheck = 0
+        BoolDone = False
+
+        '''Deactivate thrust proctection'''
+        self.DeactiveThrustProtection()
+        return roll, pitch, yawrate, thrust, ClientPID, IntCLamp, commandVariableX, commandVariableY, commandVariableZ, errorTerm, PreviousError, intergralSum, DoubleCheck, BoolDone
+
+
+    def init():
+        FinalMessage = ""  # Holds all logging information monitored, displayed at the end of execution in client
+        self.clear()
+        self.progressBar.setValue(0)
+        Writetofile1("Start")  # begin logging
+        Moved = False  # Has drone moved ?
+        ProgressBar, PreviousTx, PreviousTy, PreviousTz = 0, 0, 0, 0  # Used to determine if drone has moved
+        PosY = 0  # Used for traversal of Y axis (Holds sliding window pos)
+        AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ = 0, 0, 0, 0, 0, 0
+        ActualAverageX, ActualAverageY, ActualAverageZ = 1000, 1000, 1000
+        # all thrust levels, all pos, time
+        ThrustLevels = []
+        Positions = []
+        Time = []
+        TimeVar = 0
+        windowSize = 50  # Sliding window size
+        # Contain all respective actual values
+        ArrayTransX = []
+        ArrayTransY = []
+        ArrayTransZ = []
+        # holds the averages to be used to calculate the starting point
+        SumsX = []
+        SumsY = []
+        SumsZ = []
+        StartingPoint = []  # Holds the orgin values,[0]=x [1]=y [2]=z
+        Calibrated = False
+        AlteredCommand = False  # Used to alter the command variables into resonable data
+        CommandCounter = 0  # Counts commands sent
+
+        return FinalMessage, Moved, ProgressBar, PreviousTx, PreviousTy, PreviousTz, PosY, \
+               AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ, \
+               ActualAverageX, ActualAverageY, ActualAverageZ, ThrustLevels, Positions, Time, \
+               TimeVar, windowSize, ArrayTransX, ArrayTransY, ArrayTransZ, SumsX, SumsY, \
+               SumsZ, StartingPoint, Calibrated, AlteredCommand, CommandCounter
+
+
+    def eatGyro():
+        roll, pitch, yawrate = 0, 0, 0
+        return roll, pitch, yawrate
+
+
+    def AddtoWindow(AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ,
+                    windowSize,
+                    TransX, TransY, TransZ, TotalX, TotalY, TotalZ):
+        if len(ArrayTransX) < windowSize:
+            # print("Reset")
+            # Get average of first "windowSize" packets sent in for TransX,Y,Z and append to arrays
+            AverageTransX += TransX
+            AverageTransY += TransY
+            AverageTransZ += TransZ
+
+            # append new values to arrays
+            ArrayTransX.append(TransX)
+            ArrayTransY.append(TransY)
+            ArrayTransZ.append(TransZ)
+        else:
+            # print(len(TotalX))
+            # append the new average to the running total for X,y,z
+            TotalX.append(AverageTransX)
+            TotalY.append(AverageTransY)
+            TotalZ.append(AverageTransZ)
+            # call sliding window to calcuate mean
+            AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ = SlidingWindow(
+                self, AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ,
+                TransX, TransY, TransZ)
+        return AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ, TransX, TransY, TransZ, TotalX, TotalY, TotalZ
+
+
+    def EndConnect(FinalMessage, Time, commandVariableY, ThrustLevels, Positions):
+        self.console.setText(FinalMessage)
+        clientSock.close()
+        self.progressBar.setValue(100)
+        Target = []
+        Locked = []
+        for i in range(len(Time)):
+            Target.append(commandVariableY)
+            Locked.append(60000)
+        PlotAxis(ThrustLevels, Positions, Target, Locked, Time)
+        return
+
+
+    def MonitorValues(ClientPID, Calibrated, commandVariableX, commandVariableY, commandVariableZ,
+                      AverageTransX,
+                      AverageTransY, AverageTransZ, thrust, CommandCounter, errorTerm):
+        if ClientPID == False and Calibrated == True:
+            FinalMessage += "\n" + "Desired Pos :" + "X" + str(commandVariableX) + " Y" + str(
+                commandVariableY) + " Z" + str(commandVariableZ) + "\n" + "Current :" + str(
+                AverageTransX) + str(AverageTransY) + str(AverageTransZ)
+        else:
+            FinalMessage += "\n" + "Desired Pos :" + "X" + str(commandVariableX) + " Y" + str(
+                commandVariableY) + " Z" + str(commandVariableZ) + "\n" + "Current :" + str(
+                AverageTransX) + str(AverageTransY) + str(AverageTransZ)
+            FinalMessage += "\n" + "Thrust levels :" + str(thrust) + "  Loops :" + str(
+                CommandCounter) + " Error :" + str(errorTerm)
+            FinalMessage += "\n" + "--------------" + "\n"
+
+            # Time Out
+        if CommandCounter == 160:
+            self.progressBar2.setValue(1)
+            Land(self, thrust)
+            BoolDone = True
+        return BoolDone
+
+
+    def DronePID(ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint, commandVariableX,
+                 commandVariableY,
+                 commandVariableZ):
+        yaw = 0
+
+        # Fix vicon calibration by setting origin manually
+        ActualAverageX, ActualAverageY, ActualAverageZ = OriginTranslator(ActualAverageX, ActualAverageY,
+                                                                          ActualAverageZ, StartingPoint)
+
+        # Send the position of the drone obtained through vicon udp, external pos must be in meters hence /1000,swap Z and Y due to calibration issues
+        self._helper.cf.extpos.send_extpos(ActualAverageX / 1000, ActualAverageZ / 1000,
+                                           ActualAverageY / 1000)  # Z+1.5 ?
+
+        # Send Command
+        self._helper.cf.commander.send_position_setpoint(commandVariableX, commandVariableY, commandVariableZ,
+                                                         yaw)
+        return
+
+
+    def ClientPID(ActualAverageX, PosY, ActualAverageZ, errorTerm, commandVariableY, ProgressBar, thrust,
+                  intergralSum, IntCLamp, PreviousError, BoolDone):
+        # Current measured value is only set to 1 axis currently Z = Y , Y = Z
+        Writetofile("Averages", " X:" + str(int(ActualAverageX)) + " Y:" + str(int(PosY)) + " Z:" + str(
+            int(ActualAverageZ)), errorTerm)
+        currentMeasuredValue = int(ActualAverageZ)
+        errorTerm = commandVariableY - currentMeasuredValue
+        # If goal is reached and drone can stop
+        if errorTerm >= -10 and errorTerm <= 10:
+            ProgressBar += 33
+            self.progressBar2.setValue(ProgressBar)
+            HoverHere(self)
+        else:
+            thrust, intergralSum, IntCLamp = PIDController(self, thrust, errorTerm, IntCLamp, intergralSum,
+                                                           PreviousError)
+            PreviousError = errorTerm
+
+        if DoubleCheck >= 4:
+            HoverHere(self)  # Hover
+            BoolDone = True
+
+        return BoolDone, thrust, intergralSum, IntCLamp, ProgressBar, errorTerm
+
+
+    #####################################################################################################################################################################################
+    def ConnectUDP(self):
+        ##### Initialize Variables ####################################
+        FinalMessage, dataBlockSize, clientSock, Moved, ProgressBar, PreviousTx, PreviousTy, PreviousTz, PosY, AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ, \
+        ActualAverageX, ActualAverageY, ActualAverageZ, ThrustLevels, Positions, Time, TimeVar, windowSize, ArrayTransX, ArrayTransY, ArrayTransZ, SumsX, SumsY, \
+        SumsZ, StartingPoint, Calibrated, AlteredCommand, CommandCounter = init()
+
+        ##### Initialize PID Variables ################################
+        thrust, ClientPID, IntCLamp, commandVariableX, commandVariableY, commandVariableZ, errorTerm, PreviousError, intergralSum, DoubleCheck, BoolDone = initPID()
+
+        ## Main #######################################################
+        self.console.setText("Calibrating origin, This may take up to 20 seconds")
+        while BoolDone == False:
+            self.progressBar.setValue(int((thrust / 60000) * 100))
+
+            TotalX = []
+            TotalY = []
+            TotalZ = []
+            # get the average value of each variable after 50 iterations
+            while len(TotalX) < windowSize:
+                ##### 1 read Gyro values #################################
+                roll, pitch, yawrate = EatGyro()
+
+                ##### Send command to drone every 10th iteration ########
+                ThrustLevels, Time, TimeVar, Positions = SendCommand(TotalX, thrust, TimeVar, ThrustLevels, Time,
+                                                                     Positions, TotalY, roll, pitch, yawrate, PosY)
+
+                ##### Sliding window operation ##########################
+                AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ, TotalX, TotalY, TotalZ = AddtoWindow(
+                    AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ, windowSize,
+                    TransX, TransY, TransZ, TotalX, TotalY, TotalZ)
+
+                ##### Contains sliding window average of Y###############
+                PosY = AverageTransY / windowSize
+
+            # average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+            ActualAverageX, ActualAverageY, ActualAverageZ = GetActualAverage(self, ActualAverageX, ActualAverageY,
+                                                                              ActualAverageZ, TotalX, TotalY,
+                                                                              TotalZ, windowSize)
+
+            #### work out if drone has moved ############################
+            PreviousTx, PreviousTy, PreviousTz, Moved = HasDroneMoved(self, PreviousTx, PreviousTy, PreviousTz,
+                                                                      ActualAverageX, ActualAverageY,
+                                                                      ActualAverageZ, Moved)
+
+            # get Starting Point ########################################
+            if Calibrated == False:
+                Calibrated, StartingPoint, SumsX, SumsY, SumsZ = Calibrate(self, Calibrated, StartingPoint, SumsX,
+                                                                           SumsY, SumsZ, ActualAverageX,
+                                                                           ActualAverageY, ActualAverageZ)
+
+            # Print all data, *remember that Y = Z , Z= Y
+            FinalMessage += ("\n" + "Address : " + UDP_IP_ADDRESS) + PrintAllData(self, FrameNumber, Itemsinblock,
+                                                                                  ItemNamez, int(ActualAverageX),
+                                                                                  int(ActualAverageY),
+                                                                                  int(ActualAverageZ), Moved,
+                                                                                  StartingPoint, Calibrated)
+
+            ############### Translate command ############################
+            # basically, if the actual origin position is 800 and a command of 100 is sent then the drone moves
+            # 100 in that axis so 900 final pos
+            if Calibrated == True and AlteredCommand == False:
+                commandVariableX, commandVariableY, commandVariableZ = commandVariableX + StartingPoint[
+                    0], commandVariableY + StartingPoint[1], commandVariableZ + StartingPoint[2]
+                AlteredCommand = True
+
+            #### Start client PID loop ###################################
+            if Calibrated == True and ClientPID == True:
+                BoolDone, thrust, intergralSum, IntCLamp, ProgressBar, errorTerm = ClientPID(ActualAverageX, PosY,
+                                                                                             ActualAverageZ,
+                                                                                             errorTerm,
+                                                                                             commandVariableY,
+                                                                                             ProgressBar, thrust,
+                                                                                             intergralSum, IntCLamp,
+                                                                                             PreviousError,
+                                                                                             BoolDone)
+
+            #### Send external Pos and commands to Drone##################
+            elif Calibrated == True and ClientPID == False:
+                DronePID(ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint, commandVariableX,
+                         commandVariableY, commandVariableZ)
+
+            #### Monitor values and determine if program must timeout ####
+            CommandCounter += 1
+            BoolDone = MonitorValues(ClientPID, Calibrated, commandVariableX, commandVariableY, commandVariableZ,
+                                     AverageTransX, AverageTransY, AverageTransZ, thrust, CommandCounter, errorTerm)
+
+            # Display all data obtained and close #############################
+        EndConnect(FinalMessage, Time, commandVariableY, ThrustLevels, Positions)
+
+        ################################################################################################################################################################################################
+
+
+
