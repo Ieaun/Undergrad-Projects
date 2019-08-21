@@ -1,0 +1,1552 @@
+#!/usr/bin/env python
+# Code altered by IEAUN ROBERTS of the University of Hull
+# -*- coding: utf-8 -*-
+#
+#     ||          ____  _ __
+#  +------+      / __ )(_) /_______________ _____  ___
+#  | 0xBC |     / __  / / __/ ___/ ___/ __ `/_  / / _ \
+#  +------+    / /_/ / / /_/ /__/ /  / /_/ / / /_/  __/
+#   ||  ||    /_____/_/\__/\___/_/   \__,_/ /___/\___/
+#
+#  Copyright (C) 2011-2013 Bitcraze AB
+#
+#  Crazyflie Nano Quadcopter Client
+#
+#  This program is free software; you can redistribute it and/or
+#  modify it under the terms of the GNU General Public License
+#  as published by the Free Software Foundation; either version 2
+#  of the License, or (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+
+#  You should have received a copy of the GNU General Public License along with
+#  this program; if not, write to the Free Software Foundation, Inc.,
+#  51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+"""
+The console tab is used as a console for printouts from the Crazyflie.
+"""
+import logging
+from dbm import error
+from multiprocessing.util import Finalize
+
+from PyQt5 import uic
+from PyQt5.QtCore import pyqtSignal
+# noinspection PyUnresolvedReferences
+from PyQt5.QtWidgets import QMessageBox
+from socket import socket, gethostbyname, AF_INET , SOCK_DGRAM , error
+import sys
+import select
+
+from pyqtgraph.console import Console
+
+from cfclient.ui.tabs import ConsoleTab
+from dbus.server import Server
+from ufw.util import msg
+
+import cfclient
+from cfclient.ui.tab import Tab
+# noinspection PyUnresolvedReferences
+import cflib.crtp
+# noinspection PyUnresolvedReferences
+from cfclient.utils.input.inputreaderinterface import InputData
+from cfclient.utils.logconfigreader import LogConfig
+from cflib.crazyflie.log import LogConfig , Log
+# noinspection PyUnresolvedReferences
+from cfclient.utils.logconfigreader import LogVariable
+# noinspection PyUnresolvedReferences
+from cflib.crazyflie import Crazyflie
+# noinspection PyUnresolvedReferences
+from cflib.crazyflie.param import Param
+logging.basicConfig(level=logging.DEBUG)
+
+import time
+import numpy as np
+from numpy import zeros
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import axes3d
+import matplotlib.ticker as plticker
+import datetime
+from datetime import timedelta
+import struct
+
+try:
+    import zmq
+except ImportError as e:
+    raise Exception("ZMQ library probably not installed ({})".format(e))
+
+__author__ = 'Bitcraze AB and Ieaun Roberts'
+__all__ = ['ConsoleTab']
+
+logger = logging.getLogger(__name__)
+
+console_tab_class = uic.loadUiType(cfclient.module_path +
+                                   "/ui/tabs/consoleTab.ui")[0]
+
+class ConsoleTab(Tab, console_tab_class):
+    """Console tab for showing printouts from Crazyflie"""
+    _connected_signal = pyqtSignal(str)
+    _disconnected_signal = pyqtSignal(str)
+    _log_data_signal: pyqtSignal = pyqtSignal(int, object, object)
+    _log_error_signal = pyqtSignal(object, str)
+    _param_updated_signal = pyqtSignal(str, str)
+    _update = pyqtSignal(str)
+
+    SendCommands_Test = True                                   #Set to false in order to deactivate send commands
+    LogSpeed = 20                                              #Set how fast the client communicates with the drone in ms
+    Trim_Pitch = 1.1
+    Trim_Roll = -0.3
+
+    dataBlockSize = 1024 #/512 #/256                            # Size of UDP blocks recieved by Vicon
+
+    TransPositions = zeros([3,60])                      #holds 3 raw Trans values
+    RotPositions = zeros([3,10])
+    AveragedRotPositions = zeros([3,1])
+
+    LockAxis = [-1,-1,-1]                               #Used to work with indivdual origin axis values
+
+    ThrustValues= []                                    #Holds every 10th thrust value
+    ThrustIntegrationCounter = 0
+    CurrentThrustCommand = 0
+
+    Counter = 0                                         #Counter used to hold udp data
+    Sliding_Coordinater = 0                             #determines when to use sliding window
+
+    PIDInitialized = 0                                  #Tells PID controller if it needs to initialize
+    ErrorTerms = [0, 0, 0, 0, 0, 0, 0, 0]               #Stores the error terms, 0= X , 1= Y, 2= Rotional Z, 3= Z,  4= PreviousX, 5=Previous Y, 6 Previous rotational Z, 7 =Previous Z
+    Command = []                                        #Stores the commands,0-2 = 1st point, 3-5 = 2nd point, 6-8 = 3rd point
+
+    ClampV = 0                                          #If true then clamp the intergal sum stopping it from accumulating
+    Clamp_Gyro = [0,0,0,0]                                  #If true then clamp the intergal sum stopping it from accumulating
+    IntegralSum = 0                                     #Running total of error used for thrust
+    IntegralSum_Gyro = [0,0,0]                            #Running total of error used for forward,backward,left,right movement
+
+
+    PIDTuner =[0.13,0.003,0.045]                                #Kp = 50, Ki = 3, Kd = 15, Used for Verticle thrust PID operations
+    PIDTuner_Gyro = [0.00065,0.000025,0.0003]              #USed for Gyro PID operations
+
+    MinimumThrust = -2000  # At this thrust the drone will drop, there is no need for it to be any lower as it will hard dive if lower
+    MaxThrust = 2000                                     # This tells the clamp in the integral arm not to allow any thrust over this amount (Hardware on CF2.0 is limited to 60000)
+    MaxGyro = [0.5, 0.5, 0.5]                             # Gyro values swill never be more that these constant, ROll,Pitch,Yaw
+    MinGyro = [-0.5, -0.5, -0.5]
+
+    K_Gyro_Outputs = [0,0,0,0,0,0,0,0,0]                #Holds the outputs for the Gyro PID operations [0-2 = Roll, 3-5 = Pitch , 6-8 = Yaw]
+    Gyro_COmmands =[0,0,0,0]
+
+    KpOutput = []                                       #How much each of these values is contributing to the total thrust
+    KiOutput = []
+    KdOutput = []
+
+    GyroValues = [0,0,0,0]                                #Roll,Pitch,Yaw
+    SummaryBtn = 0                                      #Holder for enabling the summary button
+
+    ComCounter = 0                                      #Holds the amount of commands sent to the drone
+    StartTime = datetime.datetime.now()
+
+    # Creates a list containing 5 lists, each of 8 items, all set to 0
+    w, h = 8, 60;
+    LogDataz = [[0 for x in range(8)] for y in range(60)]               # Holds all the data used in Summary to visualize changes in values
+    LogDataz_Counter = 0
+
+    Dimensions = 3
+    Stage = 0                                                       # Stage 0 = lift off, Stage 1 = position alterations,
+    LiftOffSpeed = 49500                                            # Constant used for thrust throguhtout
+    LiftOffSpeedDuration = 100                                      # How many times to send the lift of command of Thrust = LiftoffSpeed
+    RateOfChange = [0,0,0,0]
+
+    SudoValues = [0,0,LiftOffSpeed,0]                   #Holds the constants for the command positions so as not to leave all the work to the PID controller (Const + PID output = Output)
+    SudoFinalCommands = [0,0,0,0]                       #Holds the final commands to be sent to the drone
+
+    Land_Var = False
+
+
+
+    def __init__(self, tabWidget, helper, *args):
+        super(ConsoleTab, self).__init__(*args)
+        self.setupUi(self)
+
+        self.tabName = "Virtual Trajectory"
+        self.menuName = "Virtual Trajectory Tab"
+        self.tabWidget = tabWidget
+        self._helper = helper
+
+        # Always wrap callbacks from Crazyflie API though QT Signal/Slots
+        # to avoid manipulating the UI when rendering it
+        self._connected_signal.connect(self._connected)
+        self._disconnected_signal.connect(self._disconnected)
+        self._update.connect(self.printText)
+        self._log_data_signal.connect(self._log_data_recieved)
+        self._param_updated_signal.connect(self._param_updated)
+
+        self._helper.cf.console.receivedChar.add_callback(self._update.emit)
+        self._helper.cf.connected.add_callback(self._connected_signal.emit)
+        self._helper.cf.disconnected.add_callback(
+            self._disconnected_signal.emit)
+
+        self._clearButton.clicked.connect(self.clear)
+        self.BtnConnect.clicked.connect(self.VTActivator)
+        self._dumpSystemLoadButton.clicked.connect(
+            lambda enabled:
+            self._helper.cf.param.set_value("system.taskDump", '1'))
+        self._propellerTestButton.clicked.connect(
+            lambda enabled:
+            self._helper.cf.param.set_value("health.startPropTest", '1'))
+        #self.BtnEnter.clicked.connect(self.ThrustCommand)
+        self.BtnEnterZMQ.clicked.connect(self.ZMQCommand)
+        self.LoggerTest.clicked.connect(self.Ramp)
+        self.btnSummary.clicked.connect(self.Summary)
+        self.btnKill.clicked.connect(self.kill)
+
+
+    def _connected(self, link_uri):
+        """Callback when the Crazyflie has been connected"""
+        self._dumpSystemLoadButton.setEnabled(True)
+        self._propellerTestButton.setEnabled(True)
+        self.BtnEnterZMQ.setEnabled(True)
+        self.lblStatus.setText("Connected")
+
+
+        """Enable all the panels"""
+        self.groupBox_3.setEnabled(True)
+        self.groupBox.setEnabled(True)
+        self.GBZMQ.setEnabled(True)
+        self.BtnConnect.setEnabled(False)
+        self.GBPIDV.setEnabled(False)
+        self.RB1Dimen.setEnabled(True)
+
+        self.TEDZ.setEnabled(True)
+        self.TEDX.setEnabled(True)
+        self.TEDY.setEnabled(True)
+
+
+        self.TxtThrust.setEnabled(True)
+        self.txtHover.setEnabled(True)
+        #self.txtHover.setText(str(ConsoleTab.LiftOffSpeed))
+        self.Move_Left_Box.setEnabled(True)
+        self.Move_Right_Box.setEnabled(True)
+        self.btnSummary.setEnabled(False)
+
+        temp_conf = LogConfig("Ieaun Sensor", ConsoleTab.LogSpeed)
+        temp_conf.add_variable("baro.temp")
+        temp_conf.add_variable("stabilizer.roll")
+        temp_conf.add_variable("stabilizer.pitch")
+        temp_conf.add_variable("stabilizer.yaw")
+        temp_conf.add_variable("stabilizer.thrust")
+
+        self._helper.cf.commander.set_client_xmode(False)  # True)
+        self.DeactiveThrustProtection()  # Deactivate thrust protection
+
+        self._helper.cf.log.add_config(temp_conf)
+        if temp_conf.valid:
+            temp_conf.data_received_cb.add_callback(self._log_data_signal.emit)
+            temp_conf.start()
+
+
+    def _disconnected(self, link_uri):
+        """Callback for when the Crazyflie has been disconnected"""
+        self.progressBar.setValue(0)
+        self.lblThrusty.setText("0")
+
+        """Memo"""
+        self._dumpSystemLoadButton.setEnabled(False)
+        self._propellerTestButton.setEnabled(False)
+        self.console.clear()
+
+        """ Status """
+        self.lblStatus.setText("Disconnected")
+        self._temp_c.setText("0")
+        self._temp_f.setText("0")
+        self.lblThrustValue.setText("0")
+
+        """ Directional Information """
+        self.lblPitchValue.setText("0")
+        self.lblYawValue.setText("0")
+        self.lblRollValue.setText("0")
+
+        """ ZMQ """
+        self.BtnEnterZMQ.setEnabled(False)
+        self.TEDPitch.clear()
+        self.TEDRoll.clear()
+        self.TEDThrust.clear()
+        self.TEDYaw.clear()
+        self.progressBar.setValue(0)
+
+        """ Testing"""
+        self.YawV.setText("0")
+        self.PitchV.setText("0")
+        self.RollV.setText("0")
+
+        """UDP / Virtual trajectory"""
+        self.UDPCOnnectStatus.setText("Disconnected")
+        self.UDPX.setText("0")
+        self.UDPY.setText("0")
+        self.UDPZ.setText("0")
+        self.lblItemName.setText("None")
+        self.UDPCOnnectStatus.setText("Socket Not Found")
+        self.RBConnectUDP.setChecked(False)
+
+        """disable all the panels"""
+        self.groupBox_3.setEnabled(False)
+        self.groupBox.setEnabled(False)
+        self.GBZMQ.setEnabled(False)
+
+        #PID
+        self.GBPIDV.setEnabled(False)
+        self.initPID()
+        self.GBPIDV.setEnabled(False)
+        self.RB1Dimen.setChecked(False)
+
+
+    def initPID(self):
+        self.GBPIDV.setEnabled(True)
+        self.lblKp.setText("0")
+        self.lblKi.setText("0")
+        self.lblKd.setText("0")
+        self.lblKi_2.setText("0")
+        self.cb_clamp.setChecked(False)
+        self.lblE_X.setText("0")
+        self.lblE_Y.setText("0")
+        self.lblE_Z.setText("0")
+
+        self.lblThrustCmd.setText("0")
+        self.lblE_X_2.setText("0")
+        self.lblE_Y_2.setText("0")
+        self.lblE_Z_2.setText("0")
+
+        self.lblE_X_3.setText("0")
+        self.lblE_Y_3.setText("0")
+        self.lblE_Z_3.setText("0")
+
+        self.UDPTX.setText("0")
+        self.UDPTY.setText("0")
+        self.UDPTZ.setText("0")
+
+        self.lblKp_G_2.setText("0")
+        self.lblKi_G_2.setText("0")
+        self.lblKd_G_2.setText("0")
+        self.lblThrustCmd_G.setText("0")
+        self.lblThrustCmd_G_2.setText("0")
+        self.lblKp_G_3.setText("0")
+        self.lblKi_G_4.setText("0")
+        self.lblKd_G_3.setText("0")
+        self.btnSummary.setEnabled(False)
+
+        self.lblCMDFThrust.setText("0")
+        self.lblFPitchCom.setText("0")
+        self.lblfYawCom.setText("0")
+        self.lblfRollCom.setText("0")
+
+
+        self.Direction_console.clear()
+        self.Direction_console_P.clear()
+        self.Direction_console_3.clear()
+
+        self.progressBar2.setValue(0)
+
+
+        ConsoleTab.Command = [int(self.TEDX.toPlainText()),int(self.TEDY.toPlainText()),0,int(self.TEDZ.toPlainText())]
+
+        ConsoleTab.KpOutput = [0]  # how much each of these values is contributing to the total thrust
+        ConsoleTab.KiOutput = [0]
+        ConsoleTab.KdOutput = [0]
+
+        ConsoleTab.ErrorTerms = [0, 0, 0, 0, 0, 0, 0, 0]  # Stores the error terms, 0= X , 1= Y, 2= Z, 3= PreviousX, 4=Previous Y, 5 =Previous Z
+
+        ConsoleTab.PIDInitialized = 0
+        ConsoleTab.ClampV = 0
+        ConsoleTab.IntegralSum = 0
+        ConsoleTab.K_Gyro_Outputs = [0, 0, 0, 0, 0, 0, 0 , 0, 0]
+        ConsoleTab.IntegralSum_Gyro = [0, 0, 0]
+        ConsoleTab.ThrustValues = []
+        ConsoleTab.SummaryBtn = 0
+        ConsoleTab.ThrustIntegrationCounter = 0
+        ConsoleTab.CurrentThrustCommand = 0
+        ConsoleTab.ComCounter = 0
+        ConsoleTab.LogDataz_Counter = 0
+        ConsoleTab.LockAxis = [-1, -1, -1]
+        ConsoleTab.Dimensions =3
+        self.lblComCounter.setText("0")
+        ConsoleTab.Stage = 0
+
+
+    def _log_data_recieved(self, timestamp, data, log_conf):
+        """Callback when the log layer receives new data"""
+        """logger.debug("{0}:{1}:{2}".format(timestamp, log_conf.name, data))"""
+        self._temp_c.setText("{0:.2f}C".format(data["baro.temp"]))
+        self._temp_f.setText("{0:.2f}C".format(data["baro.temp"] * 1.8 + 32))
+        self.lblRollValue.setText("{0:.2f}".format(data["stabilizer.roll"]))
+        self.lblPitchValue.setText("{0:.2f}".format(data["stabilizer.pitch"]))
+        self.lblYawValue.setText("{0:.2f}".format(data["stabilizer.yaw"]))
+        self.lblThrustValue.setText("{0:.2f}".format(data["stabilizer.thrust"]))
+
+        Pitch = float(round((data["stabilizer.pitch"]), 1))                                                              #Trim Pitch (on my drone pitch needs to be trimmed, this may be due to damage to the gyro)
+        Yaw = int(round((data["stabilizer.yaw"]),1))
+        Roll = float(round((data["stabilizer.roll"]), 1))
+        Thrust = (data["stabilizer.thrust"])
+
+        ConsoleTab.GyroValues[0] = Roll
+        ConsoleTab.GyroValues[1] = Pitch
+        ConsoleTab.GyroValues[2] = Yaw
+
+        VTActivated = ConsoleTab.PIDInitialized                                                                         #determines if regualar opertion or VT activated
+        #########
+        if self.Off.isChecked() == False:
+            self.LogTest2(Roll, Pitch, Yaw, Thrust)
+            #self.lblThrusty.setText("0")
+        ########
+
+        #########
+        if self.RBConnectUDP.isChecked():
+            UDPSocket = self.ConnectToUDPStream()
+            self.UDPDataCoordinator(UDPSocket)
+            if self.TransPositions[0,20]!= 0:                                                                    #initialized, Ready to begin virtual trajectory
+                self.BtnConnect.setEnabled(True)
+        else:
+            self.UDPCOnnectStatus.setText("Socket Not Found")
+        ##########
+
+        ##########
+        if VTActivated != 0:                                                                                            # If the Virtual trajectory has been initialized and should execute functions
+            Stage = ConsoleTab.Stage
+            if Stage == 0:
+                self.LiftOff()
+
+            #### Start client PID loop ################################
+            if Stage == 1:
+                self.SetError()
+                Done, Active = self.CommandCoordinator()                                                                   # Check if the drone has reached the setpoint
+                if ConsoleTab.ComCounter >= 1300:                                                                          # Time out
+                    Done = True
+                if Done == False:
+                    if  Active[3] :
+                        self.PIDController_Thrust()                                                                         # Verticle Movement (UP/Down)
+                    if  Active[2] :
+                        self.PIDMovement_Gyro(3)                                                                            # Rotation on Z axis (Yaw)
+                    if  Active[0] :
+                        self.PIDMovement_Gyro(0)                                                                            # (Forwards / Backwards) 1 indicates working with the X axis
+                    if  Active[1] :
+                        self.PIDMovement_Gyro(1)                                                                            # (Left / Right ) 0 indicates working with the Y axis
+                    self.SendCommand()                                                                                      # Send the command to the drone
+                else:
+                    self.console.insertPlainText("Done")
+                    ConsoleTab.PIDInitialized = 0
+            if Stage == 2:
+                self.Land(0,0,0,ConsoleTab.LiftOffSpeed)
+            if Stage == 3:
+                self.SummaryP()
+            self.UpdatePIDGUI()                                                                                         # Update all lables and GUI items with new data
+            ###########
+
+
+    # Set all the Error term values
+    def SetError(self):
+        # Set PreviousError = errorTerm
+        ConsoleTab.ErrorTerms[4] = ConsoleTab.ErrorTerms[0]
+        ConsoleTab.ErrorTerms[5] = ConsoleTab.ErrorTerms[1]
+        ConsoleTab.ErrorTerms[6] = ConsoleTab.ErrorTerms[2]
+        ConsoleTab.ErrorTerms[7] = ConsoleTab.ErrorTerms[3]
+
+        ConsoleTab.ErrorTerms[0] = int(ConsoleTab.Command[0]) - int(ConsoleTab.TransPositions[0, -1])  # Trans X F/B Pitch
+        ConsoleTab.ErrorTerms[1] = int(ConsoleTab.Command[1]) - int(ConsoleTab.TransPositions[1, -1])  # Trans Y L/R Roll
+        ConsoleTab.ErrorTerms[2] = int(ConsoleTab.Command[2]) - int(ConsoleTab.AveragedRotPositions[2, 0])  # Rotational Z Yaw
+        ConsoleTab.ErrorTerms[3] = int(ConsoleTab.Command[3]) - int(ConsoleTab.TransPositions[2, -1])  # Thrust Z
+
+
+    def LiftOff(self):
+        HoverSpeed = ConsoleTab.SudoValues[2]   # Get Speed
+        ConsoleTab.ComCounter += 1
+
+        if ConsoleTab.SendCommands_Test:
+            self._helper.cf.commander.send_setpoint(ConsoleTab.Trim_Roll, ConsoleTab.Trim_Pitch, 0, HoverSpeed)
+            self.lblThrusty.setText(str(HoverSpeed))
+            self.progressBar.setValue(int((HoverSpeed / 60000) * 100))
+
+        if ConsoleTab.ComCounter == ConsoleTab.LiftOffSpeedDuration:
+            ConsoleTab.Stage = 1
+
+
+    # Lock Axis if only 1 dimensional flight
+    def LockAxis_Method(self):
+            ConsoleTab.LockAxis[0] = ConsoleTab.TransPositions[0, 0]
+            ConsoleTab.LockAxis[1] = ConsoleTab.TransPositions[1, 0]
+            ConsoleTab.Dimensions = 1
+            # ConsoleTab.PIDTuner_Gyro =  [ConsoleTab.PIDTuner_Gyro[0]/3,ConsoleTab.PIDTuner_Gyro[1]/3,ConsoleTab.PIDTuner_Gyro[2]/3]
+            ConsoleTab.Command[0] = ConsoleTab.LockAxis[0]
+            ConsoleTab.Command[1] = ConsoleTab.LockAxis[1]
+            self.console.insertPlainText(
+                "Axis x and y locked to X:" + str(round(ConsoleTab.Command[0], 3)) + " Y:" + str(round(ConsoleTab.Command[1], 3)))
+
+
+    # Kill drone if it has flipped
+    def SaftyCheck(self):
+        Pitch = int(ConsoleTab.GyroValues[0])
+        Roll = int(ConsoleTab.GyroValues[1])
+        if (Pitch > 15 or Pitch < -15) or (Roll > 15 or Roll < -15):
+           self.kill()
+
+
+    # Determine if we are in the right positon
+    def PositionVerify(self,ArmActive):
+        for i in range(4):
+            if ConsoleTab.ErrorTerms[i] <= 100 and ConsoleTab.ErrorTerms[i] >= -100:  # If drone is in position then +1
+                ConsoleTab.RateOfChange[i] += 1
+                if ConsoleTab.RateOfChange[i] == 5:  # If drone in position for 5 clicks then we can confirm
+                    ArmActive[i] = False  # That it is in the correct position and move to next stage
+                    if i == 0:
+                        self.RBX.setChecked(True)
+                    elif i == 1:
+                        self.RBY.setChecked(True)
+                    elif i == 2:
+                        self.RBZ.setChecked(True)
+            else:
+                ArmActive[i] = True
+                ConsoleTab.RateOfChange[i] = 0
+        return ArmActive
+
+
+    #Checks if the VT is completed, Locks Axis to 1 Dimension, Sets Error terms
+    def CommandCoordinator(self):
+        ArmActive = [False, False, False, False]
+        Percent = 0
+        Done = False
+        Stage = ConsoleTab.Stage
+
+        self.SaftyCheck()                                                                                               # Kill drone if it has flipped
+
+        if self.RB1Dimen.isChecked() == True and ConsoleTab.LockAxis[0] == -1:                                          # Lock Axis if only 1 dimensional flight
+            self.LockAxis_Method()
+
+        ArmActive = self.PositionVerify(ArmActive)                                                                      # Determine if we are in the right positon
+
+        if ConsoleTab.Land_Var == True:                                                                                 # Get ready to land
+            ConsoleTab.Stage = 2
+        return Done,ArmActive
+
+
+    def kill(self):
+        self.DeactiveThrustProtection()
+        self.EndCommand()
+        self.RBConnectUDP.setChecked(False)
+        self.RB1Dimen.setChecked(False)
+        self.initPID()
+
+    # Send command to drone
+    def SendCommand(self):
+        # Set Thrust to 0 to disable movement
+        # Send command to drone for the big 4 variables
+        ConsoleTab.ComCounter += 1
+        Counter = ConsoleTab.ComCounter
+
+        Thrust = round(ConsoleTab.CurrentThrustCommand + ConsoleTab.SudoValues[2],0)
+        Pitch = round(ConsoleTab.Gyro_COmmands[0]+ ConsoleTab.SudoValues[0],1)
+        Roll = round(ConsoleTab.Gyro_COmmands[1]+ ConsoleTab.SudoValues[1],1)
+        #Yaw = round(ConsoleTab.Gyro_COmmands[2] + ConsoleTab.GyroValues[2],1)
+        Yaw = round(ConsoleTab.GyroValues[2]+ ConsoleTab.SudoValues[3],1)                                               #If you ensure the drone is facing Rot = 0 on Z axis
+                                                                                                                        #Then ignore translation of commands according to Yaw angle
+        # Pitch += ConsoleTab.Trim_Pitch
+        # Roll += ConsoleTab.Trim_Roll
+
+        ConsoleTab.SudoFinalCommands=[Pitch,Roll,Thrust,Yaw]
+
+        self.lblCMDFThrust.setText(str(Thrust))
+        self.lblFPitchCom.setText(str(Pitch))
+        self.lblfRollCom.setText(str(Roll))
+        self.lblfYawCom.setText(str(Yaw))
+        self.lblComCounter.setText(str(Counter))
+
+        StartTime = ConsoleTab.StartTime                                                                                # Get start time
+        Currenttime = datetime.datetime.now()
+        Time = Currenttime - StartTime                                                                                  # Start time - current time
+        Tim_D = Time/ timedelta(seconds = 1)
+
+        Rate = Counter/Tim_D
+        self.lblComCounter_2.setText(str(round(Rate,1)) + " Cmd/s")
+
+        if ConsoleTab.ComCounter % 2 == 0:
+            self.FormatForLOGData(Roll,Pitch,Yaw,Thrust)
+
+        if ConsoleTab.SendCommands_Test:
+            self._helper.cf.commander.send_setpoint(-Roll, Pitch, 0, Thrust)
+        return
+
+
+    def FormatForLOGData(self,Roll,Pitch,Yaw,Thrust):
+        if ConsoleTab.LogDataz_Counter == 59:
+            Err1 = str(ConsoleTab.ErrorTerms[3]) + " Prev:" + str(ConsoleTab.ErrorTerms[7])+ " Kp:" + str(ConsoleTab.KdOutput[-1]) + " Ki:" + str(ConsoleTab.KiOutput[-1]) + " Kd:" + str(ConsoleTab.KdOutput[-1])
+            Err2 = str(ConsoleTab.ErrorTerms[0]) + " Prev:" + str(ConsoleTab.ErrorTerms[4])+ " Kp:" + str(ConsoleTab.K_Gyro_Outputs[0]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[1]) + " Kd:" + str(ConsoleTab.K_Gyro_Outputs[2])
+            Err3 = str(ConsoleTab.ErrorTerms[1]) + " Prev:" + str(ConsoleTab.ErrorTerms[5])+ " Kp:" + str(ConsoleTab.K_Gyro_Outputs[3]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[4]) + " Kd:" + str(ConsoleTab.K_Gyro_Outputs[5])
+            Err4 = str(ConsoleTab.ErrorTerms[2]) + " Prev:" + str(ConsoleTab.ErrorTerms[6])+ " Kp:" + str(ConsoleTab.K_Gyro_Outputs[6]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[7]) + " Kd:" + str(ConsoleTab.K_Gyro_Outputs[8])
+            NewData = [Thrust, Err1, Roll, Err2, Pitch, Err3, Yaw, Err4]
+            ConsoleTab.LogDataz = self.SlidingWindow_Simple_Numpy(ConsoleTab.LogDataz, NewData,len(ConsoleTab.LogDataz))
+        else:
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][0] = str(Thrust)
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][1] = str(ConsoleTab.ErrorTerms[3]) + " Prev:" + str(ConsoleTab.ErrorTerms[7]) + " Kp:" + str(ConsoleTab.KdOutput[-1]) + " Ki:" + str(ConsoleTab.KiOutput[-1]) + " Kd:" + str(ConsoleTab.KdOutput[-1])
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][2] = str(Roll)
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][3] = str(ConsoleTab.ErrorTerms[1]) + " Prev:" + str(ConsoleTab.ErrorTerms[5]) + " Kp:" + str(ConsoleTab.K_Gyro_Outputs[3]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[4]) + " Kd:" + str(ConsoleTab.K_Gyro_Outputs[5])
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][4] = str(Pitch)
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][5] = str(ConsoleTab.ErrorTerms[0]) + " Prev:" + str(ConsoleTab.ErrorTerms[4]) + " Kp:" + str(ConsoleTab.K_Gyro_Outputs[0]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[1]) + " Kd:" + str(ConsoleTab.K_Gyro_Outputs[2])
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][6] = str(Yaw)
+            ConsoleTab.LogDataz[ConsoleTab.LogDataz_Counter][7] = str(ConsoleTab.ErrorTerms[2]) + " Prev:" + str(ConsoleTab.ErrorTerms[6]) +  " Kp:" + str( ConsoleTab.K_Gyro_Outputs[6]) + " Ki:" + str(ConsoleTab.K_Gyro_Outputs[7]) + " Kd:" + str( ConsoleTab.K_Gyro_Outputs[8])
+            ConsoleTab.LogDataz_Counter += 1
+
+
+    #Handles flight controller pannel
+    def LogTest2(self, Roll, Pitch, Yaw, Thrust):
+        self.RollV.setText(str(Roll))
+        self.PitchV.setText(str(Pitch))
+        self.YawV.setText(str(Yaw))
+
+        #Deactivate thrust protection
+        if self.LoggingLock.isChecked():
+            self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+
+        #Rize
+        if self.StartLog.isChecked():
+            Yaw = 0 #Yaw is irrelavant
+            Thrustest =int(self.TxtThrust.toPlainText()) #Get Speed
+            self.progressBar.setValue(int((Thrustest / 60000) * 100))
+
+            if Thrustest <= 60000 and Thrustest > 10000:
+                if ConsoleTab.SendCommands_Test:
+                    self._helper.cf.commander.send_setpoint(-Roll, Pitch, Yaw, Thrustest)
+
+                self.lblThrusty.setText(str(Thrustest))
+
+        #Land (Locks controls)
+        if self.LandLog.isChecked() :
+            currentThrust = int(self.lblThrusty.text())
+            self.Land(Roll,Pitch,Yaw,currentThrust)
+
+        #Hover
+        if self.RBHover.isChecked():
+            HoverSpeed = int(self.txtHover.toPlainText()) #Get Speed
+            self.progressBar.setValue(int((HoverSpeed / 60000) * 100))
+            if ConsoleTab.SendCommands_Test:
+                self._helper.cf.commander.send_setpoint( ConsoleTab.Trim_Pitch, ConsoleTab.Trim_Pitch, 0, HoverSpeed)
+            self.lblThrusty.setText(str(HoverSpeed))
+
+        return
+
+
+    def UpdatePIDGUI(self):
+
+        if ConsoleTab.SummaryBtn == 0:
+            self.btnSummary.setEnabled(True)
+
+        self.progressBar.setValue((ConsoleTab.SudoFinalCommands[2] / 60000) * 100)
+        self.lblThrusty.setText(str(ConsoleTab.SudoFinalCommands[2]))
+
+        if self.RBTh.isChecked():
+            #Counter = ConsoleTab.Acounter - 1
+
+            # Position
+            self.lblE_X_2.setText(str(int(round(ConsoleTab.TransPositions[0,-1],0))))
+            self.lblE_Y_2.setText(str(int(round(ConsoleTab.TransPositions[1,-1],0))))
+            self.lblE_Z_2.setText(str(int(round(ConsoleTab.TransPositions[2,-1],0))))
+
+            ET = ConsoleTab.ErrorTerms
+
+            # Error Terms
+            self.lblE_X.setText(str(ET[0]))
+            self.lblE_Y.setText(str(ET[1]))
+            self.lblE_Z.setText(str(ET[3]))
+
+            # PID outputs
+            self.lblKp.setText(str(ConsoleTab.KpOutput[-1]))
+            self.lblKi.setText(str(ConsoleTab.KiOutput[-1]))
+            self.lblKd.setText(str(ConsoleTab.KdOutput[-1]))
+
+            # Integral sum
+            self.lblKi_2.setText(str(ConsoleTab.IntegralSum))
+
+            # Clamp
+            self.cb_clamp.setChecked(bool(ConsoleTab.ClampV))
+
+            # Thrustcmd
+            self.lblThrustCmd.setText(str(ConsoleTab.CurrentThrustCommand))
+
+
+            if len(ConsoleTab.ThrustValues) > 2:
+                if ConsoleTab.ThrustValues[-2] < ConsoleTab.ThrustValues[-1]:
+                    self.Direction_console.setText("    ^" + "\n" + "    |")  # UP
+                else:
+                    self.Direction_console.setText("   |" + "\n" + "   V")  # Down
+
+        if self.RBPIT.isChecked():                                                                                      # Pitch
+            self.lblKp_G_2.setText(str(round(ConsoleTab.K_Gyro_Outputs[0],2)))
+            self.lblKi_G_2.setText(str(round(ConsoleTab.K_Gyro_Outputs[1],2)))
+            self.lblKd_G_2.setText(str(round(ConsoleTab.K_Gyro_Outputs[2],2)))
+
+            if ConsoleTab.Gyro_COmmands[0] > float(self.lblThrustCmd_G.text()):
+                self.Direction_console_P.setText("   ^")    #UP
+            else:
+                self.Direction_console_P.setText("   V") #Down
+            self.lblThrustCmd_G.setText(str(ConsoleTab.Gyro_COmmands[0]))
+
+
+        if self.RBROl.isChecked():                                                                                      # Roll
+            self.lblKp_G_3.setText(str(round(ConsoleTab.K_Gyro_Outputs[3],2)))
+            self.lblKi_G_4.setText(str(round(ConsoleTab.K_Gyro_Outputs[4],2)))
+            self.lblKd_G_3.setText(str(round(ConsoleTab.K_Gyro_Outputs[5],2)))
+            if ConsoleTab.Gyro_COmmands[1] > float(self.lblThrustCmd_G.text()):
+                self.Direction_console_3.setText("<--")
+            else:
+                self.Direction_console_3.setText("-->")
+            self.lblThrustCmd_G_2.setText(str(ConsoleTab.Gyro_COmmands[1]))
+
+        if self.RBYAW.isChecked():
+            # Rotation
+            self.lblE_X_3.setText(str(int(round(ConsoleTab.AveragedRotPositions[0, -1], 0))))
+            self.lblE_Y_3.setText(str(int(round(ConsoleTab.AveragedRotPositions[1, -1], 0))))
+            self.lblE_Z_3.setText(str(int(round(ConsoleTab.AveragedRotPositions[2, -1], 0))))
+
+            self.lblKp_G_4.setText(str(round(ConsoleTab.K_Gyro_Outputs[5], 2)))
+            self.lblKi_G_3.setText(str(round(ConsoleTab.K_Gyro_Outputs[6], 2)))
+            self.lblKd_G_4.setText(str(round(ConsoleTab.K_Gyro_Outputs[7], 2)))
+            self.lblThrustCmd_G_3.setText(str(ConsoleTab.Gyro_COmmands[2]))
+
+
+    def printText(self, text):
+        # Make sure we get printouts from the Crazyflie into the log (such as
+        # build version and test ok/fail)
+        logger.debug("[%s]", text)
+        self.console.insertPlainText(text)
+
+
+    def clear(self):
+        self.console.clear()
+
+#TODO : Ensure this works
+    #All other movement (Forwards / backwards / left / right )
+    def PIDMovement_Gyro(self,Axis):
+        proportionalV = self.ProportionalArm(ConsoleTab.ErrorTerms[Axis],ConsoleTab.PIDTuner_Gyro[0])                   # '''PROPORTIONAL'''
+        #self.console.setText(str(Axis) + "+ 4 =" + str(Axis + 4) + "Len" +str(len(ConsoleTab.ErrorTerms)))
+        RateOchange = self.DerivativeRateofChange(ConsoleTab.ErrorTerms[Axis],ConsoleTab.ErrorTerms[Axis + 4])          # '''DERIVATIVE'''
+        #derivativeV = RateOchange * ConsoleTab.PIDTuner_Gyro[2]
+        derivativeV = ConsoleTab.ErrorTerms[Axis + 4] * ConsoleTab.PIDTuner_Gyro[2]
+        OutputV = proportionalV + derivativeV                                                                           # Add each arms thust values together to get final thrust
+                                                                                                                        # '''INTEGRAL'''
+        # Clamp, checks if values are saturating (Intergral growing out of bounds) /returns either 1 = dont clamp  or 0= clamp
+        OutputV, ConsoleTab.Clamp_Gyro[Axis], integralV, ConsoleTab.IntegralSum_Gyro[Axis] = self.IntegralArm(ConsoleTab.ErrorTerms[Axis],ConsoleTab.IntegralSum_Gyro[Axis],OutputV,ConsoleTab.PIDTuner_Gyro[1],ConsoleTab.MaxGyro[Axis],ConsoleTab.MinGyro[Axis])
+
+        ConsoleTab.Gyro_COmmands[Axis] = round(OutputV,3)
+
+        if Axis == 0:
+            ConsoleTab.K_Gyro_Outputs[0] = round(proportionalV,4)
+            ConsoleTab.K_Gyro_Outputs[1] = round(integralV,4)
+            ConsoleTab.K_Gyro_Outputs[2] = round(derivativeV,4)
+        elif Axis == 1:
+            ConsoleTab.K_Gyro_Outputs[3] = round(proportionalV,4)
+            ConsoleTab.K_Gyro_Outputs[4] = round(integralV,4)
+            ConsoleTab.K_Gyro_Outputs[5] = round(derivativeV,4)
+        elif Axis == 2:
+            ConsoleTab.K_Gyro_Outputs[6] = round(proportionalV, 4)
+            ConsoleTab.K_Gyro_Outputs[7] = round(integralV, 4)
+            ConsoleTab.K_Gyro_Outputs[8] = round(derivativeV, 4)
+
+
+    # initially unlocks thrust protection, if pressed again then it sends a kill signal to the drone
+    def Zlog(self):
+        if self.StartLog.isChecked():
+            self.DeactiveThrustProtection()
+        else:
+            self._helper.cf.commander.send_stop_setpoint()
+
+
+    # Deactivate thrust protection
+    def DeactiveThrustProtection(self):
+        for i in range(10):
+            self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+
+
+    # Gradually increase thurst levels from 20000 to 30000 with 500 steps
+    def Ramp(self):
+        thrust_step = 500
+        thrust = 20000
+        pitch = 0
+        roll = 0
+        yawrate = 0
+        self.DeactiveThrustProtection()
+
+        while thrust < 30000:
+            self._helper.cf.commander.send_setpoint(-roll, pitch, yawrate, thrust)
+            self.console.insertPlainText("R:" + str(roll) + " P:" + str(pitch) + " Y:" + str(yawrate) + " T:" + str(thrust) + "\n")
+            time.sleep(0.2)
+            thrust += thrust_step
+        self.EndCommand()
+
+
+    def Land(self, Roll , Pitch, Yaw, thrust):
+        self.console.setText(str(thrust))
+        if ConsoleTab.SendCommands_Test:
+            if thrust >= 35000:                                                                                         #Decrease thrust to Hover level
+                thrust -= int(thrust * 0.005) + 2                                                                       #Decrease thrust
+                self._helper.cf.commander.send_setpoint(-Roll, Pitch, 0, int(thrust))                                   #Send command
+                self.progressBar.setValue(int((thrust / 60000) * 100))
+                self.lblThrusty.setText(str(thrust))                                                                    #Update GUI with new thrust
+
+            elif thrust >= 15500 and thrust < 35000:                                                                    #Decrease thrust to Land
+                thrust -= int(thrust * 0.015) + 7
+                self._helper.cf.commander.send_setpoint(-Roll, Pitch, 0, int(thrust))
+                self.progressBar.setValue(int((thrust / 60000) * 100))
+                self.lblThrusty.setText(str(thrust))
+
+            elif thrust < 15500:                                                                                        #Send terminate command if thrust low or drone is unstable
+                #self.EndCommand()
+                self.Off.setChecked(True)
+                ConsoleTab.Land_Var = False
+                ConsoleTab.Stage = 3
+        ConsoleTab.LiftOffSpeed = thrust
+
+
+    def EndCommand(self):
+        ConsoleTab.VTActivated = 0
+        self._helper.cf.commander.send_setpoint(0, 0, 0, 0)
+        # Make sure that the last packet leaves before the link is closed
+        # since the message queue is not flushed before closing
+        self.lblThrusty.setText("0")
+        self.progressBar.setValue(int((0 / 60000) * 100))
+        time.sleep(0.1)
+        self._helper.cf.commander.send_stop_setpoint()
+
+
+    def _param_updated(self, name, value):
+        """Callback when the registered parameter get's updated"""
+        logger.debug("Updated {0} to {1}".format(name, value))
+
+
+    def ZMQCommand(self):
+        self.progressBar2.setValue(0)
+        context = zmq.Context()
+        sender = context.socket(zmq.PUSH)
+        bind_addr = "tcp://127.0.0.1:{}".format(1024 + 188)
+        sender.connect(bind_addr)
+        Thrust = int(self.TEDThrust.toPlainText())
+        roll = int(self.TEDRoll.toPlainText())
+        Pitch = int(self.TEDPitch.toPlainText())
+        Yaw = int(self.TEDYaw.toPlainText())
+
+        cmdmess = {
+            "version": 1,
+            "ctrl": {
+                "roll": 0.0,
+                "pitch": 0.0,
+                "yaw": 0.0,
+                "thrust": 0.0
+            }
+        }
+        self.progressBar2.setValue(25)
+
+        # Unlocking thrust protection
+        cmdmess["ctrl"]["thrust"] = 0
+        sender.send_json(cmdmess)
+
+        for i in range(10):
+            cmdmess["ctrl"]["thrust"] = Thrust
+            sender.send_json(cmdmess)
+            time.sleep(0.5)
+
+        self.progressBar2.setValue(50)
+
+        for i in range(10):
+            Thrust -= Thrust*0.1
+            cmdmess["ctrl"]["thrust"] = Thrust
+            sender.send_json(cmdmess)
+            time.sleep(0.5)
+
+        cmdmess["ctrl"]["thrust"] = 0
+        sender.send_json(cmdmess)
+        self.progressBar2.setValue(100)
+
+
+    def getaddress(self):
+        ## IP Address Set
+        index = self.IPAddressSelect.currentIndex()
+        Message = ""
+        if index == 0:
+            Message += "LocalVMIP "
+            UDP_IP_ADDRESS = "127.0.0.1"
+        elif index == 1:
+            Message += "ViconIP"
+            UDP_IP_ADDRESS = "255.255.255.255"
+        else:
+            Message += "Error>>>:Default IP used: LocalVMIP "
+            UDP_IP_ADDRESS = "127.0.0.1"
+        return UDP_IP_ADDRESS, Message
+
+
+    def getPort(self):
+        Message = ""
+        PortNumber = self.TxeditPort.toPlainText()
+        if str(PortNumber) == "":
+            UDP_PORT_NO = 5000
+            Message += ("DEFAULT/" + str(UDP_PORT_NO))
+        else:
+            UDP_PORT_NO = int(float(self.TxeditPort.toPlainText()))
+            Message += str(UDP_PORT_NO)
+        return UDP_PORT_NO, Message
+
+
+    def BinderCoOrdinator(self,FinalMessagez):
+        # IP address Set
+        UDP_IP_ADDRESS, IPaddress = self.getaddress()
+        # Port Number Set
+        UDP_PORT_NO, IPPort = self.getPort()
+        FinalMessagez += ("IP Name : " + IPaddress + '\n' + "Searching on Port : " + IPPort)
+
+        #  Try to Bind
+        if UDP_IP_ADDRESS == "255.255.255.255":  # Bind to vicon subnet
+            clientSock = socket(AF_INET, SOCK_DGRAM)  # Socket
+            clientSock.bind((UDP_IP_ADDRESS, UDP_PORT_NO))
+            FinalMessagez += "\n" + "Bind successful"
+
+        if UDP_IP_ADDRESS == "127.0.0.1":  # Bind to LocalHost
+            try:
+                hostName = gethostbyname('0.0.0.0')
+                clientSock = socket(AF_INET, SOCK_DGRAM)  # Socket
+                clientSock.bind((hostName, UDP_PORT_NO))
+            except error:
+                print("ERROR >>>:Unable to Bind with socket error :>>>" + str(error))
+                self.UDPCOnnectStatus.setText("Socket Time Out")
+        return FinalMessagez,clientSock
+
+
+    def ConnectToUDPStream(self):
+        ##### find stream  #########################################
+        FinalMessage,UDPSocket = self.BinderCoOrdinator("")
+        self.UDPCOnnectStatus.setText("Socket Found")
+        return UDPSocket
+
+
+    def GetUDPPacket(self, dataBlockSize,clientSock):
+        try:
+            clientSock.settimeout(0.5)  # to disable the vicon read for testing at home, comment the next line "recvfrom" and comment out Parse(self,data) and instead set all values to 0 "0,0,0,0,0,0,0,0,0"
+            data, addr = clientSock.recvfrom(dataBlockSize)                                                             #Get all the Vicon data
+            clientSock.close()                                                                                          #Dont need the Socket open anymore
+            FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ = self.Parse(data)           #Parse the Data into usable data types
+        except error:
+            print("ERROR >>>:Time Out with socket error :>>>" + str(error))
+            self.UDPCOnnectStatus.setText("Socket Time Out")
+            sys.exit()
+        return FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ,clientSock
+
+
+    #Receives stream, Parse data into variables, Parse variables into array for positions, Get average array
+    def UDPDataCoordinator(self,clientSock):
+        ##### Read UDP data ######################
+        FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ, clientSock = self.GetUDPPacket(ConsoleTab.dataBlockSize,clientSock)
+
+        counter = ConsoleTab.Counter                                #Add Values to global variable
+        #Acounter = ConsoleTab.Acounter
+
+        if counter == 10:                                            #End of list, begin sliding window
+            ArrayX = ConsoleTab.TransPositions[0]                      #Array that holds all transitional positions
+            ArrayY = ConsoleTab.TransPositions[1]
+            ArrayZ = ConsoleTab.TransPositions[2]
+            ConsoleTab.TransPositions[0], ConsoleTab.TransPositions[1], ConsoleTab.TransPositions[2] = self.SlidingWindow(ArrayX,ArrayY,ArrayZ,TransX,TransY,TransZ,1)
+
+            ArrayRX = ConsoleTab.RotPositions[0]  # Array that holds all Rotational positions
+            ArrayRY = ConsoleTab.RotPositions[1]
+            ArrayRZ = ConsoleTab.RotPositions[2]
+            ConsoleTab.RotPositions[0], ConsoleTab.RotPositions[1], ConsoleTab.RotPositions[2] = self.SlidingWindow(ArrayRX, ArrayRY, ArrayRZ, RotX, RotY, RotZ, 1)
+
+            self.Sliding_Coordinater += 1
+
+            if self.Sliding_Coordinater % 5 == 0:
+                ConsoleTab.AveragedRotPositions[0,0] = sum(ConsoleTab.RotPositions[0])/len(ConsoleTab.RotPositions[0])
+                ConsoleTab.AveragedRotPositions[1,0] = sum(ConsoleTab.RotPositions[1])/len(ConsoleTab.RotPositions[1])
+                ConsoleTab.AveragedRotPositions[2,0] = sum(ConsoleTab.RotPositions[2])/len(ConsoleTab.RotPositions[2])
+                self.Sliding_Coordinater = 0
+
+                # if (Acounter == 60):                                       #End of Average List, begin sliding window
+                #     # Av_ArrayX = ConsoleTab.AveragedTransPositions[0]                #array tht holds averge transitional positions
+                #     # Av_ArrayY = ConsoleTab.AveragedTransPositions[1]
+                #     # Av_ArrayZ = ConsoleTab.AveragedTransPositions[2]
+                #     # ConsoleTab.AveragedTransPositions[0],ConsoleTab.AveragedTransPositions[1],ConsoleTab.AveragedTransPositions[2] =self.SlidingWindow(Av_ArrayX,Av_ArrayY,Av_ArrayZ,ArrayX,ArrayY,ArrayZ,2)
+                #
+                # else:                                                                       #not end of Average list, add values
+                #     Length =  len(ConsoleTab.TransPositions[0])
+                #     ConsoleTab.AveragedTransPositions[0, Acounter] =np.sum(ConsoleTab.TransPositions[0]) / Length   # Average Trans X value
+                #     ConsoleTab.AveragedTransPositions[1, Acounter] =np.sum(ConsoleTab.TransPositions[1]) / Length   # Average Trans Y value
+                #     ConsoleTab.AveragedTransPositions[2, Acounter] =np.sum(ConsoleTab.TransPositions[2]) / Length   # Average Trans Z value
+                #     ConsoleTab.Acounter = Acounter + 1                                    #increment average counter
+        else:                                                                          #Not end of list, add values
+            ConsoleTab.TransPositions[0, counter] = TransX
+            ConsoleTab.TransPositions[1, counter] = TransY
+            ConsoleTab.TransPositions[2, counter] = TransZ
+            ConsoleTab.RotPositions[0, counter] = RotX
+            ConsoleTab.RotPositions[1, counter] = RotY
+            ConsoleTab.RotPositions[2, counter] = RotZ
+
+            ConsoleTab.Counter = counter + 1
+
+        #Update GUI
+        self.lblItemName.setText(str(ItemNamez))
+        self.UDPX.setText(str(TransX))  # X
+        self.UDPY.setText(str(TransY))  # Y
+        self.UDPZ.setText(str(TransZ))  # Z
+
+        # Rotation
+        self.UDPTX.setText(str(round(RotZ, 0)))
+        self.UDPTY.setText(str(round(RotZ, 0)))
+        self.UDPTZ.setText(str(round(RotZ, 0)))
+
+
+    # Subtracts the first value in the array from the total and then deletes it from the array, then adds last value added (New) to total (Average)
+    def SlidingWindow(self, AverageX, AverageY, AverageZ, NewX, NewY, NewZ,Indication):
+        if Indication == 1:                                         # Used for an array and int
+            for i in range(len(AverageX) - 1):                      # Move all values down 1
+                AverageX[i] = AverageX[i + 1]
+                AverageY[i] = AverageY[i + 1]
+                AverageZ[i] = AverageZ[i + 1]
+
+            AverageX[len(AverageX) - 1] = NewX
+            AverageY[len(AverageY) - 1] = NewY
+            AverageZ[len(AverageZ) - 1] = NewZ
+
+        if Indication == 2:                                         # Used for 2 arrays
+            for i in range(len(AverageX)-1):
+                AverageX[i] = AverageX[i + 1]
+                AverageY[i] = AverageY[i + 1]
+                AverageZ[i] = AverageZ[i + 1]
+
+            AverageX[len(AverageX)-1] = np.sum(NewX)/len(NewX)
+            AverageY[len(AverageY)-1] = np.sum(NewY)/len(NewY)
+            AverageZ[len(AverageZ)-1] = np.sum(NewZ)/len(NewZ)
+
+        return AverageX, AverageY, AverageZ
+
+
+    def Summary(self):
+        ConsoleTab.Land_Var = True
+
+    # Display the 3D Position of the drone
+    def SummaryP(self):
+        Clamper = ConsoleTab.ClampV
+        Target = []
+        Locked = []
+        TimeA = []
+        Clamppp = []
+        Max= []
+        min = []
+        for i in range(60):
+            Target.append(self.TEDY.toPlainText())                                                                      # Desired position
+            Locked.append(60000)                                                                                        # Max Thrust, doesnt change
+            TimeA.append(i)
+            Clamppp.append(ConsoleTab.MaxThrust + 1)
+            Max.append(60000)
+            min.append(ConsoleTab.MinimumThrust)
+        self.PlotAxis(ConsoleTab.TransPositions, Target, Locked, TimeA,Clamppp,Max,min)
+        self.Writetofile("LogData",ConsoleTab.LogDataz)
+        ConsoleTab.Land_Var = False
+        ConsoleTab.Stage = 4
+
+
+    # Plot the axis of the recoded data (Legacy)
+    def PlotAxis(self,Positions, Target, Locked, Time,Clamp,MxThrust,MnThrust):
+        x_line = Positions[0]
+        y_line = Positions[1]
+        z_line = Positions[2]
+
+        fig = plt.figure()
+        #ax = plt.axes(projection = '3d')
+        ax = fig.add_subplot(1,2,1,projection = '3d' )
+
+        ax.plot3D(x_line,y_line,z_line,'gray')
+        plt.xlabel('X - Position (mm)')
+        plt.ylabel('Y - Position (mm)')
+        ax.set_zlabel('Z - Position (mm)')
+        ax.set_xlim3d(-1600, 3000)
+        ax.set_ylim3d(-2000, 2000)
+        ax.set_zlim3d(0, 2000)
+        plt.title("Position")
+
+
+        #plt.figure(2)
+        plt.subplot(1,2,2)
+        plt.title("Thrust Levels")
+        plt.xlabel('X - Time (mm)')
+        plt.ylabel('Y - Max Thrust (mm)')
+        if len(ConsoleTab.ThrustValues) != len(Time):
+            while len(ConsoleTab.ThrustValues) < len(Time):
+                ConsoleTab.ThrustValues.append(0)
+
+        X = np.array(ConsoleTab.ThrustValues)
+        Timen = np.array(Time)
+        Clampn = np.array(Clamp)
+        MaxThrustn = np.array(MxThrust)
+        MinThrustn = np.array(MnThrust)
+        Y = Locked
+        #plt.xlim(0,60000)
+        plt.ylim(-3000,3000)
+        plt.plot(Timen , X, label = "Thrust Command")
+        plt.plot(Timen,MaxThrustn,  label = "Max Thrust")
+        plt.plot(Timen,MinThrustn, label="Min Thrust")
+        plt.plot(Timen, Clampn, label="Clamp")
+        plt.legend( loc='best')
+
+        plt.show()
+        return
+
+
+    def Writetofile(self,Name,Data):
+        File_object = open(Name + ".txt", "w")
+        for i in range(60):
+            DatatoWrite = "\n" +"|Thrust: {} Error: {}                  |Roll: {}  Error:{}                   |Pitch:{} Error: {}                 |Yaw: {}  Error:{} "
+            DatatoWrite2 = DatatoWrite.format(str(Data[i][0]),str(Data[i][1]),str(Data[i][2]), str(Data[i][3]) ,str(Data[i][4]) , str(Data[i][5])  ,str(Data[i][6]),str(Data[i][7]) )
+            File_object.write(DatatoWrite2)
+        File_object.close()
+
+
+    def Unpack(self,Dataobj, start, end):
+        # print(len(Dataobj[start:end]))
+        Value, = struct.unpack('d', Dataobj[start:end])
+        # print("Leng:", len(Dataobj[start:end]), "Byte :", Dataobj[start:end], "Value: ", Value)
+        return Value
+
+
+    # parse UDP datastream into variables
+    def Parse(self, data):
+        FrameNumber = int(data[1]) + int(data[2]) + int(data[3])
+        Itemsinblock = int(data[4])
+        ItemID = int(data[5])
+        ItemDataSize = data[6:7]
+        ItemNamez = data[8:30]
+        TransX = round(self.Unpack(data, 32, 40),2)
+        TransY = round(self.Unpack(data, 40, 48),2)
+        TransZ = round(self.Unpack(data, 48, 56),2)
+        RotX = round(self.Unpack(data, 56, 64),5)
+        RotY = round(self.Unpack(data, 64, 72),5)
+        RotZ = round(self.Unpack(data, 72, 80),5)
+        return FrameNumber, Itemsinblock, ItemNamez, TransX, TransY, TransZ, RotX, RotY, RotZ
+
+
+    # Converts the byte value obtained from UDP stream into usable data (Convert to string then int then store in variable)
+    def TransCoverter(self, Low_Index, High_Index, data):
+        finalvalue = 0
+        holder = 0
+        while Low_Index <= High_Index:
+            holder = data[Low_Index]
+            finalvalue += int(str(holder))
+            Low_Index += 1
+        return finalvalue
+
+
+    ###### Initialize PID Variables
+    def initPID2(self):
+        ClientPID = self.CBOXPID.isChecked()
+        IntCLamp = False
+        commandVariableX = int(self.TEDX.toPlainText())
+        commandVariableY = int(self.TEDY.toPlainText())
+        commandVariableZ = int(self.TEDZ.toPlainText())
+        errorTerm, PreviousError, intergralSum = 0, 0, 0
+        # when the desired value is reached twice then boolDone = true and exit
+        DoubleCheck = 0
+        BoolDone = False
+
+        '''Deactivate thrust proctection'''
+        self.DeactiveThrustProtection()
+        return roll, pitch, yawrate, thrust, ClientPID, IntCLamp, commandVariableX, commandVariableY, commandVariableZ, errorTerm, PreviousError, intergralSum, DoubleCheck, BoolDone
+
+
+    # This calculates the next send_setpoint command
+    def PIDController_Thrust(self):
+        proportionalthrust = self.ProportionalArm(ConsoleTab.ErrorTerms[3], ConsoleTab.PIDTuner[0])                     #'''PROPORTIONAL'''
+        RateOchange = self.DerivativeRateofChange(ConsoleTab.ErrorTerms[3], ConsoleTab.ErrorTerms[7])                   #'''DERIVATIVE'''
+        derivativethrust = RateOchange * ConsoleTab.PIDTuner[2]
+        thrust = proportionalthrust + derivativethrust                                                                  # Add each arms thust values together to get final thrust
+                                                                                                                        #'''INTEGRAL'''
+        # Clamp, checks if values are saturating (Intergral growing out of bounds) /returns either 1 = dont clamp  or 0= clamp
+        thrust, ConsoleTab.ClampV, integralthrust, ConsoleTab.IntegralSum = self.IntegralArm(ConsoleTab.ErrorTerms[3], ConsoleTab.IntegralSum, thrust, ConsoleTab.PIDTuner[1],ConsoleTab.MaxThrust,ConsoleTab.MinimumThrust)
+        thrust = int(round(thrust,0))
+        ConsoleTab.CurrentThrustCommand = thrust
+
+        ConsoleTab.ThrustIntegrationCounter += 1
+
+        if ConsoleTab.ThrustIntegrationCounter == 5:
+            ConsoleTab.ThrustIntegrationCounter = 0
+            if len(ConsoleTab.ThrustValues) >= 60:
+                ConsoleTab.ThrustValues = self.SlidingWindow_Simple(ConsoleTab.ThrustValues,thrust)
+            else:
+                ConsoleTab.ThrustValues.append(thrust)
+
+        if len(ConsoleTab.KpOutput) >= 60:                                                                                          #if Kp is larger than 60 then others will be to
+            ConsoleTab.KpOutput = self.SlidingWindow_Simple(ConsoleTab.KpOutput, proportionalthrust)
+            ConsoleTab.KiOutput = self.SlidingWindow_Simple(ConsoleTab.KiOutput, integralthrust)
+            ConsoleTab.KdOutput = self.SlidingWindow_Simple(ConsoleTab.KdOutput, derivativethrust)
+        else:
+            ConsoleTab.KpOutput.append(proportionalthrust)
+            ConsoleTab.KiOutput.append(integralthrust)
+            ConsoleTab.KdOutput.append(derivativethrust)
+
+
+    def SlidingWindow_Simple(self,Array,NewValue):
+        del Array[0]
+        Array.append(NewValue)
+        return Array
+
+
+    def SlidingWindow_Simple_Numpy(self, Array, NewValue,Maxlen):
+        Maxlen -= 1
+        del Array[0]
+        #for i in range(len(NewValue)-1):
+        Array.append(NewValue)                                                                               # Add new value to end of the array
+        return Array
+
+
+    def IntegralArm(self, errorTerm, intergralSum, Value, Ki, MaxVal, MinVal):
+        # test if final value needs to be clamped
+        integralValue = (intergralSum + errorTerm) * Ki
+        preValue = Value + integralValue
+        Clamped, preValue = self.Clamp(preValue, MaxVal, MinVal, errorTerm)
+
+        if  Clamped == 0:
+            # add value to sum, keep the test integral thrust
+            intergralSum += errorTerm
+            Value += integralValue
+        elif Clamped == 1:
+            # uses previous integralSUm/ does not add new error value
+            integralValue = intergralSum * Ki
+            Value += integralValue
+
+        return Value, Clamped, integralValue, intergralSum
+
+
+    # max thrust/ so clamp / conditional intergration, the controller shuts down intergration if it meets these conditions
+    def Clamp(self, Value, MaxValue,MinValue,ErrorTerm):
+        Saturating, SignsEqual = False, False
+        currentValue = Value
+
+        if Value > int(MaxValue):
+            Value = int(MaxValue)
+
+        if Value < int(MinValue):
+            Value = int(MinValue)
+
+        # if true then no saturation taking place/ not at max thrust
+        if currentValue == Value:
+            Saturating = False
+        else:
+            Saturating = True
+
+        # if both positive then integrator tries to make more positive, if both negative then intergator tries to make more negative|| if both same sign integrator makes worse
+        # if (Value > 0 and ErrorTerm > 0) or (Value < 0 and  ErrorTerm < 0):
+        #     SignsEqual = True
+        # else:
+        #     SignsEqual = False
+
+        # if saturating and attempting to make values worse then intergator must be turned off
+        if  (Saturating == True):   #(SignsEqual == True) and
+            return 1, Value  # turn integral sum integration off
+        else:
+            return 0, Value  # Keep integral sum integration on
+
+
+    def ProportionalArm(self,errorTerm,Kp):                                                                           #Z                                                                                    #Kp
+        Proportional_Output = errorTerm * Kp
+        return Proportional_Output
+
+
+    def DerivativeRateofChange(self,errorTerm, PreviousError):
+        if PreviousError == 0:
+            RateofChange = 0
+        else:
+            RateofChange = PreviousError - errorTerm
+        return RateofChange
+
+    #change start time, and signal that the Virtual trajectory must now begin
+    def VTActivator(self):
+        if ConsoleTab.PIDInitialized==0:
+            self.initPID()
+            self.DeactiveThrustProtection()
+            ConsoleTab.StartTime = datetime.datetime.now()
+            ConsoleTab.PIDInitialized = 1
+            if self.RB1Dimen.isChecked() == False:
+                self.RB1Dimen.setEnabled(False)
+
+
+#TODO: Determine which functions are no longer used below this point
+
+
+    # if a value is too far over the thresh hold it gets ignored and marked as an error
+    # +20 -20 gives a leway of 40
+    # if it evalueates as true then do not use value
+    def Range(self, Previous, Current):
+        # print("Previous :"+str(Previous) +"  Current :"+str(Current))
+        if Current <= Previous + 25 and Current >= Previous - 25:
+            # print("True")
+            return True
+        else:
+            # print("False")
+            return False
+
+
+    def AddtoAverage(PrevioT, Tran, Aver):
+        BooT = Range(self, PrevioT, Tran)  # if too different dont use(assume noise)
+        if BooT != False:
+            Aver += Tran
+        return Aver
+
+
+    def PrintAllData(self, FrameNumber, Itemsinblock, ItemNamez, AverageTransX, AverageTransY, AverageTransZ,Moved, StartingPoint, Calibrated):
+        if Calibrated == False:
+            print("Frame Number :", FrameNumber, "TransX :", AverageTransX, " | ", "TransY :", AverageTransZ,
+                  " | ",
+                  "TransZ :", AverageTransY, " | ", "Moved:", Moved, " F")
+        if Calibrated == True:
+            print("Frame Number :", FrameNumber, "TransX :", AverageTransX, " | ", "TransY :", AverageTransZ,
+                  " | ",
+                  "TransZ :", AverageTransY, " | ", "Moved:", Moved, " | ", "Origin,", "X:", StartingPoint[0],
+                  " Y:", StartingPoint[2], " Z:", StartingPoint[1])
+        Printer = ""
+        Printer = "\n" + "Frame Number :" + str(FrameNumber) + "\n" + "Transition " + "\n" + "X :" + str(
+            AverageTransX) + " ," + "Y :" + str(AverageTransY) + " ," + "Z :" + str(
+            AverageTransZ)
+        return Printer
+
+
+    def HasDroneMoved(self, PreviousTx, PreviousTy, PreviousTz, ActualAverageX, ActualAverageY, ActualAverageZ, Moved):
+        if PreviousTx == 0:
+            PreviousTx, PreviousTy, PreviousTz = ActualAverageX, ActualAverageY, ActualAverageZ
+            Moved = True
+        else:
+            if ActualAverageX <= PreviousTx + 20 and ActualAverageX >= PreviousTx - 20 or \
+                    ActualAverageY <= PreviousTy + 20 and ActualAverageY >= PreviousTy - 20 or \
+                    ActualAverageZ <= PreviousTz + 20 and ActualAverageZ >= PreviousTz - 20:
+                Moved = False
+            else:
+                Moved = True
+            PreviousTx, PreviousTy, PreviousTz = ActualAverageX, ActualAverageY, ActualAverageZ
+        return PreviousTx, PreviousTy, PreviousTz, Moved
+
+
+    # Gets the origin of the drone
+    def Calibrate(self, Calibrated, StartingPoint, SumsX, SumsY, SumsZ, ActualAverageX, ActualAverageY,ActualAverageZ):
+        if len(SumsZ) >= 20 and Calibrated == False:
+            X, Y, Z = 0, 0, 0
+            # Use values 40 - 50 as the first couple of values will always be on the lower end of the deviation
+            for i in range(10, 20):
+                X += SumsX[i]
+                Y += SumsY[i]
+                Z += SumsZ[i]
+
+            StartingPoint.append(X / 10)
+            StartingPoint.append(Y / 10)
+            StartingPoint.append(Z / 10)
+            Calibrated = True
+        else:
+            SumsX.append(ActualAverageX)
+            SumsY.append(ActualAverageY)
+            SumsZ.append(ActualAverageZ)
+            Calibrated = False
+        return Calibrated, StartingPoint, SumsX, SumsY, SumsZ
+
+
+    # average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+    def GetActualAverage(self, ActualAverageX, ActualAverageY, ActualAverageZ, TotalX, TotalY, TotalZ,windowSize):
+        ActualAverageX = sum(TotalX) / len(TotalX) / windowSize
+        ActualAverageY = sum(TotalY) / len(TotalY) / windowSize
+        ActualAverageZ = sum(TotalZ) / len(TotalZ) / windowSize
+        return ActualAverageX, ActualAverageY, ActualAverageZ
+
+
+    def StandardD(Array):
+        Sq = []
+        mean = sum(Array) / len(Array)
+        for i in range(len(Array)):
+            Sq.append((Array[i] - mean) * (Array[i] - mean))
+
+        newmean = sum(Sq) * (1 / len(Sq))
+        print(newmean)
+        deviation = math.sqrt(newmean)
+        print(deviation)
+
+
+    def OriginTranslator(ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint):
+        ActualAverageX, ActualAverageY, ActualAverageZ = ActualAverageX - StartingPoint[0], ActualAverageY - \
+                                                         StartingPoint[1], ActualAverageZ - StartingPoint[2]
+        return ActualAverageX, ActualAverageY, ActualAverageZ
+
+
+    def init():
+        FinalMessage = ""  # Holds all logging information monitored, displayed at the end of execution in client
+        self.clear()
+        self.progressBar.setValue(0)
+        Writetofile1("Start")  # begin logging
+        Moved = False  # Has drone moved ?
+        ProgressBar, PreviousTx, PreviousTy, PreviousTz = 0, 0, 0, 0  # Used to determine if drone has moved
+        PosY = 0  # Used for traversal of Y axis (Holds sliding window pos)
+        AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ = 0, 0, 0, 0, 0, 0
+        ActualAverageX, ActualAverageY, ActualAverageZ = 1000, 1000, 1000
+        # all thrust levels, all pos, time
+        ThrustLevels = []
+        Positions = []
+        Time = []
+        TimeVar = 0
+        windowSize = 50  # Sliding window size
+        # Contain all respective actual values
+        ArrayTransX = []
+        ArrayTransY = []
+        ArrayTransZ = []
+        # holds the averages to be used to calculate the starting point
+        SumsX = []
+        SumsY = []
+        SumsZ = []
+        StartingPoint = []  # Holds the orgin values,[0]=x [1]=y [2]=z
+        Calibrated = False
+        AlteredCommand = False  # Used to alter the command variables into resonable data
+        CommandCounter = 0  # Counts commands sent
+
+        return FinalMessage, Moved, ProgressBar, PreviousTx, PreviousTy, PreviousTz, PosY, \
+               AverageTransX, AverageTransY, AverageTransZ, AverageRotX, AverageRotY, AverageRotZ, \
+               ActualAverageX, ActualAverageY, ActualAverageZ, ThrustLevels, Positions, Time, \
+               TimeVar, windowSize, ArrayTransX, ArrayTransY, ArrayTransZ, SumsX, SumsY, \
+               SumsZ, StartingPoint, Calibrated, AlteredCommand, CommandCounter
+
+
+    def MonitorValues(self,ClientPID, Calibrated, commandVariableX, commandVariableY, commandVariableZ,AverageTransX,AverageTransY, AverageTransZ, thrust, CommandCounter, errorTerm):
+        if ClientPID == False and Calibrated == True:
+            FinalMessage += "\n" + "Desired Pos :" + "X" + str(commandVariableX) + " Y" + str(
+                commandVariableY) + " Z" + str(commandVariableZ) + "\n" + "Current :" + str(
+                AverageTransX) + str(AverageTransY) + str(AverageTransZ)
+        else:
+            FinalMessage += "\n" + "Desired Pos :" + "X" + str(commandVariableX) + " Y" + str(
+                commandVariableY) + " Z" + str(commandVariableZ) + "\n" + "Current :" + str(
+                AverageTransX) + str(AverageTransY) + str(AverageTransZ)
+            FinalMessage += "\n" + "Thrust levels :" + str(thrust) + "  Loops :" + str(
+                CommandCounter) + " Error :" + str(errorTerm)
+            FinalMessage += "\n" + "--------------" + "\n"
+
+            # Time Out
+        if CommandCounter == 160:
+            self.progressBar2.setValue(1)
+            Land(self, thrust)
+            BoolDone = True
+        return BoolDone
+
+
+    def DronePID(self,ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint, commandVariableX,commandVariableY,commandVariableZ):
+        yaw = 0
+
+        # Fix vicon calibration by setting origin manually
+        ActualAverageX, ActualAverageY, ActualAverageZ = OriginTranslator(ActualAverageX, ActualAverageY,
+                                                                          ActualAverageZ, StartingPoint)
+
+        # Send the position of the drone obtained through vicon udp, external pos must be in meters hence /1000,swap Z and Y due to calibration issues
+        self._helper.cf.extpos.send_extpos(ActualAverageX / 1000, ActualAverageZ / 1000, ActualAverageY / 1000)  # Z+1.5 ?
+
+        # Send Command
+        self._helper.cf.commander.send_position_setpoint(commandVariableX, commandVariableY, commandVariableZ,yaw)
+        return
+
+
+    def EndConnect(self, FinalMessage, Time, commandVariableY, ThrustLevels, Positions):
+        self.console.setText(FinalMessage)
+        clientSock.close()
+        self.progressBar.setValue(100)
+        Target = []
+        Locked = []
+        for i in range(len(Time)):
+            Target.append(commandVariableY)  # Desired position
+            Locked.append(60000)  # Max Thrust, doesnt change
+        PlotAxis(ThrustLevels, Positions, Target, Locked, Time)
+        return
+
+
+    #####################################################################################################################################################################################
+    def ConnectUDP1(self):
+        ##### Initialize Variables ####################################
+        FinalMessage, Moved,
+        ThrustLevels, Positions, Time, TimeVar,  \
+        StartingPoint, Calibrated, AlteredCommand, CommandCounter = init()
+
+        ##### Initialize PID Variables ################################
+        thrust, ClientPID, IntCLamp, commandVariableX, commandVariableY, commandVariableZ, errorTerm, PreviousError, intergralSum, DoubleCheck, BoolDone = initPID()
+
+        ## Main #######################################################
+        self.console.setText("Calibrating origin, This may take up to 20 seconds")
+        while BoolDone == False:
+            self.progressBar.setValue(int((thrust / 60000) * 100))
+
+            TotalX = []
+            TotalY = []
+            TotalZ = []
+            # get the average value of each variable after 50 iterations
+            while len(TotalX) < windowSize:
+                ##### 1 read Gyro values #################################
+                roll, pitch, yawrate = EatGyro()
+
+                ##### Send command to drone every 10th iteration ########
+                ThrustLevels, Time, TimeVar, Positions = SendCommand(TotalX, thrust, TimeVar, ThrustLevels, Time,
+                                                                     Positions, TotalY, roll, pitch, yawrate, PosY)
+
+                ##### Sliding window operation ##########################
+                AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ, TotalX, TotalY, TotalZ = AddtoWindow(
+                    AverageTransX, AverageTransY, AverageTransZ, ArrayTransX, ArrayTransY, ArrayTransZ, windowSize,
+                    TransX, TransY, TransZ, TotalX, TotalY, TotalZ)
+
+                ##### Contains sliding window average of Y###############
+                PosY = AverageTransY / windowSize
+
+            # average = ((sum of all (X,Y,Z values) / (length of array) / length of sliding window)
+            ActualAverageX, ActualAverageY, ActualAverageZ = GetActualAverage(self, ActualAverageX, ActualAverageY,
+                                                                              ActualAverageZ, TotalX, TotalY,
+                                                                              TotalZ, windowSize)
+
+            #### work out if drone has moved ############################
+            PreviousTx, PreviousTy, PreviousTz, Moved = HasDroneMoved(self, PreviousTx, PreviousTy, PreviousTz,
+                                                                      ActualAverageX, ActualAverageY,
+                                                                      ActualAverageZ, Moved)
+
+            # get Starting Point ########################################
+            if Calibrated == False:
+                Calibrated, StartingPoint, SumsX, SumsY, SumsZ = Calibrate(self, Calibrated, StartingPoint, SumsX,
+                                                                           SumsY, SumsZ, ActualAverageX,
+                                                                           ActualAverageY, ActualAverageZ)
+
+            # Print all data, *remember that Y = Z , Z= Y
+            FinalMessage += ("\n" + "Address : " + UDP_IP_ADDRESS) + PrintAllData(self, FrameNumber, Itemsinblock,
+                                                                                  ItemNamez, int(ActualAverageX),
+                                                                                  int(ActualAverageY),
+                                                                                  int(ActualAverageZ), Moved,
+                                                                                  StartingPoint, Calibrated)
+
+            ############### Translate command ############################
+            # basically, if the actual origin position is 800 and a command of 100 is sent then the drone moves
+            # 100 in that axis so 900 final pos
+            if Calibrated == True and AlteredCommand == False:
+                commandVariableX, commandVariableY, commandVariableZ = commandVariableX + StartingPoint[
+                    0], commandVariableY + StartingPoint[1], commandVariableZ + StartingPoint[2]
+                AlteredCommand = True
+
+            #### Start client PID loop ###################################
+            if Calibrated == True and ClientPID == True:
+                BoolDone, thrust, intergralSum, IntCLamp, ProgressBar, errorTerm = ClientPID(ActualAverageX, PosY,
+                                                                                             ActualAverageZ,
+                                                                                             errorTerm,
+                                                                                             commandVariableY,
+                                                                                             ProgressBar, thrust,
+                                                                                             intergralSum, IntCLamp,
+                                                                                             PreviousError,
+                                                                                             BoolDone)
+
+            #### Send external Pos and commands to Drone##################
+            elif Calibrated == True and ClientPID == False:
+                DronePID(ActualAverageX, ActualAverageY, ActualAverageZ, StartingPoint, commandVariableX,
+                         commandVariableY, commandVariableZ)
+
+            #### Monitor values and determine if program must timeout ####
+            CommandCounter += 1
+            BoolDone = MonitorValues(ClientPID, Calibrated, commandVariableX, commandVariableY, commandVariableZ,
+                                     AverageTransX, AverageTransY, AverageTransZ, thrust, CommandCounter, errorTerm)
+
+            # Display all data obtained and close #############################
+        EndConnect(FinalMessage, Time, commandVariableY, ThrustLevels, Positions)
+
+        ################################################################################################################################################################################################
+
+
+
