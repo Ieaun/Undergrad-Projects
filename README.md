@@ -7,7 +7,7 @@ Link to Demonstration video: https://youtu.be/glqE2nKNF8U
 For any visitors to the repo, i would reccomend my dissertation, embbeded systems coursework and computational science coursework to gauge my abilities (all third year modules in C/C++ and python).
 
 # Breakdown
-## Third Year (Average 82%)
+## Third Year 
 Embedded Systems: C, Grade : 90%
 
 Computational Science: Python, Grade : 84%
@@ -16,7 +16,7 @@ Dissertation: Python (Client) and some C++ (Firmware), Grade : 90%
 
 Computer Vision: MATLAB, Grade :  64%
 
-## Second Year (Average 64%)
+## Second Year 
 Agile Software Development: Grade : 95%
 
 Systems analysis and procces: C#, Grade : 82%
