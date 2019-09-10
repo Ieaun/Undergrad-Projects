@@ -1,0 +1,6096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui version="4.0">
+
+ <class>Form</class>
+
+ <widget class="QWidget" name="Form">
+
+  <property name="geometry">
+
+   <rect>
+
+    <x>0</x>
+
+    <y>0</y>
+
+    <width>1343</width>
+
+    <height>494</height>
+
+   </rect>
+
+  </property>
+
+  <property name="windowTitle">
+
+   <string>Form</string>
+
+  </property>
+
+  <widget class="QGroupBox" name="gbStatus">
+
+   <property name="geometry">
+
+    <rect>
+
+     <x>10</x>
+
+     <y>0</y>
+
+     <width>271</width>
+
+     <height>361</height>
+
+    </rect>
+
+   </property>
+
+   <property name="title">
+
+    <string> Status</string>
+
+   </property>
+
+   <widget class="QLabel" name="_lbltemp_c">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>50</y>
+
+      <width>111</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Temperature C : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrust">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>90</y>
+
+      <width>71</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Log Thrust : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="_lbltemp_f">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>70</y>
+
+      <width>111</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Temperature F : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="_temp_f">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>110</x>
+
+      <y>70</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="_temp_c">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>110</x>
+
+      <y>50</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblStatus">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>30</y>
+
+      <width>181</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="font">
+
+     <font>
+
+      <pointsize>12</pointsize>
+
+      <weight>75</weight>
+
+      <bold>true</bold>
+
+     </font>
+
+    </property>
+
+    <property name="text">
+
+     <string>Scan For A CrazyFlie</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrustValue">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>110</x>
+
+      <y>90</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblPitchValue">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>70</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblPitch">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>170</x>
+
+      <y>70</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Pitch : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblYaw">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>170</x>
+
+      <y>50</y>
+
+      <width>31</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Yaw : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblYawValue">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>50</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblRoll">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>170</x>
+
+      <y>90</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Roll : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblRollValue">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>90</y>
+
+      <width>51</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QWidget" name="layoutWidget">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>254</y>
+
+      <width>251</width>
+
+      <height>61</height>
+
+     </rect>
+
+    </property>
+
+    <layout class="QVBoxLayout" name="verticalLayout">
+
+     <item>
+
+      <widget class="QPushButton" name="_clearButton">
+
+       <property name="maximumSize">
+
+        <size>
+
+         <width>249</width>
+
+         <height>27</height>
+
+        </size>
+
+       </property>
+
+       <property name="text">
+
+        <string>Clear</string>
+
+       </property>
+
+      </widget>
+
+     </item>
+
+     <item>
+
+      <widget class="QPushButton" name="_dumpSystemLoadButton">
+
+       <property name="enabled">
+
+        <bool>false</bool>
+
+       </property>
+
+       <property name="text">
+
+        <string>Task dump</string>
+
+       </property>
+
+       <property name="checkable">
+
+        <bool>false</bool>
+
+       </property>
+
+      </widget>
+
+     </item>
+
+     <item>
+
+      <widget class="QPushButton" name="_propellerTestButton">
+
+       <property name="enabled">
+
+        <bool>false</bool>
+
+       </property>
+
+       <property name="toolTip">
+
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic;&quot;&gt;Experimental feature:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; Tests propellers and motors&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Place the Crazyflie on a flat hard surface and run the propeller test.&lt;/p&gt;&lt;p&gt;The crazyflie will run the motors in sequence and beeps the motors that are above the vibration threshold.&lt;/p&gt;&lt;p&gt;The results are also printed on the console.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+       </property>
+
+       <property name="text">
+
+        <string>Propeller test</string>
+
+       </property>
+
+      </widget>
+
+     </item>
+
+    </layout>
+
+   </widget>
+
+   <widget class="QTextEdit" name="console">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>5</x>
+
+      <y>110</y>
+
+      <width>261</width>
+
+      <height>141</height>
+
+     </rect>
+
+    </property>
+
+   </widget>
+
+   <widget class="QProgressBar" name="progressBar">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>80</x>
+
+      <y>320</y>
+
+      <width>171</width>
+
+      <height>21</height>
+
+     </rect>
+
+    </property>
+
+    <property name="value">
+
+     <number>0</number>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrusty">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>340</y>
+
+      <width>54</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrust_2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>320</y>
+
+      <width>71</width>
+
+      <height>21</height>
+
+     </rect>
+
+    </property>
+
+    <property name="font">
+
+     <font>
+
+      <pointsize>10</pointsize>
+
+     </font>
+
+    </property>
+
+    <property name="text">
+
+     <string>Thrust (%) : </string>
+
+    </property>
+
+   </widget>
+
+  </widget>
+
+  <widget class="QGroupBox" name="groupBox_3">
+
+   <property name="enabled">
+
+    <bool>false</bool>
+
+   </property>
+
+   <property name="geometry">
+
+    <rect>
+
+     <x>290</x>
+
+     <y>0</y>
+
+     <width>301</width>
+
+     <height>221</height>
+
+    </rect>
+
+   </property>
+
+   <property name="statusTip">
+
+    <string>Send the kill command to the drone terminating Testing operations</string>
+
+   </property>
+
+   <property name="title">
+
+    <string>Flight Controller</string>
+
+   </property>
+
+   <widget class="QLabel" name="RollV">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>70</x>
+
+      <y>70</y>
+
+      <width>54</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="PitchV">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>70</x>
+
+      <y>50</y>
+
+      <width>54</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblNewYaw">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>20</x>
+
+      <y>30</y>
+
+      <width>31</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Yaw :</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblNewRoll">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>20</x>
+
+      <y>70</y>
+
+      <width>31</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Roll :</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblNewPitch">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>20</x>
+
+      <y>50</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Pitch :</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="YawV">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>70</x>
+
+      <y>30</y>
+
+      <width>54</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>0</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="LoggingLock">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>100</x>
+
+      <y>50</y>
+
+      <width>111</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Send Unlock signal to the drone to start operations (You must unlock after Landing)</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>1) On / Unlock</string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>true</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="LandLog">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>100</x>
+
+      <y>90</y>
+
+      <width>71</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Gradually land drone</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>3) Land</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="Off">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>100</x>
+
+      <y>30</y>
+
+      <width>71</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>To Begin normal operation, On / Unlock drone</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Off</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>true</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="RBHover">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>100</x>
+
+      <y>70</y>
+
+      <width>121</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Hover in place, CF2.0 hover speed is 36450</string>
+
+    </property>
+
+    <property name="accessibleDescription">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hover in place,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CF2.0 hover speed is 20000&lt;/span&gt;&lt;/p&gt;&lt;p&gt;CF2.0 with 4 Mo-Cap markers hover speed is 40000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>2) Altitude Hold</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="txtHover">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>220</x>
+
+      <y>70</y>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>50</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+    <property name="font">
+
+     <font>
+
+      <pointsize>9</pointsize>
+
+     </font>
+
+    </property>
+
+    <property name="plainText">
+
+     <string/>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPushButton" name="LoggerTest">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>20</x>
+
+      <y>90</y>
+
+      <width>51</width>
+
+      <height>27</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>gradually increases the propellor speed (Used for Testing)</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Ramp</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="label">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>0</x>
+
+      <y>180</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Steps:</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="StartLog">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>90</x>
+
+      <y>150</y>
+
+      <width>101</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Send signal to change proppelor speed</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Adjust Thrust</string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="move_Left">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>130</y>
+
+      <width>61</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Move the drone a step to the left/right</string>
+
+    </property>
+
+    <property name="accessibleDescription">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hover in place,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CF2.0 hover speed is 20000&lt;/span&gt;&lt;/p&gt;&lt;p&gt;CF2.0 with 4 Mo-Cap markers hover speed is 40000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Left</string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="label_2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>200</x>
+
+      <y>180</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Steps:</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="Move_Left_Box">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>40</x>
+
+      <y>170</y>
+
+      <width>41</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>30</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+    <property name="plainText">
+
+     <string>0.4</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblRoll_2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>90</x>
+
+      <y>180</y>
+
+      <width>41</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Thrust:</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="move_Forw">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>130</y>
+
+      <width>61</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Move the drone a step to the front/back</string>
+
+    </property>
+
+    <property name="accessibleDescription">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hover in place,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CF2.0 hover speed is 20000&lt;/span&gt;&lt;/p&gt;&lt;p&gt;CF2.0 with 4 Mo-Cap markers hover speed is 40000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Forw</string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="Move_Right_Box">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>240</x>
+
+      <y>170</y>
+
+      <width>51</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>30</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+    <property name="plainText">
+
+     <string>0.4</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="TxtThrust">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>140</x>
+
+      <y>170</y>
+
+      <width>50</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>50</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+    <property name="plainText">
+
+     <string>40000</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="Auto_Pilot">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>220</x>
+
+      <y>50</y>
+
+      <width>71</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>To Begin normal operation, On / Unlock drone</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Auto</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="move_Right">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>150</y>
+
+      <width>61</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Move the drone a step to the left/right</string>
+
+    </property>
+
+    <property name="accessibleDescription">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hover in place,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CF2.0 hover speed is 20000&lt;/span&gt;&lt;/p&gt;&lt;p&gt;CF2.0 with 4 Mo-Cap markers hover speed is 40000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Right </string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="move_Back">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>150</y>
+
+      <width>61</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="statusTip">
+
+     <string>Move the drone a step to the front/back</string>
+
+    </property>
+
+    <property name="accessibleDescription">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hover in place,&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CF2.0 hover speed is 20000&lt;/span&gt;&lt;/p&gt;&lt;p&gt;CF2.0 with 4 Mo-Cap markers hover speed is 40000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Back</string>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+  </widget>
+
+  <widget class="QGroupBox" name="GBZMQ">
+
+   <property name="enabled">
+
+    <bool>false</bool>
+
+   </property>
+
+   <property name="geometry">
+
+    <rect>
+
+     <x>290</x>
+
+     <y>230</y>
+
+     <width>301</width>
+
+     <height>161</height>
+
+    </rect>
+
+   </property>
+
+   <property name="title">
+
+    <string> ZMQ Commands</string>
+
+   </property>
+
+   <property name="flat">
+
+    <bool>false</bool>
+
+   </property>
+
+   <widget class="QPlainTextEdit" name="TEDThrust">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>70</y>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPushButton" name="BtnEnterZMQ">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>50</x>
+
+      <y>120</y>
+
+      <width>231</width>
+
+      <height>27</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>0</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>747</width>
+
+      <height>27</height>
+
+     </size>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Send a command using ZMQ (Must be enabled in config file)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>Send ZMQ Packet</string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="TEDYaw">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>210</x>
+
+      <y>30</y>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>50</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="TEDRoll">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>60</x>
+
+      <y>70</y>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>50</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPlainTextEdit" name="TEDPitch">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>60</x>
+
+      <y>30</y>
+
+      <width>70</width>
+
+      <height>30</height>
+
+     </rect>
+
+    </property>
+
+    <property name="minimumSize">
+
+     <size>
+
+      <width>70</width>
+
+      <height>20</height>
+
+     </size>
+
+    </property>
+
+    <property name="maximumSize">
+
+     <size>
+
+      <width>50</width>
+
+      <height>30</height>
+
+     </size>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblPitchzmq">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>30</y>
+
+      <width>54</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Pitch : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblRollzmq">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>70</y>
+
+      <width>31</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Roll : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblYawzmq">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>150</x>
+
+      <y>30</y>
+
+      <width>31</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Yaw : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrustzmq">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>150</x>
+
+      <y>70</y>
+
+      <width>61</width>
+
+      <height>17</height>
+
+     </rect>
+
+    </property>
+
+    <property name="text">
+
+     <string>Thrust (%) : </string>
+
+    </property>
+
+   </widget>
+
+  </widget>
+
+  <widget class="QGroupBox" name="groupBox">
+
+   <property name="enabled">
+
+    <bool>false</bool>
+
+   </property>
+
+   <property name="geometry">
+
+    <rect>
+
+     <x>600</x>
+
+     <y>0</y>
+
+     <width>361</width>
+
+     <height>411</height>
+
+    </rect>
+
+   </property>
+
+   <property name="toolTip">
+
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Complete steps in the order presented&lt;/p&gt;&lt;p&gt;E.g 1) ----&amp;gt; 2)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+   </property>
+
+   <property name="title">
+
+    <string>Trajectory</string>
+
+   </property>
+
+   <widget class="QGroupBox" name="UDPSettngs">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>180</y>
+
+      <width>351</width>
+
+      <height>191</height>
+
+     </rect>
+
+    </property>
+
+    <property name="title">
+
+     <string>2) UDP Settings</string>
+
+    </property>
+
+    <widget class="QComboBox" name="IPAddressSelect">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>50</y>
+
+       <width>261</width>
+
+       <height>27</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>0</width>
+
+       <height>0</height>
+
+      </size>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select which IP to Use:&lt;/p&gt;&lt;p&gt;Vicon = 255.255.255.255&lt;/p&gt;&lt;p&gt;Private Test server = &lt;span style=&quot; font-family:'DejaVu Sans Mono'; color:#6a8759;&quot;&gt;192.168.0.122&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="editable">
+
+      <bool>false</bool>
+
+     </property>
+
+     <property name="currentIndex">
+
+      <number>0</number>
+
+     </property>
+
+     <property name="maxVisibleItems">
+
+      <number>5</number>
+
+     </property>
+
+     <item>
+
+      <property name="text">
+
+       <string>Vicon System - &quot;255.255.255.255&quot;</string>
+
+      </property>
+
+     </item>
+
+     <item>
+
+      <property name="text">
+
+       <string>Local VM  - &quot;127.0.0.1&quot; </string>
+
+      </property>
+
+     </item>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TxeditPort">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>30</y>
+
+       <width>131</width>
+
+       <height>16</height>
+
+      </rect>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPort">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>30</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Port :</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_5">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>260</x>
+
+       <y>120</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblRollzmq_5">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>120</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_5">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>180</x>
+
+       <y>120</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPX">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>120</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPY">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>200</x>
+
+       <y>120</y>
+
+       <width>61</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPZ">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>280</x>
+
+       <y>120</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBConnectUDP">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>80</y>
+
+       <width>111</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Search, setup&lt;/span&gt; and &lt;span style=&quot; font-weight:600;&quot;&gt;begin recieving &lt;/span&gt;the UDP stream &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="statusTip">
+
+      <string>Setup to recieve a UDP stream from the specified details</string>
+
+     </property>
+
+     <property name="text">
+
+      <string> Setup Stream</string>
+
+     </property>
+
+     <property name="autoExclusive">
+
+      <bool>false</bool>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPCOnnectStatus">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>200</x>
+
+       <y>20</y>
+
+       <width>151</width>
+
+       <height>31</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>12</pointsize>
+
+       <weight>50</weight>
+
+       <bold>false</bold>
+
+      </font>
+
+     </property>
+
+     <property name="text">
+
+      <string>Socket Not Found</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblRollzmq_6">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>100</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Item Name:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblItemName">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>100</x>
+
+       <y>100</y>
+
+       <width>221</width>
+
+       <height>20</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>None</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RB1Dimen">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>80</y>
+
+       <width>101</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lock out the X and Y axis and only focus on flying up or down (increase thrust, hold current Y and Y)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="text">
+
+      <string>1-Dimension </string>
+
+     </property>
+
+     <property name="autoExclusive">
+
+      <bool>false</bool>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPTX">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>140</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblRollzmq_7">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>140</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPTZ">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>280</x>
+
+       <y>140</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_8">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>180</x>
+
+       <y>140</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="UDPTY">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>200</x>
+
+       <y>140</y>
+
+       <width>61</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_8">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>260</x>
+
+       <y>140</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_9">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>120</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Transitional</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_10">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>20</x>
+
+       <y>140</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Rotational</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QCheckBox" name="CBOXPID">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>0</y>
+
+       <width>121</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Use Custom PID</string>
+
+     </property>
+
+     <property name="checked">
+
+      <bool>true</bool>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBTestMode">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>230</x>
+
+       <y>80</y>
+
+       <width>101</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Test Mode</string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QGroupBox" name="groupBox_2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>20</y>
+
+      <width>331</width>
+
+      <height>151</height>
+
+     </rect>
+
+    </property>
+
+    <property name="title">
+
+     <string>1) Set Points</string>
+
+    </property>
+
+    <widget class="QPlainTextEdit" name="TEDY">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>110</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>-100</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>110</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>30</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblRollzmq_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>70</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TEDX">
+
+     <property name="enabled">
+
+      <bool>false</bool>
+
+     </property>
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>70</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>-700</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TEDZ">
+
+     <property name="enabled">
+
+      <bool>false</bool>
+
+     </property>
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>30</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>750</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TEDY_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>110</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TEDZ_2">
+
+     <property name="enabled">
+
+      <bool>false</bool>
+
+     </property>
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>30</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>190</x>
+
+       <y>110</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>190</x>
+
+       <y>30</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPlainTextEdit" name="TEDX_2">
+
+     <property name="enabled">
+
+      <bool>false</bool>
+
+     </property>
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>70</y>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </rect>
+
+     </property>
+
+     <property name="minimumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>20</height>
+
+      </size>
+
+     </property>
+
+     <property name="maximumSize">
+
+      <size>
+
+       <width>70</width>
+
+       <height>30</height>
+
+      </size>
+
+     </property>
+
+     <property name="plainText">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblRollzmq_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>190</x>
+
+       <y>70</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBZ">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>30</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBX">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>70</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBY">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>110</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBZ_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>290</x>
+
+       <y>30</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBY_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>290</x>
+
+       <y>110</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QRadioButton" name="RBX_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>290</x>
+
+       <y>70</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QProgressBar" name="progressBar2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>110</x>
+
+      <y>370</y>
+
+      <width>241</width>
+
+      <height>20</height>
+
+     </rect>
+
+    </property>
+
+    <property name="value">
+
+     <number>0</number>
+
+    </property>
+
+   </widget>
+
+   <widget class="QLabel" name="lblThrust_3">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>370</y>
+
+      <width>101</width>
+
+      <height>21</height>
+
+     </rect>
+
+    </property>
+
+    <property name="font">
+
+     <font>
+
+      <pointsize>11</pointsize>
+
+     </font>
+
+    </property>
+
+    <property name="text">
+
+     <string>Progress (%) : </string>
+
+    </property>
+
+   </widget>
+
+   <widget class="QPushButton" name="BtnConnect">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>20</x>
+
+      <y>340</y>
+
+      <width>331</width>
+
+      <height>27</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Start the PID&lt;/span&gt; controller which will &lt;span style=&quot; font-weight:600;&quot;&gt;regulate&lt;/span&gt;&lt;/p&gt;&lt;p&gt;increases and decreases in &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Thrust,Pitch and Roll &lt;/span&gt;to reach the &lt;/p&gt;&lt;p&gt;designated set points.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>3) Activate Virtual Trajectory</string>
+
+    </property>
+
+   </widget>
+
+  </widget>
+
+  <widget class="QGroupBox" name="GBPIDV">
+
+   <property name="enabled">
+
+    <bool>false</bool>
+
+   </property>
+
+   <property name="geometry">
+
+    <rect>
+
+     <x>980</x>
+
+     <y>0</y>
+
+     <width>321</width>
+
+     <height>411</height>
+
+    </rect>
+
+   </property>
+
+   <property name="title">
+
+    <string>PID Values</string>
+
+   </property>
+
+   <widget class="QFrame" name="frame">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>40</x>
+
+      <y>310</y>
+
+      <width>271</width>
+
+      <height>41</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This contains all data related to Pitch PID operations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="frameShape">
+
+     <enum>QFrame::StyledPanel</enum>
+
+    </property>
+
+    <property name="frameShadow">
+
+     <enum>QFrame::Raised</enum>
+
+    </property>
+
+    <widget class="QLabel" name="lblKp_G_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_18">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>0</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Output</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKd_G_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKi_G_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>20</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_10">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Ki:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_22">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>40</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kp:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_20">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kd:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblThrustCmd_G">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>0</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QTextEdit" name="Direction_console_P">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>0</y>
+
+       <width>61</width>
+
+       <height>51</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>16</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This display is showing the decision the client&lt;/p&gt;&lt;p&gt; is making in order to reach is designated command&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;(Move forwards or backwards)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="html">
+
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+
+p, li { white-space: pre-wrap; }
+
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_32">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>0</y>
+
+       <width>51</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>14</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="text">
+
+      <string>Pitch</string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QFrame" name="frame_2">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>40</x>
+
+      <y>360</y>
+
+      <width>271</width>
+
+      <height>41</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This contains all data related to Roll PID operations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="frameShape">
+
+     <enum>QFrame::StyledPanel</enum>
+
+    </property>
+
+    <property name="frameShadow">
+
+     <enum>QFrame::Raised</enum>
+
+    </property>
+
+    <widget class="QLabel" name="lblKp_G_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_25">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>0</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Output</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKd_G_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKi_G_4">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>20</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_27">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Ki:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_28">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>40</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kp:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_31">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kd:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblThrustCmd_G_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>0</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QTextEdit" name="Direction_console_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>0</y>
+
+       <width>61</width>
+
+       <height>51</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>16</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This display is showing the decision the client&lt;/p&gt;&lt;p&gt; is making in order to reach is designated command&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;(Move left or right)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="html">
+
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+
+p, li { white-space: pre-wrap; }
+
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_33">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>0</y>
+
+       <width>51</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>14</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="text">
+
+      <string>Roll</string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QFrame" name="frame_3">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>40</x>
+
+      <y>110</y>
+
+      <width>271</width>
+
+      <height>121</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This contains all data related to Thrust PID operations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="frameShape">
+
+     <enum>QFrame::StyledPanel</enum>
+
+    </property>
+
+    <property name="frameShadow">
+
+     <enum>QFrame::Raised</enum>
+
+    </property>
+
+    <widget class="QLabel" name="lblKi_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>160</x>
+
+       <y>40</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_X_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>70</x>
+
+       <y>20</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Z_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>180</x>
+
+       <y>20</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Z">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>100</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_6">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>80</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_7">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>100</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_X">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>60</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_11">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Trans</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QCheckBox" name="cb_clamp">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>40</y>
+
+       <width>21</width>
+
+       <height>22</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string/>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Y_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>120</x>
+
+       <y>20</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Y">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>80</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>60</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_7">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>160</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_5">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>40</y>
+
+       <width>41</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Clamp:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_8">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>80</x>
+
+       <y>40</y>
+
+       <width>81</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Integral sum:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_16">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>60</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Error:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_6">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>100</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>60</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kp:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_4">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>80</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Ki:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKp">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>60</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKd">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>100</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_6">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>100</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kd:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKi">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>30</x>
+
+       <y>80</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblThrustCmd">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>0</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_7">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>0</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Thrust Cmd</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_34">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>30</y>
+
+       <width>61</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>14</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="text">
+
+      <string>Thrust</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QTextEdit" name="Direction_console">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>50</y>
+
+       <width>61</width>
+
+       <height>71</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>16</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This display is showing the decision the client&lt;/p&gt;&lt;p&gt; is making in order to reach is designated command&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;(Move up or down)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="html">
+
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+
+p, li { white-space: pre-wrap; }
+
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QGroupBox" name="groupBox_4">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>20</y>
+
+      <width>301</width>
+
+      <height>81</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Command sent to the drone&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="title">
+
+     <string>Command</string>
+
+    </property>
+
+    <widget class="QLabel" name="label_9">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>20</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Thrust :</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblCMDFThrust">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>140</x>
+
+       <y>20</y>
+
+       <width>61</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_12">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>40</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Pitch :</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_13">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Yaw :</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_14">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>60</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Roll :</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblfRollCom">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>60</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblfYawCom">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>20</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblFPitchCom">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>50</x>
+
+       <y>40</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblComCounter_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>140</x>
+
+       <y>60</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblComCounter">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>140</x>
+
+       <y>40</y>
+
+       <width>61</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_17">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>60</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Rate:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_15">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>40</y>
+
+       <width>51</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Counter:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPushButton" name="btnSummary">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>220</x>
+
+       <y>50</y>
+
+       <width>71</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Generate a 3D graph&lt;/span&gt; to view the &lt;span style=&quot; font-weight:600;&quot;&gt;position&lt;/span&gt; of the drone as well as its&lt;span style=&quot; font-weight:600;&quot;&gt; thrust &lt;/span&gt;over the past 60 iterations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="text">
+
+      <string>Summary</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QPushButton" name="btnKill">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>220</x>
+
+       <y>30</y>
+
+       <width>71</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <underline>true</underline>
+
+      </font>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Generate a 3D graph&lt;/span&gt; to view the &lt;span style=&quot; font-weight:600;&quot;&gt;position&lt;/span&gt; of the drone as well as its&lt;span style=&quot; font-weight:600;&quot;&gt; thrust &lt;/span&gt;over the past 60 iterations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kill</string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QFrame" name="frame_4">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>40</x>
+
+      <y>240</y>
+
+      <width>271</width>
+
+      <height>61</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This contains all data related to Pitch PID operations&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="frameShape">
+
+     <enum>QFrame::StyledPanel</enum>
+
+    </property>
+
+    <property name="frameShadow">
+
+     <enum>QFrame::Raised</enum>
+
+    </property>
+
+    <widget class="QLabel" name="lblKp_G_4">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_19">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>0</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Output</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKd_G_4">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblKi_G_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>20</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_21">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Ki:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_23">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>40</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kp:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_24">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>20</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Kd:</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblThrustCmd_G_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>0</y>
+
+       <width>71</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QTextEdit" name="Direction_console_P_2">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>210</x>
+
+       <y>0</y>
+
+       <width>61</width>
+
+       <height>61</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>16</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="toolTip">
+
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This display is showing the decision the client&lt;/p&gt;&lt;p&gt; is making in order to reach is designated command&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;(Move forwards or backwards)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+     <property name="html">
+
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+
+p, li { white-space: pre-wrap; }
+
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_35">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>0</y>
+
+       <width>51</width>
+
+       <height>21</height>
+
+      </rect>
+
+     </property>
+
+     <property name="font">
+
+      <font>
+
+       <pointsize>14</pointsize>
+
+      </font>
+
+     </property>
+
+     <property name="text">
+
+      <string>Yaw</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblPitchzmq_9">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>150</x>
+
+       <y>40</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Z : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>40</x>
+
+       <y>40</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>X : </string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Z_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>170</x>
+
+       <y>40</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_Y_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>110</x>
+
+       <y>40</y>
+
+       <width>41</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblE_X_3">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>60</x>
+
+       <y>40</y>
+
+       <width>31</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>0</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="label_26">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>10</x>
+
+       <y>40</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Rot</string>
+
+     </property>
+
+    </widget>
+
+    <widget class="QLabel" name="lblYawzmq_11">
+
+     <property name="geometry">
+
+      <rect>
+
+       <x>90</x>
+
+       <y>40</y>
+
+       <width>21</width>
+
+       <height>17</height>
+
+      </rect>
+
+     </property>
+
+     <property name="text">
+
+      <string>Y : </string>
+
+     </property>
+
+    </widget>
+
+   </widget>
+
+   <widget class="QRadioButton" name="RBTh">
+
+    <property name="enabled">
+
+     <bool>false</bool>
+
+    </property>
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>170</y>
+
+      <width>21</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable / Disable &lt;span style=&quot; font-weight:600;&quot;&gt;Thrust&lt;/span&gt; panel interface&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>RadioButton</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>true</bool>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="RBYAW">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>260</y>
+
+      <width>21</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable / Disable &lt;span style=&quot; font-weight:600;&quot;&gt;yaw&lt;/span&gt; panel interface&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>RadioButton</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>true</bool>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="RBPIT">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>320</y>
+
+      <width>21</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable / Disable &lt;span style=&quot; font-weight:600;&quot;&gt;Pitch&lt;/span&gt; panel interface&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>RadioButton</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>true</bool>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+   <widget class="QRadioButton" name="RBROl">
+
+    <property name="geometry">
+
+     <rect>
+
+      <x>10</x>
+
+      <y>370</y>
+
+      <width>21</width>
+
+      <height>22</height>
+
+     </rect>
+
+    </property>
+
+    <property name="toolTip">
+
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable / Disable &lt;span style=&quot; font-weight:600;&quot;&gt;Roll&lt;/span&gt; panel interface&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+
+    </property>
+
+    <property name="text">
+
+     <string>RadioButton</string>
+
+    </property>
+
+    <property name="checked">
+
+     <bool>true</bool>
+
+    </property>
+
+    <property name="autoExclusive">
+
+     <bool>false</bool>
+
+    </property>
+
+   </widget>
+
+  </widget>
+
+ </widget>
+
+ <resources/>
+
+ <connections/>
+
+</ui>
+
