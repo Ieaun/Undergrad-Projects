@@ -1,0 +1,188 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+namespace Student_Administration_Design_1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            init();
+        }
+
+        public void init()
+        {
+            int Student_ID = 532631;
+            string[,] StudentData = GetStudentData(Student_ID);
+            for (int i = 0; i < StudentData.GetLength(0); i++)
+            {
+                cbModules.Items.Add(StudentData[i,0]);
+                rtbSchedule.AppendText(string.Format("Module Name {0}, Module Code {1}, Grade {2}% \n",StudentData[i,0], StudentData[i, 1], StudentData[i, 2]));
+            }
+
+        }
+
+        public struct Module
+        {
+            string Title;
+            string Module_Code;
+            string [] Core;          // whether this module is core to any programs, results in format "{19/Computer Science ()} , {19/Computer Science(Embedded Systems)}
+            string [] Number_of_Assesments_and_weighting;    // in the form {2,title1,percentage1,title2,percetage2}  
+            public Module(string title,string module_Code, string [] core, string [] number_of_assesm)
+            {
+                Title = title;
+                Module_Code = module_Code;
+                Core = core;
+                Number_of_Assesments_and_weighting = number_of_assesm;
+            }
+        }
+
+        public void CreateNewModule(string Title, string Module_Code, string [] Core, string[] Number_of_Assesments_and_weighting)
+        {
+            Module NewModule = new Module(Title, Module_Code, Core, Number_of_Assesments_and_weighting);
+            rtbStaff.AppendText(NewModule.ToString());
+        }
+
+        private string[,] GetStudentData(int Student_ID)
+        {
+            string[,] ModuleList = GetModuleList();
+            return ModuleList;
+        }
+
+        public void ConnectToDatabase()
+        {
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+            MessageBox.Show("Connection Open  !");
+            cnn.Close();
+        }
+
+
+        public struct Year
+        {
+            Module Module_1;  
+            Module Module_2;            
+            Module Module_3;             
+            Module Module_4;          
+            Module Module_5;              
+            Module Module_6;           
+            private Year(Module module_1,  Module module_2, Module module_3, Module module_4,  Module module_5, Module module_6)
+            {
+                Module_1 = module_1;              
+                Module_2 = module_2;         
+                Module_3 = module_3;              
+                Module_4 = module_4;               
+                Module_5 = module_5;               
+                Module_6 = module_6;             
+            }
+        }
+
+
+        public struct Program
+        {          
+            int Program_Length;
+            string[] Students_Enrolled;
+            Year First_Year;
+            //Year Second_Year;
+            //Year Third_Year;
+            
+            private Program(int program_Length, string[] students_enrolled,Year first_Year,Year second_Year ,Year third_Year )
+            {                          
+                Program_Length = program_Length;
+                Students_Enrolled = students_enrolled;
+                First_Year = first_Year;
+                //Second_Year = second_Year;
+                //Third_Year = third_Year;
+            }
+        }
+
+
+        public struct Student
+        {
+            Program Students_Program;
+            int Student_ID;
+            string Student_Name;
+            string Cohort; //set of students registered for a degree in a given academic year (e.g 18/Computer_Science(Embedded_Systems))
+            private Student(Program student_program, int student_id,string student_name, string cohort)
+            {
+                Students_Program = student_program;
+                Student_ID = student_id;
+                Student_Name = student_name;
+                Cohort = cohort;
+            }
+        }
+
+
+
+        
+
+        private string [,] GetModuleList()
+        {
+            string[,] ModuleList = new string[4,3];
+            
+            ModuleList[0,0] = "Network Security"; ModuleList[0, 1] = "50050"; ModuleList[0, 2] = "90";
+            ModuleList[1,0] = "Object oriented programming"; ModuleList[1, 1] = "50051"; ModuleList[1, 2] = "76";
+            ModuleList[2,0] = "Distributedd Systems"; ModuleList[2, 1] = "50052"; ModuleList[2, 2] = "49";
+            ModuleList[3,0] = "Component-Based Architecture"; ModuleList[3, 1] = "50053"; ModuleList[3, 2] = "13";
+
+            return ModuleList;
+
+        }
+
+       
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNewModule_Click(object sender, EventArgs e)
+        {
+            string Title = tbModuleName.ToString();
+            string Module_Code = tbModuleCode.ToString();
+            int Result;
+
+        }
+
+        private void rtbStaff_TextChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void rbCoreModule_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbCoreModule.Checked)
+            {
+                gbCoreModule.Enabled = true;
+            }
+            else
+            {
+                gbCoreModule.Enabled = false;
+            }
+        }
+
+        private void btnOpenDB_Click(object sender, EventArgs e)
+        {
+            ConnectToDatabase();
+        }
+    }
+}
