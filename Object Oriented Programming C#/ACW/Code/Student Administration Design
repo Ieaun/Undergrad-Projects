@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.OleDb;
+
 
 namespace Student_Administration_Design_1
 {
@@ -18,9 +20,24 @@ namespace Student_Administration_Design_1
             InitializeComponent();
             init();
         }
+        //-------------------------------------------------------------------------------------------------------------
+
+        public void GivetheBoiSOmeDeaults()
+        {
+            cbaddcoremodule.Items.Add("2016 Embedded Systems");
+            cbaddcoremodule.Items.Add("2017 Embedded Systems");
+            cbaddcoremodule.Items.Add("2018 Embedded Systems");
+
+            cbDepartment.Items.Add("Computer Science");
+            cbDepartment.Items.Add("Engineering");
+            cbDepartment.Items.Add("Music");
+
+        }
+        //-------------------------------------------------------------------------------------------------------------
 
         public void init()
         {
+            GivetheBoiSOmeDeaults();
             int Student_ID = 532631;
             string[,] StudentData = GetStudentData(Student_ID);
             for (int i = 0; i < StudentData.GetLength(0); i++)
@@ -30,45 +47,34 @@ namespace Student_Administration_Design_1
             }
 
         }
+        //-------------------------------------------------------------------------------------------------------------
 
         public struct Module
         {
             string Title;
             string Module_Code;
             string [] Core;          // whether this module is core to any programs, results in format "{19/Computer Science ()} , {19/Computer Science(Embedded Systems)}
-            string [] Number_of_Assesments_and_weighting;    // in the form {2,title1,percentage1,title2,percetage2}  
-            public Module(string title,string module_Code, string [] core, string [] number_of_assesm)
+            string [,] Number_of_Assesments_and_weighting;    // in the form {title1,percentage1},{title2,percetage2}  
+            public Module(string title,string module_Code, string [] core, string [,] number_of_assesm)
             {
                 Title = title;
                 Module_Code = module_Code;
                 Core = core;
                 Number_of_Assesments_and_weighting = number_of_assesm;
+                MessageBox.Show(string.Format("New Module [{0}] Created", Title.ToString()));
             }
         }
+        //-------------------------------------------------------------------------------------------------------------
 
-        public void CreateNewModule(string Title, string Module_Code, string [] Core, string[] Number_of_Assesments_and_weighting)
-        {
-            Module NewModule = new Module(Title, Module_Code, Core, Number_of_Assesments_and_weighting);
-            rtbStaff.AppendText(NewModule.ToString());
-        }
+       
+        //-------------------------------------------------------------------------------------------------------------
 
         private string[,] GetStudentData(int Student_ID)
         {
             string[,] ModuleList = GetModuleList();
             return ModuleList;
         }
-
-        public void ConnectToDatabase()
-        {
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
-            MessageBox.Show("Connection Open  !");
-            cnn.Close();
-        }
-
+        //-------------------------------------------------------------------------------------------------------------
 
         public struct Year
         {
@@ -88,6 +94,7 @@ namespace Student_Administration_Design_1
                 Module_6 = module_6;             
             }
         }
+        //-------------------------------------------------------------------------------------------------------------
 
 
         public struct Program
@@ -107,6 +114,7 @@ namespace Student_Administration_Design_1
                 //Third_Year = third_Year;
             }
         }
+        //-------------------------------------------------------------------------------------------------------------
 
 
         public struct Student
@@ -123,10 +131,8 @@ namespace Student_Administration_Design_1
                 Cohort = cohort;
             }
         }
+        //-------------------------------------------------------------------------------------------------------------
 
-
-
-        
 
         private string [,] GetModuleList()
         {
@@ -138,36 +144,46 @@ namespace Student_Administration_Design_1
             ModuleList[3,0] = "Component-Based Architecture"; ModuleList[3, 1] = "50053"; ModuleList[3, 2] = "13";
 
             return ModuleList;
-
         }
 
-       
-
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        //-------------------------------------------------------------------------------------------------------------
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+        //-------------------------------------------------------------------------------------------------------------
 
         private void btnNewModule_Click(object sender, EventArgs e)
         {
             string Title = tbModuleName.ToString();
             string Module_Code = tbModuleCode.ToString();
-            int Result;
+            string[] Programs_Core;
 
+            if (rbCoreModule.Checked)
+            {
+                rtbPreview.Text.Trim();
+                Programs_Core = rtbPreview.Text.Split('\n'); //the core programs
+            }
+            else
+            {
+                Programs_Core = new string [1] {" "} ; //none
+            }
+
+            string[,] Number_of_Assesments_and_Weighting = new string[3, 2] {{ tbAssesment1.Text, tbWeighting1.Text },
+                                                                            { tbAssesment2.Text, tbWeighting2.Text },
+                                                                            { tbAssesment3.Text, tbWeighting3.Text }};
+
+            CreateNewModule(Title,Module_Code, Programs_Core, Number_of_Assesments_and_Weighting);
         }
 
-        private void rtbStaff_TextChanged(object sender, EventArgs e)
+        public void CreateNewModule(string Title, string Module_Code, string[] Core, string[,] Number_of_Assesments_and_weighting)
         {
-
-
+            Module NewModule = new Module(Title, Module_Code, Core, Number_of_Assesments_and_weighting);
+            rtbStaff.AppendText(NewModule.ToString());
         }
 
+        //-------------------------------------------------------------------------------------------------------------
         private void rbCoreModule_CheckedChanged(object sender, EventArgs e)
         {
             if (rbCoreModule.Checked)
@@ -180,9 +196,138 @@ namespace Student_Administration_Design_1
             }
         }
 
-        private void btnOpenDB_Click(object sender, EventArgs e)
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void modulesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            ConnectToDatabase();
+            this.Validate();
+            this.modulesBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.studentsDataSet);
+
         }
+
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void btnAddCoreModule_Click(object sender, EventArgs e)
+        {
+
+            string AddtoPreview = cbaddcoremodule.SelectedItem.ToString();  // get the program name from cb
+            rtbPreview.AppendText(AddtoPreview +"\n");                     // add it to the rich text preview
+
+            cbaddcoremodule.Items.Remove(cbaddcoremodule.SelectedItem);     //clear
+            cbaddcoremodule.Text = "";
+
+            rtbPreview.Text.Trim();
+
+            string[] Programs = rtbPreview.Text.Split('\n'); //Get data already in the preview plane and split it according to new lines
+
+            cbRemovemodule.Items.Clear();
+            for (int i = 0; i <= Programs.Length-2; i++)   // programs.lenght -2 inorder to avoid the "" on other end of split
+            {
+                    cbRemovemodule.Items.Add(Programs[i]); // add results to other cb so users can remove any module they are not satisfied with
+            }
+        }
+
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void btnRemoveCoreModule_Click(object sender, EventArgs e)
+        {
+            cbaddcoremodule.Items.Add(cbRemovemodule.SelectedItem);
+            
+
+            string[] Programs = rtbPreview.Text.Split('\n');
+            rtbPreview.Clear();
+            for (int i = 0; i <= Programs.Length - 1; i++)
+            {
+                string here = cbRemovemodule.SelectedItem.ToString();
+                if (Programs[i] != here && Programs[i] != "" )
+                {
+                    rtbPreview.AppendText(Programs[i] + "\n");
+                }
+            }
+
+            cbRemovemodule.Text = "";
+            cbRemovemodule.Items.Remove(cbRemovemodule.SelectedItem);
+            rtbPreview.Text.Trim();
+
+        }
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void tbWeighting1_TextChanged(object sender, EventArgs e)
+        {
+            DoWeightPercentage();
+        }
+
+        private void tbWeighting2_TextChanged(object sender, EventArgs e)
+        {
+            DoWeightPercentage();
+        }
+
+        private void tbWeighting3_TextChanged(object sender, EventArgs e)
+        {
+            DoWeightPercentage();
+        }
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void DoWeightPercentage()
+        {
+            int Percentage = 0;
+            int weight1 = 0;
+            int weight2 = 0;
+            int weight3 = 0;
+
+            try
+            {
+
+                if (tbWeighting1.Text != "")
+                { weight1 = int.Parse(tbWeighting1.Text); }
+
+                if (tbWeighting2.Text != "")
+                { weight2 = int.Parse(tbWeighting2.Text); }
+
+                if (tbWeighting3.Text != "")
+                { weight3 = int.Parse(tbWeighting3.Text); }
+
+                Percentage = weight1 + weight2 + weight3;
+
+                if (Percentage >= 0 && Percentage <= 100)
+                {
+                    pbweight.Value = Percentage;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        //-------------------------------------------------------------------------------------------------------------
+
+        private void initStaffGui()
+        {
+            cbDepartment.Text = "";
+
+            tbModuleName.Clear();
+            tbModuleCode.Clear();
+            rbCoreModule.Checked = false;
+            rbOptionalModule.Checked = false;
+            cbaddcoremodule.Items.Clear();
+            cbRemovemodule.Items.Clear();
+            rtbPreview.Clear();
+            tbAssesment1.Clear();
+            tbAssesment2.Clear();
+            tbAssesment3.Clear();
+            tbWeighting1.Clear();
+            tbWeighting2.Clear();
+            tbWeighting3.Clear();
+        }
+
+
+        private void btnClear_Staff_Click(object sender, EventArgs e)
+        {
+            initStaffGui();
+        }
+        //-------------------------------------------------------------------------------------------------------------
     }
 }
